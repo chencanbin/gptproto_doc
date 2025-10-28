@@ -1,6 +1,6 @@
 ---
-title: 'Authentication'
-description: 'Learn how to authenticate your API requests'
+title: "Authentication"
+description: "Learn how to authenticate your API requests"
 ---
 
 ## API Key Authentication
@@ -9,7 +9,7 @@ GPTProto API uses Bearer token authentication. All API requests must include you
 
 ### Getting Your API Key
 
-1. Sign up for a GPTProto account at [https://gptproto.com](https://gptproto.com)
+1. Sign up for a GPTProto account at https://gptproto.com
 2. Navigate to the API Keys section in your dashboard
 3. Generate a new API key
 4. Copy and securely store your API key
@@ -39,6 +39,7 @@ curl https://gptproto.com/v1/chat/completions \
   }'
 ```
 
+
 ```python Python
 import os
 import requests
@@ -60,6 +61,7 @@ response = requests.post(
 )
 ```
 
+
 ```javascript JavaScript
 const apiKey = process.env.GPTPROTO_API_KEY;
 
@@ -77,6 +79,7 @@ fetch('https://gptproto.com/v1/chat/completions', {
   })
 });
 ```
+
 
 ```go Go
 package main
@@ -112,9 +115,11 @@ Store your API key in environment variables instead of hardcoding it:
 export GPTPROTO_API_KEY="your-api-key-here"
 ```
 
+
 ```powershell Windows PowerShell
 $env:GPTPROTO_API_KEY="your-api-key-here"
 ```
+
 
 ```bash .env File
 GPTPROTO_API_KEY=your-api-key-here
@@ -137,6 +142,7 @@ load_dotenv()
 api_key = os.getenv("GPTPROTO_API_KEY")
 ```
 
+
 ```javascript Node.js (.env)
 // Install dotenv: npm install dotenv
 require('dotenv').config();
@@ -156,69 +162,63 @@ const apiKey = process.env.GPTPROTO_API_KEY;
 <ResponseField name="401 Unauthorized" type="error">
   Your API key is missing or invalid.
 
-```json
-{
-  "error": {
-    "message": "Invalid authentication credentials",
-    "type": "invalid_request_error",
-    "code": "invalid_api_key"
+  ```json
+  {
+    "error": {
+      "message": "Invalid authentication credentials",
+      "type": "invalid_request_error",
+      "code": "invalid_api_key"
+    }
   }
-}
-```
+  ```
 </ResponseField>
 
 <ResponseField name="403 Forbidden" type="error">
   Your API key doesn't have permission to access this resource.
 
-```json
-{
-  "error": {
-    "message": "You do not have access to this resource",
-    "type": "permission_error",
-    "code": "insufficient_permissions"
+  ```json
+  {
+    "error": {
+      "message": "You do not have access to this resource",
+      "type": "permission_error",
+      "code": "insufficient_permissions"
+    }
   }
-}
-```
+  ```
 </ResponseField>
 
 <ResponseField name="429 Too Many Requests" type="error">
   You've exceeded your rate limit.
 
-```json
-{
-  "error": {
-    "message": "Rate limit exceeded",
-    "type": "rate_limit_error",
-    "code": "rate_limit_exceeded"
+  ```json
+  {
+    "error": {
+      "message": "Rate limit exceeded",
+      "type": "rate_limit_error",
+      "code": "rate_limit_exceeded"
+    }
   }
-}
-```
+  ```
 </ResponseField>
 
 ## Best Practices
 
 <AccordionGroup>
-
-<Accordion title="Use Environment Variables" icon="lock">
-  Always store API keys in environment variables, never in your source code.
-</Accordion>
-
-<Accordion title="Implement Key Rotation" icon="rotate">
-  Regularly rotate your API keys to minimize security risks. Generate new keys and update your applications before revoking old ones.
-</Accordion>
-
-<Accordion title="Use Different Keys for Different Environments" icon="code-branch">
-  Use separate API keys for development, staging, and production environments.
-</Accordion>
-
-<Accordion title="Monitor Usage" icon="chart-line">
-  Regularly check your API usage in the dashboard to detect any unusual activity.
-</Accordion>
-
-<Accordion title="Implement Rate Limiting" icon="gauge">
-  Implement client-side rate limiting to avoid hitting API rate limits.
-</Accordion>
-
+  <Accordion title="Use Environment Variables" icon="lock">
+    Always store API keys in environment variables, never in your source code.
+  </Accordion>
+  <Accordion title="Implement Key Rotation" icon="rotate">
+    Regularly rotate your API keys to minimize security risks. Generate new keys and update your applications before revoking old ones.
+  </Accordion>
+  <Accordion title="Use Different Keys for Different Environments" icon="code-branch">
+    Use separate API keys for development, staging, and production environments.
+  </Accordion>
+  <Accordion title="Monitor Usage" icon="chart-line">
+    Regularly check your API usage in the dashboard to detect any unusual activity.
+  </Accordion>
+  <Accordion title="Implement Rate Limiting" icon="gauge">
+    Implement client-side rate limiting to avoid hitting API rate limits.
+  </Accordion>
 </AccordionGroup>
 
 ## API Key Management
@@ -244,17 +244,6 @@ If you suspect your API key has been compromised:
   Set up key expiration policies to automatically rotate keys after a specified period.
 </Tip>
 
-## Testing Authentication
-
-Test your authentication setup with this simple request:
-
-```bash
-curl https://gptproto.com/v1/models \
-  -H "Authorization: YOUR_API_KEY"
-```
-
-A successful response confirms your authentication is working correctly.
-
 ## Support
 
 If you're experiencing authentication issues:
@@ -262,4 +251,4 @@ If you're experiencing authentication issues:
 - Check that your API key is correctly formatted
 - Verify your key hasn't been revoked
 - Ensure you're using the correct API endpoint
-- Contact [ jacoblam3219@gmail.com](mailto: jacoblam3219@gmail.com) for help
+- Contact [ [jacoblam3219@gmail.com](mailto:jacoblam3219@gmail.com)](mailto: [jacoblam3219@gmail.com](mailto:jacoblam3219@gmail.com)) for help
