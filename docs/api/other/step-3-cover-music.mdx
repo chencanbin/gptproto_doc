@@ -1,0 +1,257 @@
+---
+title: 'Step 3: Cover Music'
+api: 'POST /suno/generate'
+description: 'Music generation interface, can generate new music directly or continue existing musicIf you want to continue a user-uploaded music, you need to add `-upload` after the mv field, for example `chirp-v3-5-upload`'
+---
+
+## Overview
+
+Music generation interface, can generate new music directly or continue existing musicIf you want to continue a user-uploaded music, you need to add `-upload` after the mv field, for example `chirp-v3-5-upload`
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required>
+  Your API key in the format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="prompt" type="string" required>
+  Prompt parameter
+</ParamField>
+
+<ParamField body="generation_type" type="string" >
+  Generation Type parameter
+</ParamField>
+
+<ParamField body="tags" type="string" >
+  Tags parameter
+</ParamField>
+
+<ParamField body="negative_tags" type="string" >
+  Negative Tags parameter
+</ParamField>
+
+<ParamField body="mv" type="string" >
+  Mv parameter
+</ParamField>
+
+<ParamField body="title" type="string" >
+  Title parameter
+</ParamField>
+
+<ParamField body="continue_clip_id" type="string" >
+  Continue Clip Id parameter
+</ParamField>
+
+<ParamField body="continue_at" type="string" >
+  Continue At parameter
+</ParamField>
+
+<ParamField body="continued_aligned_prompt" type="string" >
+  Continued Aligned Prompt parameter
+</ParamField>
+
+<ParamField body="infill_start_s" type="string" >
+  Infill Start S parameter
+</ParamField>
+
+<ParamField body="infill_end_s" type="string" >
+  Infill End S parameter
+</ParamField>
+
+<ParamField body="task" type="string" >
+  Task parameter
+</ParamField>
+
+<ParamField body="cover_clip_id" type="string" >
+  Cover Clip Id parameter
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://gptproto.com/suno/generate" \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "prompt": "[Verse]\nStars they shine above me\nMoonlight softly glows\nWhispers in the night sky\nDreams that only grow\n\n[Verse 2]\nMidnight winds are calling\nCarrying a tune\nHeartbeats echo softly\nDancing with the moon\n\n[Chorus]\nStarry night starry night\nLet your light ignite ignite\nBright as day bright as day\nGuide my way guide my way\n\n[Verse 3]\nShadows move and twinkle\nNighttime come alive\nMystery in the heavens\nStories that survive\n\n[Bridge]\nMagic fills the darkness\nWonder in the air\nEvery star a secret\nIn the sky I stare\n\n[Chorus]\nStarry night starry night\nLet your light ignite ignite\nBright as day bright as day\nGuide my way guide my way",
+  "generation_type": "TEXT",
+  "tags": "rock, punk",
+  "negative_tags": "",
+  "mv": "chirp-v3-5-tau",
+  "title": "Starry (Cover)",
+  "continue_clip_id": null,
+  "continue_at": null,
+  "continued_aligned_prompt": null,
+  "infill_start_s": null,
+  "infill_end_s": null,
+  "task": "cover",
+  "cover_clip_id": "0438be7f-6f3f-4c3d-9616-ea218c602854"
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/suno/generate"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+  "prompt": "[Verse]\nStars they shine above me\nMoonlight softly glows\nWhispers in the night sky\nDreams that only grow\n\n[Verse 2]\nMidnight winds are calling\nCarrying a tune\nHeartbeats echo softly\nDancing with the moon\n\n[Chorus]\nStarry night starry night\nLet your light ignite ignite\nBright as day bright as day\nGuide my way guide my way\n\n[Verse 3]\nShadows move and twinkle\nNighttime come alive\nMystery in the heavens\nStories that survive\n\n[Bridge]\nMagic fills the darkness\nWonder in the air\nEvery star a secret\nIn the sky I stare\n\n[Chorus]\nStarry night starry night\nLet your light ignite ignite\nBright as day bright as day\nGuide my way guide my way",
+  "generation_type": "TEXT",
+  "tags": "rock, punk",
+  "negative_tags": "",
+  "mv": "chirp-v3-5-tau",
+  "title": "Starry (Cover)",
+  "continue_clip_id": null,
+  "continue_at": null,
+  "continued_aligned_prompt": null,
+  "infill_start_s": null,
+  "infill_end_s": null,
+  "task": "cover",
+  "cover_clip_id": "0438be7f-6f3f-4c3d-9616-ea218c602854"
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/suno/generate";
+const headers = {
+  "Authorization": "Bearer YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "prompt": "[Verse]\nStars they shine above me\nMoonlight softly glows\nWhispers in the night sky\nDreams that only grow\n\n[Verse 2]\nMidnight winds are calling\nCarrying a tune\nHeartbeats echo softly\nDancing with the moon\n\n[Chorus]\nStarry night starry night\nLet your light ignite ignite\nBright as day bright as day\nGuide my way guide my way\n\n[Verse 3]\nShadows move and twinkle\nNighttime come alive\nMystery in the heavens\nStories that survive\n\n[Bridge]\nMagic fills the darkness\nWonder in the air\nEvery star a secret\nIn the sky I stare\n\n[Chorus]\nStarry night starry night\nLet your light ignite ignite\nBright as day bright as day\nGuide my way guide my way",
+  "generation_type": "TEXT",
+  "tags": "rock, punk",
+  "negative_tags": "",
+  "mv": "chirp-v3-5-tau",
+  "title": "Starry (Cover)",
+  "continue_clip_id": null,
+  "continue_at": null,
+  "continued_aligned_prompt": null,
+  "infill_start_s": null,
+  "infill_end_s": null,
+  "task": "cover",
+  "cover_clip_id": "0438be7f-6f3f-4c3d-9616-ea218c602854"
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/suno/generate"
+
+    payload := []byte(`{
+"prompt": "[Verse]\nStars they shine above me\nMoonlight softly glows\nWhispers in the night sky\nDreams that only grow\n\n[Verse 2]\nMidnight winds are calling\nCarrying a tune\nHeartbeats echo softly\nDancing with the moon\n\n[Chorus]\nStarry night starry night\nLet your light ignite ignite\nBright as day bright as day\nGuide my way guide my way\n\n[Verse 3]\nShadows move and twinkle\nNighttime come alive\nMystery in the heavens\nStories that survive\n\n[Bridge]\nMagic fills the darkness\nWonder in the air\nEvery star a secret\nIn the sky I stare\n\n[Chorus]\nStarry night starry night\nLet your light ignite ignite\nBright as day bright as day\nGuide my way guide my way",
+"generation_type": "TEXT",
+"tags": "rock, punk",
+"negative_tags": "",
+"mv": "chirp-v3-5-tau",
+"title": "Starry (Cover)",
+"continue_clip_id": null,
+"continue_at": null,
+"continued_aligned_prompt": null,
+"infill_start_s": null,
+"infill_end_s": null,
+"task": "cover",
+"cover_clip_id": "0438be7f-6f3f-4c3d-9616-ea218c602854"
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success" type="200">
+  Successful response
+
+```json
+{
+  "status": "success"
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 400 - Bad Request
+{
+  "error": {
+    "message": "Invalid request parameters",
+    "type": "invalid_request_error",
+    "code": "invalid_parameters"
+  }
+}
+```
+
+```json 401 - Unauthorized
+{
+  "error": {
+    "message": "Invalid API key",
+    "type": "authentication_error",
+    "code": "invalid_api_key"
+  }
+}
+```
+
+```json 429 - Rate Limit Exceeded
+{
+  "error": {
+    "message": "Rate limit exceeded",
+    "type": "rate_limit_error",
+    "code": "rate_limit_exceeded"
+  }
+}
+```
+
+</ResponseExample>
+

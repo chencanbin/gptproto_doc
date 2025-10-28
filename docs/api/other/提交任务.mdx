@@ -1,0 +1,255 @@
+---
+title: '提交任务'
+api: 'POST /flux/v1/:model'
+description: '参数描述，请参考官方文档 https://docs.bfl.ai/api-reference/tasks/edit-or-create-an-image-with-flux-kontext-pro'
+---
+
+## Overview
+
+参数描述，请参考官方文档 https://docs.bfl.ai/api-reference/tasks/edit-or-create-an-image-with-flux-kontext-pro
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required>
+  Your API key in the format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+## Path Parameters
+
+<ParamField path="" type="string" >
+  模型名称，目前支持 flux-kontext-pro flux-kontext-max
+</ParamField>
+
+## Request Body
+
+<ParamField body="prompt" type="string" required>
+  Prompt parameter
+</ParamField>
+
+<ParamField body="input_image" type="string" >
+  Input Image parameter
+</ParamField>
+
+<ParamField body="input_image_2" type="string" >
+  Input Image 2 parameter
+</ParamField>
+
+<ParamField body="input_image_3" type="string" >
+  Input Image 3 parameter
+</ParamField>
+
+<ParamField body="input_image_4" type="string" >
+  Input Image 4 parameter
+</ParamField>
+
+<ParamField body="seed" type="integer" >
+  Seed parameter
+</ParamField>
+
+<ParamField body="aspect_ratio" type="string" >
+  Aspect Ratio parameter
+</ParamField>
+
+<ParamField body="output_format" type="string" >
+  Output Format parameter
+</ParamField>
+
+<ParamField body="webhook_url" type="string" >
+  Webhook Url parameter
+</ParamField>
+
+<ParamField body="webhook_secret" type="string" >
+  Webhook Secret parameter
+</ParamField>
+
+<ParamField body="prompt_upsampling" type="boolean" >
+  Prompt Upsampling parameter
+</ParamField>
+
+<ParamField body="safety_tolerance" type="integer" >
+  Safety Tolerance parameter
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://gptproto.com/flux/v1/:model" \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "prompt": "ein fantastisches bild",
+  "input_image": "<string>",
+  "input_image_2": "<string>",
+  "input_image_3": "<string>",
+  "input_image_4": "<string>",
+  "seed": 42,
+  "aspect_ratio": "<string>",
+  "output_format": "jpeg",
+  "webhook_url": "<string>",
+  "webhook_secret": "<string>",
+  "prompt_upsampling": false,
+  "safety_tolerance": 2
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/flux/v1/:model"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+  "prompt": "ein fantastisches bild",
+  "input_image": "<string>",
+  "input_image_2": "<string>",
+  "input_image_3": "<string>",
+  "input_image_4": "<string>",
+  "seed": 42,
+  "aspect_ratio": "<string>",
+  "output_format": "jpeg",
+  "webhook_url": "<string>",
+  "webhook_secret": "<string>",
+  "prompt_upsampling": false,
+  "safety_tolerance": 2
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/flux/v1/:model";
+const headers = {
+  "Authorization": "Bearer YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "prompt": "ein fantastisches bild",
+  "input_image": "<string>",
+  "input_image_2": "<string>",
+  "input_image_3": "<string>",
+  "input_image_4": "<string>",
+  "seed": 42,
+  "aspect_ratio": "<string>",
+  "output_format": "jpeg",
+  "webhook_url": "<string>",
+  "webhook_secret": "<string>",
+  "prompt_upsampling": false,
+  "safety_tolerance": 2
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/flux/v1/:model"
+
+    payload := []byte(`{
+"prompt": "ein fantastisches bild",
+"input_image": "<string>",
+"input_image_2": "<string>",
+"input_image_3": "<string>",
+"input_image_4": "<string>",
+"seed": 42,
+"aspect_ratio": "<string>",
+"output_format": "jpeg",
+"webhook_url": "<string>",
+"webhook_secret": "<string>",
+"prompt_upsampling": false,
+"safety_tolerance": 2
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success" type="200">
+  Successful response
+
+```json
+{
+  "status": "success"
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 400 - Bad Request
+{
+  "error": {
+    "message": "Invalid request parameters",
+    "type": "invalid_request_error",
+    "code": "invalid_parameters"
+  }
+}
+```
+
+```json 401 - Unauthorized
+{
+  "error": {
+    "message": "Invalid API key",
+    "type": "authentication_error",
+    "code": "invalid_api_key"
+  }
+}
+```
+
+```json 429 - Rate Limit Exceeded
+{
+  "error": {
+    "message": "Rate limit exceeded",
+    "type": "rate_limit_error",
+    "code": "rate_limit_exceeded"
+  }
+}
+```
+
+</ResponseExample>
+

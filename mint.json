@@ -1,0 +1,382 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "GPTProto API Documentation",
+  "logo": {
+    "dark": "/logo/dark.png",
+    "light": "/logo/light.png"
+  },
+  "favicon": "/favicon.svg",
+  "colors": {
+    "primary": "#0D9373",
+    "light": "#07C983",
+    "dark": "#0D9373",
+    "anchors": {
+      "from": "#0D9373",
+      "to": "#07C983"
+    }
+  },
+  "topbarLinks": [
+    {
+      "name": "Support",
+      "url": "mailto:jacoblam3219@gmail.com"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Dashboard",
+    "url": "https://gptproto.com/dashboard"
+  },
+  "tabs": [
+    {
+      "name": "API Reference",
+      "url": "docs/api"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Get Started",
+      "icon": "rocket",
+      "pages": [
+        "introduction",
+        "quickstart",
+        "authentication"
+      ]
+    },
+    {
+      "group": "OpenAI",
+      "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/GPT.png",
+      "pages": [
+        {
+          "group": "Chat & Text",
+          "pages": [
+            "docs/api/openai/chat-mode",
+            "docs/api/openai/chat-text-mode",
+            "docs/api/openai/chat-image-mode",
+            "docs/api/openai/responses-mode"
+          ]
+        },
+        {
+          "group": "Image Generation",
+          "pages": [
+            "docs/api/openai/create-image",
+            "docs/api/openai/image-editing"
+          ]
+        },
+        {
+          "group": "Video Generation",
+          "pages": [
+            "docs/api/openai/text-to-video",
+            "docs/api/openai/text-to-video-pro",
+            "docs/api/openai/image-to-video",
+            "docs/api/openai/image-to-video-pro"
+          ]
+        },
+        {
+          "group": "Sora",
+          "pages": [
+            "docs/api/openai/sora-2",
+            "docs/api/openai/sora-2-chat-mode",
+            "docs/api/openai/sora-create-task",
+            "docs/api/openai/sora-get-task-result",
+            "docs/api/openai/sora-get-video-content",
+            "docs/api/openai/sora-remix",
+            "docs/api/openai/sora-video-get-task"
+          ]
+        },
+        {
+          "group": "Audio",
+          "pages": [
+            "docs/api/openai/speech",
+            "docs/api/openai/transcriptions"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Claude",
+      "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/Claude.png",
+      "pages": [
+        "docs/api/claude/chat-modesupport-pdf-analysis"
+      ]
+    },
+    {
+      "group": "Gemini",
+      "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/Gemini.png",
+      "pages": [
+        {
+          "group": "Chat & Content Generation",
+          "pages": [
+            "docs/api/gemini/chat-mode",
+            "docs/api/gemini/chat-text-mode",
+            "docs/api/gemini/chat-image-mode",
+            "docs/api/gemini/generatecontent",
+            "docs/api/gemini/streamgeneratecontent",
+            "docs/api/gemini/generatecontent-file-analysis"
+          ]
+        },
+        {
+          "group": "Image Generation",
+          "pages": [
+            "docs/api/gemini/create-image",
+            "docs/api/gemini/imagegenerate",
+            "docs/api/gemini/text-to-image",
+            "docs/api/gemini/image-edit",
+            "docs/api/gemini/image-editing",
+            "docs/api/gemini/gemini-25-flash-image-preview-hd"
+          ]
+        },
+        {
+          "group": "Video Generation",
+          "pages": [
+            "docs/api/gemini/create-video169",
+            "docs/api/gemini/create-video916",
+            "docs/api/gemini/text-to-video-169",
+            "docs/api/gemini/text-to-video-916",
+            "docs/api/gemini/image-to-video169",
+            "docs/api/gemini/image-to-video-916",
+            "docs/api/gemini/firstlast-frame"
+          ]
+        },
+        {
+          "group": "File & Task Management",
+          "pages": [
+            "docs/api/gemini/file-upload",
+            "docs/api/gemini/file-upload-north-america",
+            "docs/api/gemini/get-task-status"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Grok",
+      "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/Grok.png",
+      "pages": [
+        "docs/api/grok/chat-text-modesupport-for-grok4"
+      ]
+    },
+    {
+      "group": "Midjourney",
+      "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/Midjourney.png",
+      "pages": [
+        {
+          "group": "Image Operations",
+          "pages": [
+            "docs/api/midjourney/imagine",
+            "docs/api/midjourney/blend",
+            "docs/api/midjourney/describe",
+            "docs/api/midjourney/swapface"
+          ]
+        },
+        {
+          "group": "Image Modifications",
+          "pages": [
+            "docs/api/midjourney/action",
+            "docs/api/midjourney/change",
+            "docs/api/midjourney/modal"
+          ]
+        },
+        {
+          "group": "Task Management",
+          "pages": [
+            "docs/api/midjourney/fetchfromtask",
+            "docs/api/midjourney/listbycondition"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Suno",
+      "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/Suno.png",
+      "pages": [
+        {
+          "group": "Music Generation",
+          "pages": [
+            "docs/api/suno/music-generation-generations",
+            "docs/api/suno/music-generationgenerations",
+            "docs/api/suno/step-1-music-generation"
+          ]
+        },
+        {
+          "group": "Lyrics",
+          "pages": [
+            "docs/api/suno/generate-lyrics",
+            "docs/api/suno/query-lyrics"
+          ]
+        },
+        {
+          "group": "Music Editing",
+          "pages": [
+            "docs/api/suno/step-3-cover-music",
+            "docs/api/suno/step-3-extend-music",
+            "docs/api/suno/step-5-get-complete-music"
+          ]
+        },
+        {
+          "group": "Upload & Query",
+          "pages": [
+            "docs/api/suno/convert-music-link-to-suno-upload",
+            "docs/api/suno/查询任务feed"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Kling",
+      "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/Kling.png",
+      "pages": [
+        {
+          "group": "Generation",
+          "pages": [
+            "docs/api/kling/image-generation",
+            "docs/api/kling/text-to-video",
+            "docs/api/kling/image-to-video",
+            "docs/api/kling/kling-v25-turbo-pro"
+          ]
+        },
+        {
+          "group": "Task Management",
+          "pages": [
+            "docs/api/kling/query-task",
+            "docs/api/kling/任务查询"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Runway",
+      "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/Runway.png",
+      "pages": [
+        {
+          "group": "Emotion Migration",
+          "pages": [
+            "docs/api/runway/act-one-emotion-migration",
+            "docs/api/runway/act-two-emotion-migration"
+          ]
+        },
+        {
+          "group": "Video Generation",
+          "pages": [
+            "docs/api/runway/generate-generate-task",
+            "docs/api/runway/submit-video-generation-task",
+            "docs/api/runway/video2videovideo-to-video-style-re-drawing"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Ideogram",
+      "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/Ideogram.png",
+      "pages": [
+        "docs/api/ideogram/edit-30edit",
+        "docs/api/ideogram/generate-30generate",
+        "docs/api/ideogram/remix-30remix",
+        "docs/api/ideogram/replace-background-30replace-background"
+      ]
+    },
+    {
+      "group": "Flux",
+      "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/2025/05/30/a0ffa3b5d65f4f23a40698c445048c67.png",
+      "pages": [
+        "docs/api/flux/chat-format",
+        "docs/api/flux/imagegenerate",
+        "docs/api/flux/提交任务",
+        "docs/api/flux/查询任务"
+      ]
+    },
+    {
+      "group": "Doubao",
+      "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/doubao.png",
+      "pages": [
+        {
+          "group": "Chat",
+          "pages": [
+            "docs/api/doubao/chat-text-mode",
+            "docs/api/doubao/chat-image-mode"
+          ]
+        },
+        {
+          "group": "SeeEdit",
+          "pages": [
+            "docs/api/doubao/seededit-30"
+          ]
+        },
+        {
+          "group": "SeeDream",
+          "pages": [
+            "docs/api/doubao/seedream-30",
+            "docs/api/doubao/seedream-4-0-250828",
+            "docs/api/doubao/doubao-seedream-4-0-250828"
+          ]
+        },
+        {
+          "group": "SeeDance",
+          "pages": [
+            "docs/api/doubao/seedance-10",
+            "docs/api/doubao/seedance-1-0-series",
+            "docs/api/doubao/seedance-1-0-get-task"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Higgsfield",
+      "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-content/1754623057482-20250808-111710.png",
+      "pages": [
+        "docs/api/higgsfield/generate-video",
+        "docs/api/higgsfield/query-action-template"
+      ]
+    },
+    {
+      "group": "Qwen",
+      "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-content/1755663073115-111.png",
+      "pages": [
+        "docs/api/qwen/create-image",
+        "docs/api/qwen/image-edit"
+      ]
+    },
+    {
+      "group": "MiniMax",
+      "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-content/1757932596487-20250915-183623.png",
+      "pages": [
+        {
+          "group": "Audio",
+          "pages": [
+            "docs/api/minimax/speech-25-hd-preview",
+            "docs/api/minimax/voice-clone"
+          ]
+        },
+        {
+          "group": "Video",
+          "pages": [
+            "docs/api/minimax/hailuo-pro"
+          ]
+        },
+        {
+          "group": "File & Task Management",
+          "pages": [
+            "docs/api/minimax/fileupload",
+            "docs/api/minimax/任务结果查询"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "GPTProto",
+      "icon": "/logo/dark.png",
+      "pages": [
+        "docs/api/gptproto/image-upscaler"
+      ]
+    }
+  ],
+  "footerSocials": {
+    "twitter": "https://x.com/GPT_Proto",
+    "facebook": "https://www.facebook.com/gptproto",
+    "telegram": "https://t.me/gptproto_official",
+    "linkedin": "https://www.linkedin.com/company/109319130/admin/dashboard/",
+    "discord": "https://discord.gg/gptproto",
+    "youtube": "https://www.youtube.com/@GPTProto",
+    "reddit": "https://www.reddit.com/user/GPT_Proto/"
+  },
+  "api": {
+    "baseUrl": "https://gptproto.com"
+  }
+}

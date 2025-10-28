@@ -1,0 +1,185 @@
+---
+title: 'kling-v2.5-turbo-pro'
+api: 'POST /api/v3/kwaivgi/kling-v2.5-turbo-pro/text-to-video'
+description: 'kling-v2.5-turbo-pro'
+---
+
+## Overview
+
+This endpoint provides kling-v2.5-turbo-pro functionality.
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required>
+  Your API key in the format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="aspect_ratio" type="string" >
+  Aspect Ratio parameter
+</ParamField>
+
+<ParamField body="duration" type="string" >
+  Duration parameter
+</ParamField>
+
+<ParamField body="guidance_scale" type="number" >
+  Guidance Scale parameter
+</ParamField>
+
+<ParamField body="prompt" type="string" required>
+  Prompt parameter
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://gptproto.com/api/v3/kwaivgi/kling-v2.5-turbo-pro/text-to-video" \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "aspect_ratio": "16:9",
+  "duration": "5",
+  "guidance_scale": 0.5,
+  "prompt": "A world-weary private investigator leans against a rain-streaked phone booth on a foggy 1940s New York street, steam rising from a manhole cover. A fedora casts a deep shadow over his eyes. Holding the classic receiver, he speaks in a low, gravelly voice: \"The recording was pure static, a dead end. Then I ran it through WaveSpeedAI. The new Wan2.5 algorithm filtered the noise... I heard everything. The whisper, the threat, the whole rotten deal.\" High-contrast black and white, dramatic chiaroscuro lighting, deep focus, 35mm film grain, moody and atmospheric.\n\n"
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/api/v3/kwaivgi/kling-v2.5-turbo-pro/text-to-video"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+  "aspect_ratio": "16:9",
+  "duration": "5",
+  "guidance_scale": 0.5,
+  "prompt": "A world-weary private investigator leans against a rain-streaked phone booth on a foggy 1940s New York street, steam rising from a manhole cover. A fedora casts a deep shadow over his eyes. Holding the classic receiver, he speaks in a low, gravelly voice: \"The recording was pure static, a dead end. Then I ran it through WaveSpeedAI. The new Wan2.5 algorithm filtered the noise... I heard everything. The whisper, the threat, the whole rotten deal.\" High-contrast black and white, dramatic chiaroscuro lighting, deep focus, 35mm film grain, moody and atmospheric.\n\n"
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/api/v3/kwaivgi/kling-v2.5-turbo-pro/text-to-video";
+const headers = {
+  "Authorization": "Bearer YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "aspect_ratio": "16:9",
+  "duration": "5",
+  "guidance_scale": 0.5,
+  "prompt": "A world-weary private investigator leans against a rain-streaked phone booth on a foggy 1940s New York street, steam rising from a manhole cover. A fedora casts a deep shadow over his eyes. Holding the classic receiver, he speaks in a low, gravelly voice: \"The recording was pure static, a dead end. Then I ran it through WaveSpeedAI. The new Wan2.5 algorithm filtered the noise... I heard everything. The whisper, the threat, the whole rotten deal.\" High-contrast black and white, dramatic chiaroscuro lighting, deep focus, 35mm film grain, moody and atmospheric.\n\n"
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/api/v3/kwaivgi/kling-v2.5-turbo-pro/text-to-video"
+
+    payload := []byte(`{
+"aspect_ratio": "16:9",
+"duration": "5",
+"guidance_scale": 0.5,
+"prompt": "A world-weary private investigator leans against a rain-streaked phone booth on a foggy 1940s New York street, steam rising from a manhole cover. A fedora casts a deep shadow over his eyes. Holding the classic receiver, he speaks in a low, gravelly voice: \"The recording was pure static, a dead end. Then I ran it through WaveSpeedAI. The new Wan2.5 algorithm filtered the noise... I heard everything. The whisper, the threat, the whole rotten deal.\" High-contrast black and white, dramatic chiaroscuro lighting, deep focus, 35mm film grain, moody and atmospheric.\n\n"
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success" type="200">
+  Successful response
+
+```json
+{
+  "status": "success"
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 400 - Bad Request
+{
+  "error": {
+    "message": "Invalid request parameters",
+    "type": "invalid_request_error",
+    "code": "invalid_parameters"
+  }
+}
+```
+
+```json 401 - Unauthorized
+{
+  "error": {
+    "message": "Invalid API key",
+    "type": "authentication_error",
+    "code": "invalid_api_key"
+  }
+}
+```
+
+```json 429 - Rate Limit Exceeded
+{
+  "error": {
+    "message": "Rate limit exceeded",
+    "type": "rate_limit_error",
+    "code": "rate_limit_exceeded"
+  }
+}
+```
+
+</ResponseExample>
+

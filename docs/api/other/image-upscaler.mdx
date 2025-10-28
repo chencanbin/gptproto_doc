@@ -1,0 +1,209 @@
+---
+title: 'image-upscaler'
+api: 'POST /api/v3/image-upscaler'
+description: 'image-upscaler'
+---
+
+## Overview
+
+This endpoint provides image-upscaler functionality.
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required>
+  Your API key in the format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="creativity" type="integer" >
+  Creativity parameter
+</ParamField>
+
+<ParamField body="target_resolution" type="string" >
+  Target Resolution parameter
+</ParamField>
+
+<ParamField body="image" type="string" >
+  Image parameter
+</ParamField>
+
+<ParamField body="output_format" type="string" >
+  Output Format parameter
+</ParamField>
+
+<ParamField body="enable_base64_output" type="boolean" >
+  Enable Base64 Output parameter
+</ParamField>
+
+<ParamField body="enable_sync_mode" type="boolean" >
+  Enable Sync Mode parameter
+</ParamField>
+
+<ParamField body="model" type="string" required>
+  The model to use for the request
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://gptproto.com/api/v3/image-upscaler" \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "creativity": 0,
+  "target_resolution": "8k",
+  "image": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/2025/08/27/9652984c8a374ee7a74bde2c6dd014fa.jpeg",
+  "output_format": "jpeg",
+  "enable_base64_output": false,
+  "enable_sync_mode": true,
+  "model": "image-upscaler"
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/api/v3/image-upscaler"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+  "creativity": 0,
+  "target_resolution": "8k",
+  "image": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/2025/08/27/9652984c8a374ee7a74bde2c6dd014fa.jpeg",
+  "output_format": "jpeg",
+  "enable_base64_output": false,
+  "enable_sync_mode": true,
+  "model": "image-upscaler"
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/api/v3/image-upscaler";
+const headers = {
+  "Authorization": "Bearer YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "creativity": 0,
+  "target_resolution": "8k",
+  "image": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/2025/08/27/9652984c8a374ee7a74bde2c6dd014fa.jpeg",
+  "output_format": "jpeg",
+  "enable_base64_output": false,
+  "enable_sync_mode": true,
+  "model": "image-upscaler"
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/api/v3/image-upscaler"
+
+    payload := []byte(`{
+"creativity": 0,
+"target_resolution": "8k",
+"image": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/2025/08/27/9652984c8a374ee7a74bde2c6dd014fa.jpeg",
+"output_format": "jpeg",
+"enable_base64_output": false,
+"enable_sync_mode": true,
+"model": "image-upscaler"
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success" type="200">
+  Successful response
+
+```json
+{
+  "status": "success"
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 400 - Bad Request
+{
+  "error": {
+    "message": "Invalid request parameters",
+    "type": "invalid_request_error",
+    "code": "invalid_parameters"
+  }
+}
+```
+
+```json 401 - Unauthorized
+{
+  "error": {
+    "message": "Invalid API key",
+    "type": "authentication_error",
+    "code": "invalid_api_key"
+  }
+}
+```
+
+```json 429 - Rate Limit Exceeded
+{
+  "error": {
+    "message": "Rate limit exceeded",
+    "type": "rate_limit_error",
+    "code": "rate_limit_exceeded"
+  }
+}
+```
+
+</ResponseExample>
+

@@ -1,0 +1,216 @@
+---
+title: 'Quickstart'
+description: 'Start using GPTProto API in under 5 minutes'
+---
+
+## Get Your API Key
+
+First, sign up for an account and get your API key from the [GPTProto Dashboard](https://gptproto.com).
+
+<Warning>
+  Keep your API key secure and never share it publicly. Treat it like a password.
+</Warning>
+
+## Make Your First Request
+
+Here's how to make your first API call using different programming languages:
+
+<CodeGroup>
+
+```bash cURL
+curl https://gptproto.com/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: YOUR_API_KEY" \
+  -d '{
+    "model": "gpt-4o",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Hello! How are you?"
+      }
+    ]
+  }'
+```
+
+```python Python
+import requests
+
+url = "https://gptproto.com/v1/chat/completions"
+headers = {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer YOUR_API_KEY"
+}
+data = {
+    "model": "gpt-4o",
+    "messages": [
+        {
+            "role": "user",
+            "content": "Hello! How are you?"
+        }
+    ]
+}
+
+response = requests.post(url, headers=headers, json=data)
+print(response.json())
+```
+
+```javascript JavaScript
+const axios = require('axios');
+
+const url = 'https://gptproto.com/v1/chat/completions';
+const headers = {
+  'Content-Type': 'application/json',
+  'Authorization': 'Bearer YOUR_API_KEY'
+};
+const data = {
+  model: 'gpt-4o',
+  messages: [
+    {
+      role: 'user',
+      content: 'Hello! How are you?'
+    }
+  ]
+};
+
+axios.post(url, data, { headers })
+  .then(response => console.log(response.data))
+  .catch(error => console.error(error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/v1/chat/completions"
+
+    payload := map[string]interface{}{
+        "model": "gpt-4o",
+        "messages": []map[string]string{
+            {
+                "role":    "user",
+                "content": "Hello! How are you?",
+            },
+        },
+    }
+
+    jsonData, _ := json.Marshal(payload)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
+    req.Header.Set("Content-Type", "application/json")
+    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    var result map[string]interface{}
+    json.NewDecoder(resp.Body).Decode(&result)
+    fmt.Println(result)
+}
+```
+
+</CodeGroup>
+
+## Response Format
+
+You'll receive a JSON response like this:
+
+```json
+{
+  "id": "chatcmpl-123",
+  "object": "chat.completion",
+  "created": 1677652288,
+  "model": "gpt-4o",
+  "choices": [{
+    "index": 0,
+    "message": {
+      "role": "assistant",
+      "content": "Hello! I'm doing well, thank you for asking. How can I assist you today?"
+    },
+    "finish_reason": "stop"
+  }],
+  "usage": {
+    "prompt_tokens": 10,
+    "completion_tokens": 20,
+    "total_tokens": 30
+  }
+}
+```
+
+## Next Steps
+
+<CardGroup cols={2}>
+
+<Card
+  title="Explore OpenAI APIs"
+  icon="robot"
+  href="/api/openai/create-image"
+>
+  Learn about GPT-4o and other OpenAI models
+</Card>
+
+<Card
+  title="Try Image Generation"
+  icon="image"
+  href="/api/openai/create-image"
+>
+  Create images using DALL-E
+</Card>
+
+<Card
+  title="Generate Videos"
+  icon="video"
+  href="/api/openai/sora-2"
+>
+  Create videos with Sora
+</Card>
+
+<Card
+  title="Use Claude API"
+  icon="comments"
+  href="/api/claude/chat-modesupport-pdf-analysis"
+>
+  Access Claude's advanced capabilities
+</Card>
+
+</CardGroup>
+
+## Common Use Cases
+
+### Chat Completion
+
+Build conversational AI applications with context-aware responses.
+
+### Image Generation
+
+Create unique images from text descriptions for marketing, design, or creative projects.
+
+### Video Synthesis
+
+Generate video content for social media, advertising, or educational purposes.
+
+### Audio Processing
+
+Transcribe audio files or convert text to natural-sounding speech.
+
+## Rate Limits & Pricing
+
+<Note>
+  Rate limits and pricing vary by model and subscription tier. Check your [dashboard](https://gptproto.com) for details specific to your account.
+</Note>
+
+## Need Help?
+
+- Check out our [API Reference](/api) for detailed endpoint documentation
+- Visit our [Community Forum](https://community.gptproto.com) to ask questions
+- Contact [jacoblam3219@gmail.com](mailto:jacoblam3219@gmail.com) for assistance

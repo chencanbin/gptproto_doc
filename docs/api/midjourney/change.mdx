@@ -1,0 +1,193 @@
+---
+title: 'Change'
+api: 'POST /mj/submit/change'
+description: 'UPSCALE、VARIATION、REROLL, etc.'
+---
+
+## Overview
+
+UPSCALE、VARIATION、REROLL, etc.
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required>
+  Your API key in the format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="action" type="string" >
+  Action parameter
+</ParamField>
+
+<ParamField body="index" type="integer" >
+  Index parameter
+</ParamField>
+
+<ParamField body="notifyHook" type="string" >
+  Notifyhook parameter
+</ParamField>
+
+<ParamField body="state" type="string" >
+  State parameter
+</ParamField>
+
+<ParamField body="taskId" type="string" >
+  Taskid parameter
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://gptproto.com/mj/submit/change" \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "action": "UPSCALE",
+  "index": 1,
+  "notifyHook": "string",
+  "state": "string",
+  "taskId": "1320098173412546"
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/mj/submit/change"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+  "action": "UPSCALE",
+  "index": 1,
+  "notifyHook": "string",
+  "state": "string",
+  "taskId": "1320098173412546"
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/mj/submit/change";
+const headers = {
+  "Authorization": "Bearer YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "action": "UPSCALE",
+  "index": 1,
+  "notifyHook": "string",
+  "state": "string",
+  "taskId": "1320098173412546"
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/mj/submit/change"
+
+    payload := []byte(`{
+"action": "UPSCALE",
+"index": 1,
+"notifyHook": "string",
+"state": "string",
+"taskId": "1320098173412546"
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success" type="200">
+  Successful response
+
+```json
+{
+  "status": "success"
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 400 - Bad Request
+{
+  "error": {
+    "message": "Invalid request parameters",
+    "type": "invalid_request_error",
+    "code": "invalid_parameters"
+  }
+}
+```
+
+```json 401 - Unauthorized
+{
+  "error": {
+    "message": "Invalid API key",
+    "type": "authentication_error",
+    "code": "invalid_api_key"
+  }
+}
+```
+
+```json 429 - Rate Limit Exceeded
+{
+  "error": {
+    "message": "Rate limit exceeded",
+    "type": "rate_limit_error",
+    "code": "rate_limit_exceeded"
+  }
+}
+```
+
+</ResponseExample>
+

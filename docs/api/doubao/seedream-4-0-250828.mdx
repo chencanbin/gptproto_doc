@@ -1,0 +1,229 @@
+---
+title: 'seedream-4-0-250828'
+api: 'POST /api/v3/images/generations'
+description: 'seedream-4-0-250828'
+---
+
+## Overview
+
+This endpoint provides seedream-4-0-250828 functionality.
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required>
+  Your API key in the format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="prompt" type="string" required>
+  Prompt parameter
+</ParamField>
+
+<ParamField body="image" type="array" >
+  Image parameter
+</ParamField>
+
+<ParamField body="model" type="string" required>
+  The model to use for the request
+</ParamField>
+
+<ParamField body="sequential_image_generation" type="string" >
+  Sequential Image Generation parameter
+</ParamField>
+
+<ParamField body="response_format" type="string" >
+  Response Format parameter
+</ParamField>
+
+<ParamField body="size" type="string" >
+  Size parameter
+</ParamField>
+
+<ParamField body="stream" type="boolean" >
+  Whether to stream the response
+</ParamField>
+
+<ParamField body="watermark" type="boolean" >
+  Watermark parameter
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://gptproto.com/api/v3/images/generations" \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "prompt": "将图片的两张照片生成一个双胞胎照片在雪地拍照",
+  "image": [
+    "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg",
+    "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg"
+  ],
+  "model": "seedream-4-0-250828",
+  "sequential_image_generation": "disabled",
+  "response_format": "url",
+  "size": "2K",
+  "stream": false,
+  "watermark": false
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/api/v3/images/generations"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+  "prompt": "将图片的两张照片生成一个双胞胎照片在雪地拍照",
+  "image": [
+    "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg",
+    "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg"
+  ],
+  "model": "seedream-4-0-250828",
+  "sequential_image_generation": "disabled",
+  "response_format": "url",
+  "size": "2K",
+  "stream": false,
+  "watermark": false
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/api/v3/images/generations";
+const headers = {
+  "Authorization": "Bearer YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "prompt": "将图片的两张照片生成一个双胞胎照片在雪地拍照",
+  "image": [
+    "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg",
+    "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg"
+  ],
+  "model": "seedream-4-0-250828",
+  "sequential_image_generation": "disabled",
+  "response_format": "url",
+  "size": "2K",
+  "stream": false,
+  "watermark": false
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/api/v3/images/generations"
+
+    payload := []byte(`{
+"prompt": "将图片的两张照片生成一个双胞胎照片在雪地拍照",
+"image": [
+"https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg",
+"https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg"
+],
+"model": "seedream-4-0-250828",
+"sequential_image_generation": "disabled",
+"response_format": "url",
+"size": "2K",
+"stream": false,
+"watermark": false
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success" type="200">
+  Successful response
+
+```json
+{
+  "status": "success"
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 400 - Bad Request
+{
+  "error": {
+    "message": "Invalid request parameters",
+    "type": "invalid_request_error",
+    "code": "invalid_parameters"
+  }
+}
+```
+
+```json 401 - Unauthorized
+{
+  "error": {
+    "message": "Invalid API key",
+    "type": "authentication_error",
+    "code": "invalid_api_key"
+  }
+}
+```
+
+```json 429 - Rate Limit Exceeded
+{
+  "error": {
+    "message": "Rate limit exceeded",
+    "type": "rate_limit_error",
+    "code": "rate_limit_exceeded"
+  }
+}
+```
+
+</ResponseExample>
+

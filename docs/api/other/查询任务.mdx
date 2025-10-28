@@ -1,0 +1,211 @@
+---
+title: '查询任务'
+api: 'GET /flux/v1/get_result'
+description: '查询任务'
+---
+
+## Overview
+
+This endpoint provides 查询任务 functionality.
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required>
+  Your API key in the format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+## Query Parameters
+
+<ParamField query="" type="string" >
+  任务ID
+</ParamField>
+
+## Request Body
+
+<ParamField body="id" type="string" >
+  Id parameter
+</ParamField>
+
+<ParamField body="result" type="object" >
+  Result parameter
+</ParamField>
+
+<ParamField body="status" type="string" >
+  Status parameter
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl -X GET "https://gptproto.com/flux/v1/get_result" \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "id": "fe8aa692-0348-479b-9a88-35b897977326",
+  "result": {
+    "duration": 6.267704725265503,
+    "endTime": 1758083319.0369077,
+    "prompt": "让他们站立",
+    "sample": "https://delivery-eu1.bfl.ai/results/d8/31839368f1468a/68f1468aaa7c4493a50b99868a307cb9/sample.jpeg?se=2025-09-17T04%3A38%3A38Z&sp=r&sv=2024-11-04&sr=b&rsct=image/jpeg&sig=Ej3nwrFHjGvE7WuvGE2Y6skPHgYZ4UHYKHSGZo7VHOU%3D",
+    "seed": 42,
+    "startTime": 1758083312.769203
+  },
+  "status": "Ready"
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/flux/v1/get_result"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+  "id": "fe8aa692-0348-479b-9a88-35b897977326",
+  "result": {
+    "duration": 6.267704725265503,
+    "endTime": 1758083319.0369077,
+    "prompt": "让他们站立",
+    "sample": "https://delivery-eu1.bfl.ai/results/d8/31839368f1468a/68f1468aaa7c4493a50b99868a307cb9/sample.jpeg?se=2025-09-17T04%3A38%3A38Z&sp=r&sv=2024-11-04&sr=b&rsct=image/jpeg&sig=Ej3nwrFHjGvE7WuvGE2Y6skPHgYZ4UHYKHSGZo7VHOU%3D",
+    "seed": 42,
+    "startTime": 1758083312.769203
+  },
+  "status": "Ready"
+}
+
+response = requests.get(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/flux/v1/get_result";
+const headers = {
+  "Authorization": "Bearer YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "id": "fe8aa692-0348-479b-9a88-35b897977326",
+  "result": {
+    "duration": 6.267704725265503,
+    "endTime": 1758083319.0369077,
+    "prompt": "让他们站立",
+    "sample": "https://delivery-eu1.bfl.ai/results/d8/31839368f1468a/68f1468aaa7c4493a50b99868a307cb9/sample.jpeg?se=2025-09-17T04%3A38%3A38Z&sp=r&sv=2024-11-04&sr=b&rsct=image/jpeg&sig=Ej3nwrFHjGvE7WuvGE2Y6skPHgYZ4UHYKHSGZo7VHOU%3D",
+    "seed": 42,
+    "startTime": 1758083312.769203
+  },
+  "status": "Ready"
+};
+
+fetch(url, {
+  method: "GET",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/flux/v1/get_result"
+
+    payload := []byte(`{
+"id": "fe8aa692-0348-479b-9a88-35b897977326",
+"result": {
+"duration": 6.267704725265503,
+"endTime": 1758083319.0369077,
+"prompt": "让他们站立",
+"sample": "https://delivery-eu1.bfl.ai/results/d8/31839368f1468a/68f1468aaa7c4493a50b99868a307cb9/sample.jpeg?se=2025-09-17T04%3A38%3A38Z&sp=r&sv=2024-11-04&sr=b&rsct=image/jpeg&sig=Ej3nwrFHjGvE7WuvGE2Y6skPHgYZ4UHYKHSGZo7VHOU%3D",
+"seed": 42,
+"startTime": 1758083312.769203
+},
+"status": "Ready"
+}`)
+
+    req, _ := http.NewRequest("GET", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success" type="200">
+  Successful response
+
+```json
+{
+  "status": "success"
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 400 - Bad Request
+{
+  "error": {
+    "message": "Invalid request parameters",
+    "type": "invalid_request_error",
+    "code": "invalid_parameters"
+  }
+}
+```
+
+```json 401 - Unauthorized
+{
+  "error": {
+    "message": "Invalid API key",
+    "type": "authentication_error",
+    "code": "invalid_api_key"
+  }
+}
+```
+
+```json 429 - Rate Limit Exceeded
+{
+  "error": {
+    "message": "Rate limit exceeded",
+    "type": "rate_limit_error",
+    "code": "rate_limit_exceeded"
+  }
+}
+```
+
+</ResponseExample>
+
