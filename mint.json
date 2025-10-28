@@ -361,7 +361,7 @@
     },
     {
       "group": "GPTProto",
-      "icon": "/logo/dark.png",
+      "icon": "https://oss.heyoos.com/2025/10/23/2df4295950b8433998e058f6539d9e1c.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
       "pages": [
         "docs/api/gptproto/image-upscaler"
       ]
