@@ -1,7 +1,7 @@
 ---
-title: '提交任务'
-api: 'POST /flux/v1/:model'
-description: '参数描述，请参考官方文档 https://docs.bfl.ai/api-reference/tasks/edit-or-create-an-image-with-flux-kontext-pro'
+title: "提交任务"
+api: "POST /flux/v1/:model"
+description: "参数描述，请参考官方文档 https://docs.bfl.ai/api-reference/tasks/edit-or-create-an-image-with-flux-kontext-pro"
 ---
 
 ## Overview
@@ -18,7 +18,7 @@ This endpoint requires authentication using a Bearer token.
 
 ## Path Parameters
 
-<ParamField path="" type="string" >
+<ParamField path type="string">
   模型名称，目前支持 flux-kontext-pro flux-kontext-max
 </ParamField>
 
@@ -28,47 +28,47 @@ This endpoint requires authentication using a Bearer token.
   Prompt parameter
 </ParamField>
 
-<ParamField body="input_image" type="string" >
+<ParamField body="input_image" type="string">
   Input Image parameter
 </ParamField>
 
-<ParamField body="input_image_2" type="string" >
+<ParamField body="input_image_2" type="string">
   Input Image 2 parameter
 </ParamField>
 
-<ParamField body="input_image_3" type="string" >
+<ParamField body="input_image_3" type="string">
   Input Image 3 parameter
 </ParamField>
 
-<ParamField body="input_image_4" type="string" >
+<ParamField body="input_image_4" type="string">
   Input Image 4 parameter
 </ParamField>
 
-<ParamField body="seed" type="integer" >
+<ParamField body="seed" type="integer">
   Seed parameter
 </ParamField>
 
-<ParamField body="aspect_ratio" type="string" >
+<ParamField body="aspect_ratio" type="string">
   Aspect Ratio parameter
 </ParamField>
 
-<ParamField body="output_format" type="string" >
+<ParamField body="output_format" type="string">
   Output Format parameter
 </ParamField>
 
-<ParamField body="webhook_url" type="string" >
+<ParamField body="webhook_url" type="string">
   Webhook Url parameter
 </ParamField>
 
-<ParamField body="webhook_secret" type="string" >
+<ParamField body="webhook_secret" type="string">
   Webhook Secret parameter
 </ParamField>
 
-<ParamField body="prompt_upsampling" type="boolean" >
+<ParamField body="prompt_upsampling" type="boolean">
   Prompt Upsampling parameter
 </ParamField>
 
-<ParamField body="safety_tolerance" type="integer" >
+<ParamField body="safety_tolerance" type="integer">
   Safety Tolerance parameter
 </ParamField>
 
@@ -95,6 +95,7 @@ curl -X POST "https://gptproto.com/flux/v1/:model" \
   "safety_tolerance": 2
 }'
 ```
+
 
 ```python Python
 import requests
@@ -125,6 +126,7 @@ response = requests.post(url, headers=headers, json=data)
 result = response.json()
 print(json.dumps(result, indent=2))
 ```
+
 
 ```javascript JavaScript
 const url = "https://gptproto.com/flux/v1/:model";
@@ -157,6 +159,7 @@ fetch(url, {
   .then(data => console.log(data))
   .catch(error => console.error("Error:", error));
 ```
+
 
 ```go Go
 package main
@@ -210,11 +213,11 @@ func main() {
 <ResponseField name="Success" type="200">
   Successful response
 
-```json
-{
-  "status": "success"
-}
-```
+  ```json
+  {
+    "status": "success"
+  }
+  ```
 </ResponseField>
 
 ## Error Responses
@@ -231,6 +234,7 @@ func main() {
 }
 ```
 
+
 ```json 401 - Unauthorized
 {
   "error": {
@@ -240,6 +244,7 @@ func main() {
   }
 }
 ```
+
 
 ```json 429 - Rate Limit Exceeded
 {
@@ -252,4 +257,3 @@ func main() {
 ```
 
 </ResponseExample>
-

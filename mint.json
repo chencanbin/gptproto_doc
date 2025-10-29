@@ -236,7 +236,7 @@
           "group": "Task Management",
           "pages": [
             "docs/api/kling/query-task",
-            "docs/api/kling/任务查询"
+            "docs/api/kling/task-result"
           ]
         }
       ]
@@ -354,7 +354,7 @@
           "group": "File & Task Management",
           "pages": [
             "docs/api/minimax/fileupload",
-            "docs/api/minimax/任务结果查询"
+            "docs/api/minimax/task-result-query"
           ]
         }
       ]
