@@ -1,7 +1,7 @@
 ---
-title: 'Text To Video'
-api: 'POST /api/v3/openai/sora-2/text-to-video'
-description: 'Text To Video'
+title: "Text To Video"
+api: "POST /api/v3/openai/sora-2/text-to-video"
+description: "Text To Video"
 ---
 
 ## Overview
@@ -12,21 +12,21 @@ This endpoint provides text to video functionality.
 
 This endpoint requires authentication using a Bearer token.
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
+<ParamField header="Authorization" default="sk-***********" type="string" required>
   Your API key in the format: `Bearer YOUR_API_KEY`
 </ParamField>
 
 ## Request Body
 
-<ParamField body="prompt" type="string" required default="A video of a horse dancing.">
+<ParamField body="prompt" default="A video of a horse dancing." type="string" required>
   Prompt parameter
 </ParamField>
 
-<ParamField body="size" type="string"  default="720*1280">
+<ParamField body="size" default="720*1280" type="string">
   Size parameter
 </ParamField>
 
-<ParamField body="duration" type="integer"  default="4">
+<ParamField body="duration" default="4" type="integer">
   Duration parameter
 </ParamField>
 
@@ -35,7 +35,7 @@ This endpoint requires authentication using a Bearer token.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "gptproto/api/v3/openai/sora-2/text-to-video" \
+curl -X POST "https://gptproto/api/v3/openai/sora-2/text-to-video" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -45,11 +45,12 @@ curl -X POST "gptproto/api/v3/openai/sora-2/text-to-video" \
 }'
 ```
 
+
 ```python Python
 import requests
 import json
 
-url = "gptproto/api/v3/openai/sora-2/text-to-video"
+url = "https://gptproto/api/v3/openai/sora-2/text-to-video"
 headers = {
     "Authorization": "Bearer YOUR_API_KEY",
     "Content-Type": "application/json"
@@ -66,8 +67,9 @@ result = response.json()
 print(json.dumps(result, indent=2))
 ```
 
+
 ```javascript JavaScript
-const url = "gptproto/api/v3/openai/sora-2/text-to-video";
+const url = "https://gptproto/api/v3/openai/sora-2/text-to-video";
 const headers = {
   "Authorization": "Bearer YOUR_API_KEY",
   "Content-Type": "application/json"
@@ -89,6 +91,7 @@ fetch(url, {
   .catch(error => console.error("Error:", error));
 ```
 
+
 ```go Go
 package main
 
@@ -101,7 +104,7 @@ import (
 )
 
 func main() {
-    url := "gptproto/api/v3/openai/sora-2/text-to-video"
+    url := "https://gptproto/api/v3/openai/sora-2/text-to-video"
 
     payload := []byte(`{
 "prompt": "A video of a horse dancing.",
@@ -132,11 +135,11 @@ func main() {
 <ResponseField name="Success" type="200">
   Successful response
 
-```json
-{
-  "status": "success"
-}
-```
+  ```json
+  {
+    "status": "success"
+  }
+  ```
 </ResponseField>
 
 ## Error Responses
@@ -152,6 +155,7 @@ func main() {
 }
 ```
 
+
 ```json 403 - Invalid Token
 {
   "error": {
@@ -160,6 +164,7 @@ func main() {
   }
 }
 ```
+
 
 ```json 403 - Insufficient balance
 {
@@ -170,6 +175,7 @@ func main() {
 }
 ```
 
+
 ```json 500 - Internal server error
 {
   "error": {
@@ -178,6 +184,7 @@ func main() {
   }
 }
 ```
+
 
 ```json 503 - Content policy violation
 {
@@ -189,4 +196,3 @@ func main() {
 ```
 
 </ResponseExample>
-
