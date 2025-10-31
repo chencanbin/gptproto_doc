@@ -1,12 +1,12 @@
 ---
-title: 'Image To Video'
-api: 'POST /api/v3/openai/sora-2/image-to-video'
-description: 'Image To Video'
+title: 'Chat Mode'
+api: 'POST /v1/chat/completions'
+description: 'Chat Mode'
 ---
 
 ## Overview
 
-This endpoint provides image to video functionality.
+This endpoint provides chat mode functionality.
 
 ## Authentication
 
@@ -18,16 +18,16 @@ This endpoint requires authentication using a Bearer token.
 
 ## Request Body
 
-<ParamField body="prompt" type="string" required default="A video of a horse dancing.">
-  Prompt parameter
+<ParamField body="model" type="string" required default="sora-2-pro">
+  The model to use for the request
 </ParamField>
 
-<ParamField body="image" type="string"  default="https://filesystem.site/cdn/202xxx/xxxx.png">
-  Image parameter
+<ParamField body="messages" type="array" required default="[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: [{&quot;type&quot;: &quot;text&quot;, &quot;text&quot;: &quot;video of cow and horse dancing&quot;}, {&quot;type&quot;: &quot;image_url&quot;, &quot;image_url&quot;: {&quot;url&quot;: &quot;https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png&quot;}}]}]">
+  Array of message objects for the conversation
 </ParamField>
 
-<ParamField body="duration" type="integer"  default="4">
-  Duration parameter
+<ParamField body="stream" type="boolean"  default="true">
+  Whether to stream the response
 </ParamField>
 
 ## Request Example
@@ -35,13 +35,29 @@ This endpoint requires authentication using a Bearer token.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "gptproto/api/v3/openai/sora-2/image-to-video" \
+curl -X POST "gptproto/v1/chat/completions" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-  "prompt": "A video of a horse dancing.",
-  "image": "https://filesystem.site/cdn/202xxx/xxxx.png",
-  "duration": 4
+  "model": "sora-2-pro",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "video of cow and horse dancing"
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"
+          }
+        }
+      ]
+    }
+  ],
+  "stream": true
 }'
 ```
 
@@ -49,16 +65,32 @@ curl -X POST "gptproto/api/v3/openai/sora-2/image-to-video" \
 import requests
 import json
 
-url = "gptproto/api/v3/openai/sora-2/image-to-video"
+url = "gptproto/v1/chat/completions"
 headers = {
     "Authorization": "Bearer YOUR_API_KEY",
     "Content-Type": "application/json"
 }
 
 data = {
-  "prompt": "A video of a horse dancing.",
-  "image": "https://filesystem.site/cdn/202xxx/xxxx.png",
-  "duration": 4
+  "model": "sora-2-pro",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "video of cow and horse dancing"
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"
+          }
+        }
+      ]
+    }
+  ],
+  "stream": true
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -67,16 +99,32 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "gptproto/api/v3/openai/sora-2/image-to-video";
+const url = "gptproto/v1/chat/completions";
 const headers = {
   "Authorization": "Bearer YOUR_API_KEY",
   "Content-Type": "application/json"
 };
 
 const data = {
-  "prompt": "A video of a horse dancing.",
-  "image": "https://filesystem.site/cdn/202xxx/xxxx.png",
-  "duration": 4
+  "model": "sora-2-pro",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "video of cow and horse dancing"
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"
+          }
+        }
+      ]
+    }
+  ],
+  "stream": true
 };
 
 fetch(url, {
@@ -101,12 +149,28 @@ import (
 )
 
 func main() {
-    url := "gptproto/api/v3/openai/sora-2/image-to-video"
+    url := "gptproto/v1/chat/completions"
 
     payload := []byte(`{
-"prompt": "A video of a horse dancing.",
-"image": "https://filesystem.site/cdn/202xxx/xxxx.png",
-"duration": 4
+"model": "sora-2-pro",
+"messages": [
+{
+"role": "user",
+"content": [
+{
+"type": "text",
+"text": "video of cow and horse dancing"
+},
+{
+"type": "image_url",
+"image_url": {
+"url": "https://filesystem.site/cdn/20250612/998IGmUiM2koBGZM3UnZeImbPBNIUL.png"
+}
+}
+]
+}
+],
+"stream": true
 }`)
 
     req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))

@@ -838,10 +838,15 @@
           "group": "gemini-2.5-pro",
           "pages": [
             {
+              "group": "Openai Format",
+              "pages": [
+                "docs/api/gemini/gemini-25-pro/openai-format/text-to-text",
+                "docs/api/gemini/gemini-25-pro/openai-format/image-to-text"
+              ]
+            },
+            {
               "group": "Official Format",
               "pages": [
-                "docs/api/gemini/gemini-25-pro/official-format/text-to-text",
-                "docs/api/gemini/gemini-25-pro/official-format/image-to-text",
                 "docs/api/gemini/gemini-25-pro/official-format/file-analysis",
                 "docs/api/gemini/gemini-25-pro/official-format/streamgeneratecontent",
                 "docs/api/gemini/gemini-25-pro/official-format/generatecontent",
@@ -1561,21 +1566,6 @@
           ]
         },
         {
-          "group": "sora",
-          "pages": [
-            {
-              "group": "official mode",
-              "pages": [
-                "docs/api/openai/sora/official-mode/sora-video-get-task",
-                "docs/api/openai/sora/official-mode/text-to-video",
-                "docs/api/openai/sora/official-mode/sora-remix"
-              ]
-            },
-            "docs/api/openai/sora/sora-get-task-result",
-            "docs/api/openai/sora/sora-create-task"
-          ]
-        },
-        {
           "group": "sora-2",
           "pages": [
             {
@@ -1583,7 +1573,10 @@
               "pages": [
                 "docs/api/openai/sora-2/official-format/text-to-video",
                 "docs/api/openai/sora-2/official-format/image-to-video",
-                "docs/api/openai/sora-2/official-format/sora-get-video-content"
+                "docs/api/openai/sora-2/official-format/query-task",
+                "docs/api/openai/sora-2/official-format/get-video",
+                "docs/api/openai/sora-2/official-format/get-thumbnail",
+                "docs/api/openai/sora-2/official-format/get-spritesheet"
               ]
             },
             {
@@ -1592,6 +1585,19 @@
                 "docs/api/openai/sora-2/gptproto-format/image-to-video",
                 "docs/api/openai/sora-2/gptproto-format/text-to-video",
                 "docs/api/openai/sora-2/gptproto-format/sora-get-task-result"
+              ]
+            } ,
+		{
+              "group": "Openai Format",
+              "pages": [
+                "docs/api/openai/sora-2/openai-format/chat-mode"
+              ]
+            },
+            {
+              "group": "Reverse Format",
+              "pages": [
+                "docs/api/openai/sora-2/reverse-format/submit-task",
+                "docs/api/openai/sora-2/reverse-format/query-result"
               ]
             }
           ]
@@ -1604,7 +1610,10 @@
               "pages": [
                 "docs/api/openai/sora-2-pro/official-format/text-to-video",
                 "docs/api/openai/sora-2-pro/official-format/image-to-video",
-                "docs/api/openai/sora-2-pro/official-format/sora-get-video-content"
+                "docs/api/openai/sora-2-pro/official-format/query-task",
+                "docs/api/openai/sora-2-pro/official-format/get-video",
+                "docs/api/openai/sora-2-pro/official-format/get-thumbnail",
+                "docs/api/openai/sora-2-pro/official-format/get-spritesheet"
               ]
             },
             {
@@ -1613,6 +1622,19 @@
                 "docs/api/openai/sora-2-pro/gptproto-format/image-to-video-pro",
                 "docs/api/openai/sora-2-pro/gptproto-format/text-to-video-pro",
                 "docs/api/openai/sora-2-pro/gptproto-format/sora-get-task-result"
+              ]
+            },
+            {
+              "group": "Openai Format",
+              "pages": [
+                "docs/api/openai/sora-2-pro/openai-format/chat-mode"
+              ]
+            },
+            {
+              "group": "Reverse Format",
+              "pages": [
+                "docs/api/openai/sora-2-pro/reverse-format/submit-task",
+                "docs/api/openai/sora-2-pro/reverse-format/query-result"
               ]
             }
           ]
