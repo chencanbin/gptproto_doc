@@ -3,7 +3,8 @@
   "name": "GPTProto API Documentation",
   "logo": {
     "dark": "/logo/dark.png",
-    "light": "/logo/light.png"
+    "light": "/logo/light.png",
+    "href": "https://gptproto.com"
   },
   "favicon": "/logo/dark.png",
   "colors": {
