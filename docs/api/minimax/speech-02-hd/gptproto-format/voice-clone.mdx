@@ -1,0 +1,224 @@
+---
+title: 'voice-clone'
+api: 'POST /api/v3/minimax/voice-clone'
+description: 'voice-clone'
+---
+
+## Overview
+
+This endpoint provides voice-clone functionality.
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required default="sk-***********">
+  Your API key in the format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="accuracy" type="number"  default="0.7">
+  Accuracy parameter
+</ParamField>
+
+<ParamField body="audio" type="string"  default="https://d1q70pf5vjeyhc.cloudfront.net/media/92d2d4ca66f84793adcb20742b15d262/audios/1752727142784562094_VRSOK53Y.mp3">
+  Audio parameter
+</ParamField>
+
+<ParamField body="custom_voice_id" type="string"  default="Alice-jiuhao-2">
+  Custom Voice Id parameter
+</ParamField>
+
+<ParamField body="model" type="string" required default="speech-02-hd">
+  The model to use for the request
+</ParamField>
+
+<ParamField body="need_noise_reduction" type="boolean"  default="false">
+  Need Noise Reduction parameter
+</ParamField>
+
+<ParamField body="need_volume_normalization" type="boolean"  default="false">
+  Need Volume Normalization parameter
+</ParamField>
+
+<ParamField body="text" type="string"  default="Hello! Welcome to Wavespeed! This is a preview of your cloned voice. I hope you enjoy it!">
+  Text parameter
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://gptproto.com/api/v3/minimax/voice-clone" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "accuracy": 0.7,
+  "audio": "https://d1q70pf5vjeyhc.cloudfront.net/media/92d2d4ca66f84793adcb20742b15d262/audios/1752727142784562094_VRSOK53Y.mp3",
+  "custom_voice_id": "Alice-jiuhao-2",
+  "model": "speech-02-hd",
+  "need_noise_reduction": false,
+  "need_volume_normalization": false,
+  "text": "Hello! Welcome to Wavespeed! This is a preview of your cloned voice. I hope you enjoy it!"
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/api/v3/minimax/voice-clone"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+  "accuracy": 0.7,
+  "audio": "https://d1q70pf5vjeyhc.cloudfront.net/media/92d2d4ca66f84793adcb20742b15d262/audios/1752727142784562094_VRSOK53Y.mp3",
+  "custom_voice_id": "Alice-jiuhao-2",
+  "model": "speech-02-hd",
+  "need_noise_reduction": false,
+  "need_volume_normalization": false,
+  "text": "Hello! Welcome to Wavespeed! This is a preview of your cloned voice. I hope you enjoy it!"
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/api/v3/minimax/voice-clone";
+const headers = {
+  "Authorization": "Bearer YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "accuracy": 0.7,
+  "audio": "https://d1q70pf5vjeyhc.cloudfront.net/media/92d2d4ca66f84793adcb20742b15d262/audios/1752727142784562094_VRSOK53Y.mp3",
+  "custom_voice_id": "Alice-jiuhao-2",
+  "model": "speech-02-hd",
+  "need_noise_reduction": false,
+  "need_volume_normalization": false,
+  "text": "Hello! Welcome to Wavespeed! This is a preview of your cloned voice. I hope you enjoy it!"
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/api/v3/minimax/voice-clone"
+
+    payload := []byte(`{
+"accuracy": 0.7,
+"audio": "https://d1q70pf5vjeyhc.cloudfront.net/media/92d2d4ca66f84793adcb20742b15d262/audios/1752727142784562094_VRSOK53Y.mp3",
+"custom_voice_id": "Alice-jiuhao-2",
+"model": "speech-02-hd",
+"need_noise_reduction": false,
+"need_volume_normalization": false,
+"text": "Hello! Welcome to Wavespeed! This is a preview of your cloned voice. I hope you enjoy it!"
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success" type="200">
+  Successful response
+
+```json
+{
+  "status": "success"
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+
+</ResponseExample>
+

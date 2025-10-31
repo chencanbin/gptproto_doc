@@ -1,0 +1,232 @@
+---
+title: 'Image to Image'
+api: 'POST /v1/images/generations'
+description: 'Image to Image'
+---
+
+## Overview
+
+This endpoint provides image to image functionality.
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required default="sk-***********">
+  Your API key in the format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="model" type="string" required default="doubao-seededit-3-0-i2i-250628">
+  The model to use for the request
+</ParamField>
+
+<ParamField body="prompt" type="string" required default="Change bubbles into heart shape">
+  Prompt parameter
+</ParamField>
+
+<ParamField body="image" type="string"  default="https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg">
+  Image parameter
+</ParamField>
+
+<ParamField body="response_format" type="string"  default="url">
+  Response Format parameter
+</ParamField>
+
+<ParamField body="size" type="string"  default="adaptive">
+  Size parameter
+</ParamField>
+
+<ParamField body="seed" type="integer"  default="21">
+  Seed parameter
+</ParamField>
+
+<ParamField body="guidance_scale" type="number"  default="5.5">
+  Guidance Scale parameter
+</ParamField>
+
+<ParamField body="watermark" type="boolean"  default="true">
+  Watermark parameter
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://gptproto.com/v1/images/generations" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "model": "doubao-seededit-3-0-i2i-250628",
+  "prompt": "Change bubbles into heart shape",
+  "image": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg",
+  "response_format": "url",
+  "size": "adaptive",
+  "seed": 21,
+  "guidance_scale": 5.5,
+  "watermark": true
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/v1/images/generations"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+  "model": "doubao-seededit-3-0-i2i-250628",
+  "prompt": "Change bubbles into heart shape",
+  "image": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg",
+  "response_format": "url",
+  "size": "adaptive",
+  "seed": 21,
+  "guidance_scale": 5.5,
+  "watermark": true
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/v1/images/generations";
+const headers = {
+  "Authorization": "Bearer YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "model": "doubao-seededit-3-0-i2i-250628",
+  "prompt": "Change bubbles into heart shape",
+  "image": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg",
+  "response_format": "url",
+  "size": "adaptive",
+  "seed": 21,
+  "guidance_scale": 5.5,
+  "watermark": true
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/v1/images/generations"
+
+    payload := []byte(`{
+"model": "doubao-seededit-3-0-i2i-250628",
+"prompt": "Change bubbles into heart shape",
+"image": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg",
+"response_format": "url",
+"size": "adaptive",
+"seed": 21,
+"guidance_scale": 5.5,
+"watermark": true
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success" type="200">
+  Successful response
+
+```json
+{
+  "status": "success"
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+
+</ResponseExample>
+

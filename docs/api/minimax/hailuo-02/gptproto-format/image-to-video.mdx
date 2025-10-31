@@ -1,0 +1,208 @@
+---
+title: 'Image to Video'
+api: 'POST /api/v3/minimax/hailuo-02/pro'
+description: 'Image to Video'
+---
+
+## Overview
+
+This endpoint provides image to video functionality.
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required default="sk-***********">
+  Your API key in the format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="prompt" type="string" required default="The girl in the image begins performing a graceful ballet solo on a grand theater stage, she twirls and lifts one leg into an arabesque, soft spotlight follows her every move, cinematic lighting, slow camera pan from left to right, elegant and fluid motion">
+  Prompt parameter
+</ParamField>
+
+<ParamField body="image" type="string"  default="https://d1q70pf5vjeyhc.cloudfront.net/media/images/1751883836278138425_vVeazvso.jpeg">
+  Image parameter
+</ParamField>
+
+<ParamField body="duration" type="integer"  default="6">
+  Duration parameter
+</ParamField>
+
+<ParamField body="enable_prompt_expansion" type="boolean"  default="true">
+  Enable Prompt Expansion parameter
+</ParamField>
+
+<ParamField body="go_fast" type="boolean"  default="true">
+  Go Fast parameter
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://gptproto.com/api/v3/minimax/hailuo-02/pro" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "prompt": "The girl in the image begins performing a graceful ballet solo on a grand theater stage, she twirls and lifts one leg into an arabesque, soft spotlight follows her every move, cinematic lighting, slow camera pan from left to right, elegant and fluid motion",
+  "image": "https://d1q70pf5vjeyhc.cloudfront.net/media/images/1751883836278138425_vVeazvso.jpeg",
+  "duration": 6,
+  "enable_prompt_expansion": true,
+  "go_fast": true
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/api/v3/minimax/hailuo-02/pro"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+  "prompt": "The girl in the image begins performing a graceful ballet solo on a grand theater stage, she twirls and lifts one leg into an arabesque, soft spotlight follows her every move, cinematic lighting, slow camera pan from left to right, elegant and fluid motion",
+  "image": "https://d1q70pf5vjeyhc.cloudfront.net/media/images/1751883836278138425_vVeazvso.jpeg",
+  "duration": 6,
+  "enable_prompt_expansion": true,
+  "go_fast": true
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/api/v3/minimax/hailuo-02/pro";
+const headers = {
+  "Authorization": "Bearer YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "prompt": "The girl in the image begins performing a graceful ballet solo on a grand theater stage, she twirls and lifts one leg into an arabesque, soft spotlight follows her every move, cinematic lighting, slow camera pan from left to right, elegant and fluid motion",
+  "image": "https://d1q70pf5vjeyhc.cloudfront.net/media/images/1751883836278138425_vVeazvso.jpeg",
+  "duration": 6,
+  "enable_prompt_expansion": true,
+  "go_fast": true
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/api/v3/minimax/hailuo-02/pro"
+
+    payload := []byte(`{
+"prompt": "The girl in the image begins performing a graceful ballet solo on a grand theater stage, she twirls and lifts one leg into an arabesque, soft spotlight follows her every move, cinematic lighting, slow camera pan from left to right, elegant and fluid motion",
+"image": "https://d1q70pf5vjeyhc.cloudfront.net/media/images/1751883836278138425_vVeazvso.jpeg",
+"duration": 6,
+"enable_prompt_expansion": true,
+"go_fast": true
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success" type="200">
+  Successful response
+
+```json
+{
+  "status": "success"
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+
+</ResponseExample>
+

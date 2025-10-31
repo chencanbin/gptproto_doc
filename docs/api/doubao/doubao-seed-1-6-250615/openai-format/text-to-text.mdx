@@ -1,0 +1,212 @@
+---
+title: 'Text to Text '
+api: 'POST /v1/chat/completions'
+description: 'Text to Text '
+---
+
+## Overview
+
+This endpoint provides text to text  functionality.
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required default="sk-***********">
+  Your API key in the format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="model" type="string" required default="doubao-seed-1-6-250615">
+  The model to use for the request
+</ParamField>
+
+<ParamField body="messages" type="array" required default="[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Who are you?&quot;}]">
+  Array of message objects for the conversation
+</ParamField>
+
+<ParamField body="stream" type="boolean"  default="false">
+  Whether to stream the response
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://gptproto.com/v1/chat/completions" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "model": "doubao-seed-1-6-250615",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Who are you?"
+    }
+  ],
+  "stream": false
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/v1/chat/completions"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+  "model": "doubao-seed-1-6-250615",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Who are you?"
+    }
+  ],
+  "stream": false
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/v1/chat/completions";
+const headers = {
+  "Authorization": "Bearer YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "model": "doubao-seed-1-6-250615",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Who are you?"
+    }
+  ],
+  "stream": false
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/v1/chat/completions"
+
+    payload := []byte(`{
+"model": "doubao-seed-1-6-250615",
+"messages": [
+{
+"role": "user",
+"content": "Who are you?"
+}
+],
+"stream": false
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success" type="200">
+  Successful response
+
+```json
+{
+  "status": "success"
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+
+</ResponseExample>
+

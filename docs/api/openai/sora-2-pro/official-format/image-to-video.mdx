@@ -1,0 +1,99 @@
+---
+title: 'Image to Video'
+api: 'POST /v1/videos'
+description: 'Image to Video'
+---
+
+## Overview
+
+This endpoint provides image to video functionality.
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required default="sk-***********">
+  Your API key in the format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="model" type="string" required default="sora-2-pro">
+  model parameter
+</ParamField>
+
+<ParamField body="prompt" type="string" required default="The character walks slowly and then sits on the ground">
+  prompt parameter
+</ParamField>
+
+<ParamField body="input_reference" type="string" required default="/Users/Downloads/20251014-010839.jpeg">
+  input_reference parameter
+</ParamField>
+
+<ParamField body="size" type="string" required default="720x1280">
+  size parameter
+</ParamField>
+
+## Response
+
+<ResponseField name="Success" type="200">
+  Successful response
+
+```json
+{
+  "status": "success"
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+
+</ResponseExample>
+

@@ -1,0 +1,212 @@
+---
+title: 'video2video(Video to Video, Style Re-drawing)'
+api: 'POST /runway/v1/pro/video2video'
+description: 'video2video(Video to Video, Style Re-drawing)'
+---
+
+## Overview
+
+This endpoint provides video2video(video to video, style re-drawing) functionality.
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required default="sk-***********">
+  Your API key in the format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="video" type="string"  default="http://source.baidu.com/attachments/video/runway/20241117/28ed9d05e1dc84bede45541855500aa9.mp4">
+  Video parameter
+</ParamField>
+
+<ParamField body="model" type="string" required default="runwayml-gen3a_turbo-5">
+  The model to use for the request
+</ParamField>
+
+<ParamField body="prompt" type="string" required default="pixel style">
+  Prompt parameter
+</ParamField>
+
+<ParamField body="options" type="object"  default="{&quot;structure_transformation&quot;: 0.5, &quot;flip&quot;: true}">
+  Options parameter
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://gptproto.com/runway/v1/pro/video2video" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "video": "http://source.baidu.com/attachments/video/runway/20241117/28ed9d05e1dc84bede45541855500aa9.mp4",
+  "model": "runwayml-gen3a_turbo-5",
+  "prompt": "pixel style",
+  "options": {
+    "structure_transformation": 0.5,
+    "flip": true
+  }
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/runway/v1/pro/video2video"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+  "video": "http://source.baidu.com/attachments/video/runway/20241117/28ed9d05e1dc84bede45541855500aa9.mp4",
+  "model": "runwayml-gen3a_turbo-5",
+  "prompt": "pixel style",
+  "options": {
+    "structure_transformation": 0.5,
+    "flip": true
+  }
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/runway/v1/pro/video2video";
+const headers = {
+  "Authorization": "Bearer YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "video": "http://source.baidu.com/attachments/video/runway/20241117/28ed9d05e1dc84bede45541855500aa9.mp4",
+  "model": "runwayml-gen3a_turbo-5",
+  "prompt": "pixel style",
+  "options": {
+    "structure_transformation": 0.5,
+    "flip": true
+  }
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/runway/v1/pro/video2video"
+
+    payload := []byte(`{
+"video": "http://source.baidu.com/attachments/video/runway/20241117/28ed9d05e1dc84bede45541855500aa9.mp4",
+"model": "runwayml-gen3a_turbo-5",
+"prompt": "pixel style",
+"options": {
+"structure_transformation": 0.5,
+"flip": true
+}
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success" type="200">
+  Successful response
+
+```json
+{
+  "status": "success"
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+
+</ResponseExample>
+

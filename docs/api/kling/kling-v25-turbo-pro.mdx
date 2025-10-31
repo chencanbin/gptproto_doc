@@ -12,25 +12,27 @@ This endpoint provides kling-v2.5-turbo-pro functionality.
 
 This endpoint requires authentication using a Bearer token.
 
-<ParamField header="Authorization" type="string" required>
+<ParamField header="Authorization" type="string" required default="sk-***********">
   Your API key in the format: `Bearer YOUR_API_KEY`
 </ParamField>
 
 ## Request Body
 
-<ParamField body="aspect_ratio" type="string" >
+<ParamField body="aspect_ratio" type="string"  default="16:9">
   Aspect Ratio parameter
 </ParamField>
 
-<ParamField body="duration" type="string" >
+<ParamField body="duration" type="string"  default="5">
   Duration parameter
 </ParamField>
 
-<ParamField body="guidance_scale" type="number" >
+<ParamField body="guidance_scale" type="number"  default="0.5">
   Guidance Scale parameter
 </ParamField>
 
-<ParamField body="prompt" type="string" required>
+<ParamField body="prompt" type="string" required default="A world-weary private investigator leans against a rain-streaked phone booth on a foggy 1940s New York street, steam rising from a manhole cover. A fedora casts a deep shadow over his eyes. Holding the classic receiver, he speaks in a low, gravelly voice: &quot;The recording was pure static, a dead end. Then I ran it through WaveSpeedAI. The new Wan2.5 algorithm filtered the noise... I heard everything. The whisper, the threat, the whole rotten deal.&quot; High-contrast black and white, dramatic chiaroscuro lighting, deep focus, 35mm film grain, moody and atmospheric.
+
+">
   Prompt parameter
 </ParamField>
 
@@ -40,7 +42,7 @@ This endpoint requires authentication using a Bearer token.
 
 ```bash cURL
 curl -X POST "https://gptproto.com/api/v3/kwaivgi/kling-v2.5-turbo-pro/text-to-video" \
-  -H "Authorization: YOUR_API_KEY" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
   "aspect_ratio": "16:9",
@@ -151,32 +153,47 @@ func main() {
 
 <ResponseExample>
 
-```json 400 - Bad Request
+```json 401 - Invalid signature
 {
   "error": {
-    "message": "Invalid request parameters",
-    "type": "invalid_request_error",
-    "code": "invalid_parameters"
+    "message": "Invalid signature",
+    "type": "401"
   }
 }
 ```
 
-```json 401 - Unauthorized
+```json 403 - Invalid Token
 {
   "error": {
-    "message": "Invalid API key",
-    "type": "authentication_error",
-    "code": "invalid_api_key"
+    "message": "Invalid Token",
+    "type": "403"
   }
 }
 ```
 
-```json 429 - Rate Limit Exceeded
+```json 403 - Insufficient balance
 {
   "error": {
-    "message": "Rate limit exceeded",
-    "type": "rate_limit_error",
-    "code": "rate_limit_exceeded"
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
   }
 }
 ```

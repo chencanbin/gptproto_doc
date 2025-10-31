@@ -1,0 +1,218 @@
+---
+title: 'Image to Video'
+api: 'POST /api/v3/alibaba/wan-2.5/image-to-video-fast'
+description: 'Image to Video'
+---
+
+## Overview
+
+This endpoint provides image to video functionality.
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required default="sk-***********">
+  Your API key in the format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="duration" type="integer"  default="5">
+  Duration parameter
+</ParamField>
+
+<ParamField body="enable_prompt_expansion" type="boolean"  default="false">
+  Enable Prompt Expansion parameter
+</ParamField>
+
+<ParamField body="seed" type="integer"  default="-1">
+  Seed parameter
+</ParamField>
+
+<ParamField body="prompt" type="string" required default="A world-weary private investigator leans against a rain-streaked phone booth on a foggy 1940s New York street, steam rising from a manhole cover. A fedora casts a deep shadow over his eyes. Holding the classic receiver, he speaks in a low, gravelly voice: &quot;The recording was pure static, a dead end. Then I ran it through WaveSpeedAI. The new Wan2.5 algorithm filtered the noise... I heard everything. The whisper, the threat, the whole rotten deal.&quot; High-contrast black and white, dramatic chiaroscuro lighting, deep focus, 35mm film grain, moody and atmospheric.
+
+">
+  Prompt parameter
+</ParamField>
+
+<ParamField body="resolution" type="string"  default="720p">
+  Resolution parameter
+</ParamField>
+
+<ParamField body="image" type="string"  default="https://oss.heyoos.com/ai-draw/user/generator/2025/09/24/9f6947f8890f45bda58198cc5395f8ec/.png">
+  Image parameter
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "gptproto/api/v3/alibaba/wan-2.5/image-to-video-fast" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "duration": 5,
+  "enable_prompt_expansion": false,
+  "seed": -1,
+  "prompt": "A world-weary private investigator leans against a rain-streaked phone booth on a foggy 1940s New York street, steam rising from a manhole cover. A fedora casts a deep shadow over his eyes. Holding the classic receiver, he speaks in a low, gravelly voice: \"The recording was pure static, a dead end. Then I ran it through WaveSpeedAI. The new Wan2.5 algorithm filtered the noise... I heard everything. The whisper, the threat, the whole rotten deal.\" High-contrast black and white, dramatic chiaroscuro lighting, deep focus, 35mm film grain, moody and atmospheric.\n\n",
+  "resolution": "720p",
+  "image": "https://oss.heyoos.com/ai-draw/user/generator/2025/09/24/9f6947f8890f45bda58198cc5395f8ec/.png"
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "gptproto/api/v3/alibaba/wan-2.5/image-to-video-fast"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+  "duration": 5,
+  "enable_prompt_expansion": false,
+  "seed": -1,
+  "prompt": "A world-weary private investigator leans against a rain-streaked phone booth on a foggy 1940s New York street, steam rising from a manhole cover. A fedora casts a deep shadow over his eyes. Holding the classic receiver, he speaks in a low, gravelly voice: \"The recording was pure static, a dead end. Then I ran it through WaveSpeedAI. The new Wan2.5 algorithm filtered the noise... I heard everything. The whisper, the threat, the whole rotten deal.\" High-contrast black and white, dramatic chiaroscuro lighting, deep focus, 35mm film grain, moody and atmospheric.\n\n",
+  "resolution": "720p",
+  "image": "https://oss.heyoos.com/ai-draw/user/generator/2025/09/24/9f6947f8890f45bda58198cc5395f8ec/.png"
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "gptproto/api/v3/alibaba/wan-2.5/image-to-video-fast";
+const headers = {
+  "Authorization": "Bearer YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "duration": 5,
+  "enable_prompt_expansion": false,
+  "seed": -1,
+  "prompt": "A world-weary private investigator leans against a rain-streaked phone booth on a foggy 1940s New York street, steam rising from a manhole cover. A fedora casts a deep shadow over his eyes. Holding the classic receiver, he speaks in a low, gravelly voice: \"The recording was pure static, a dead end. Then I ran it through WaveSpeedAI. The new Wan2.5 algorithm filtered the noise... I heard everything. The whisper, the threat, the whole rotten deal.\" High-contrast black and white, dramatic chiaroscuro lighting, deep focus, 35mm film grain, moody and atmospheric.\n\n",
+  "resolution": "720p",
+  "image": "https://oss.heyoos.com/ai-draw/user/generator/2025/09/24/9f6947f8890f45bda58198cc5395f8ec/.png"
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "gptproto/api/v3/alibaba/wan-2.5/image-to-video-fast"
+
+    payload := []byte(`{
+"duration": 5,
+"enable_prompt_expansion": false,
+"seed": -1,
+"prompt": "A world-weary private investigator leans against a rain-streaked phone booth on a foggy 1940s New York street, steam rising from a manhole cover. A fedora casts a deep shadow over his eyes. Holding the classic receiver, he speaks in a low, gravelly voice: \"The recording was pure static, a dead end. Then I ran it through WaveSpeedAI. The new Wan2.5 algorithm filtered the noise... I heard everything. The whisper, the threat, the whole rotten deal.\" High-contrast black and white, dramatic chiaroscuro lighting, deep focus, 35mm film grain, moody and atmospheric.\n\n",
+"resolution": "720p",
+"image": "https://oss.heyoos.com/ai-draw/user/generator/2025/09/24/9f6947f8890f45bda58198cc5395f8ec/.png"
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success" type="200">
+  Successful response
+
+```json
+{
+  "status": "success"
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+
+</ResponseExample>
+

@@ -1,0 +1,103 @@
+---
+title: 'Image Editing '
+api: 'POST /v1/images/edits'
+description: 'Image Editing '
+---
+
+## Overview
+
+This endpoint provides image editing  functionality.
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required default="sk-***********">
+  Your API key in the format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="image" type="file" required>
+  image parameter
+</ParamField>
+
+<ParamField body="prompt" type="string" required default="Flying Pig">
+  prompt parameter
+</ParamField>
+
+<ParamField body="file" type="string" required>
+  file parameter
+</ParamField>
+
+<ParamField body="model" type="string" required default="gemini-2.5-flash-image-preview">
+  model parameter
+</ParamField>
+
+<ParamField body="n" type="string" required default="1">
+  n parameter
+</ParamField>
+
+## Response
+
+<ResponseField name="Success" type="200">
+  Successful response
+
+```json
+{
+  "status": "success"
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+
+</ResponseExample>
+

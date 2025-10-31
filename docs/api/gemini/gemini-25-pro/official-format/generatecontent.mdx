@@ -1,0 +1,426 @@
+---
+title: 'generateContent'
+api: 'POST /v1beta/models/gemini-2.5-pro:generateContent'
+description: 'generateContent'
+---
+
+## Overview
+
+This endpoint provides generatecontent functionality.
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required default="sk-***********">
+  Your API key in the format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+## Query Parameters
+
+<ParamField query="key" type="string">
+  
+</ParamField>
+
+## Request Body
+
+<ParamField body="model" type="string" required default="gemini-2.5-pro">
+  The model to use for the request
+</ParamField>
+
+<ParamField body="contents" type="array"  default="[{&quot;role&quot;: &quot;user&quot;, &quot;parts&quot;: [{&quot;text&quot;: &quot;Hello, please introduce yourself&quot;}]}]">
+  Contents parameter
+</ParamField>
+
+<ParamField body="system_instruction" type="object"  default="{&quot;role&quot;: &quot;system&quot;, &quot;parts&quot;: [{&quot;text&quot;: &quot;You are a helpful AI assistant&quot;}]}">
+  System Instruction parameter
+</ParamField>
+
+<ParamField body="tools" type="array"  default="[]">
+  Tools parameter
+</ParamField>
+
+<ParamField body="safety_settings" type="array"  default="[{&quot;category&quot;: &quot;HARM_CATEGORY_HARASSMENT&quot;, &quot;threshold&quot;: &quot;BLOCK_MEDIUM_AND_ABOVE&quot;}]">
+  Safety Settings parameter
+</ParamField>
+
+<ParamField body="generation_config" type="object"  default="{&quot;thinking_config&quot;: {&quot;include_thoughts&quot;: false, &quot;thinking_budget&quot;: 1000}, &quot;max_output_tokens&quot;: 4096, &quot;response_modalities&quot;: null, &quot;temperature&quot;: 1.8, &quot;top_p&quot;: 0.8, &quot;top_k&quot;: 40, &quot;candidate_count&quot;: 1, &quot;presence_penalty&quot;: 0.0, &quot;frequency_penalty&quot;: 0.0, &quot;stop_sequences&quot;: [&quot;END&quot;, &quot;STOP&quot;], &quot;response_mime_type&quot;: &quot;text/plain&quot;, &quot;response_schema&quot;: null, &quot;seed&quot;: 12345, &quot;response_logprobs&quot;: false, &quot;logprobs&quot;: null, &quot;audio_timestamp&quot;: false}">
+  Generation Config parameter
+</ParamField>
+
+<ParamField body="stream" type="boolean"  default="false">
+  Whether to stream the response
+</ParamField>
+
+<ParamField body="labels" type="object"  default="{&quot;user_id&quot;: &quot;12345&quot;, &quot;session_id&quot;: &quot;session_001&quot;}">
+  Labels parameter
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://gptproto.com/v1beta/models/gemini-2.5-pro:generateContent" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "model": "gemini-2.5-pro",
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
+        {
+          "text": "Hello, please introduce yourself"
+        }
+      ]
+    }
+  ],
+  "system_instruction": {
+    "role": "system",
+    "parts": [
+      {
+        "text": "You are a helpful AI assistant"
+      }
+    ]
+  },
+  "tools": [],
+  "safety_settings": [
+    {
+      "category": "HARM_CATEGORY_HARASSMENT",
+      "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+    }
+  ],
+  "generation_config": {
+    "thinking_config": {
+      "include_thoughts": false,
+      "thinking_budget": 1000
+    },
+    "max_output_tokens": 4096,
+    "response_modalities": null,
+    "temperature": 1.8,
+    "top_p": 0.8,
+    "top_k": 40,
+    "candidate_count": 1,
+    "presence_penalty": 0.0,
+    "frequency_penalty": 0.0,
+    "stop_sequences": [
+      "END",
+      "STOP"
+    ],
+    "response_mime_type": "text/plain",
+    "response_schema": null,
+    "seed": 12345,
+    "response_logprobs": false,
+    "logprobs": null,
+    "audio_timestamp": false
+  },
+  "stream": false,
+  "labels": {
+    "user_id": "12345",
+    "session_id": "session_001"
+  }
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/v1beta/models/gemini-2.5-pro:generateContent"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+  "model": "gemini-2.5-pro",
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
+        {
+          "text": "Hello, please introduce yourself"
+        }
+      ]
+    }
+  ],
+  "system_instruction": {
+    "role": "system",
+    "parts": [
+      {
+        "text": "You are a helpful AI assistant"
+      }
+    ]
+  },
+  "tools": [],
+  "safety_settings": [
+    {
+      "category": "HARM_CATEGORY_HARASSMENT",
+      "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+    }
+  ],
+  "generation_config": {
+    "thinking_config": {
+      "include_thoughts": false,
+      "thinking_budget": 1000
+    },
+    "max_output_tokens": 4096,
+    "response_modalities": null,
+    "temperature": 1.8,
+    "top_p": 0.8,
+    "top_k": 40,
+    "candidate_count": 1,
+    "presence_penalty": 0.0,
+    "frequency_penalty": 0.0,
+    "stop_sequences": [
+      "END",
+      "STOP"
+    ],
+    "response_mime_type": "text/plain",
+    "response_schema": null,
+    "seed": 12345,
+    "response_logprobs": false,
+    "logprobs": null,
+    "audio_timestamp": false
+  },
+  "stream": false,
+  "labels": {
+    "user_id": "12345",
+    "session_id": "session_001"
+  }
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/v1beta/models/gemini-2.5-pro:generateContent";
+const headers = {
+  "Authorization": "Bearer YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "model": "gemini-2.5-pro",
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
+        {
+          "text": "Hello, please introduce yourself"
+        }
+      ]
+    }
+  ],
+  "system_instruction": {
+    "role": "system",
+    "parts": [
+      {
+        "text": "You are a helpful AI assistant"
+      }
+    ]
+  },
+  "tools": [],
+  "safety_settings": [
+    {
+      "category": "HARM_CATEGORY_HARASSMENT",
+      "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+    }
+  ],
+  "generation_config": {
+    "thinking_config": {
+      "include_thoughts": false,
+      "thinking_budget": 1000
+    },
+    "max_output_tokens": 4096,
+    "response_modalities": null,
+    "temperature": 1.8,
+    "top_p": 0.8,
+    "top_k": 40,
+    "candidate_count": 1,
+    "presence_penalty": 0.0,
+    "frequency_penalty": 0.0,
+    "stop_sequences": [
+      "END",
+      "STOP"
+    ],
+    "response_mime_type": "text/plain",
+    "response_schema": null,
+    "seed": 12345,
+    "response_logprobs": false,
+    "logprobs": null,
+    "audio_timestamp": false
+  },
+  "stream": false,
+  "labels": {
+    "user_id": "12345",
+    "session_id": "session_001"
+  }
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/v1beta/models/gemini-2.5-pro:generateContent"
+
+    payload := []byte(`{
+"model": "gemini-2.5-pro",
+"contents": [
+{
+"role": "user",
+"parts": [
+{
+"text": "Hello, please introduce yourself"
+}
+]
+}
+],
+"system_instruction": {
+"role": "system",
+"parts": [
+{
+"text": "You are a helpful AI assistant"
+}
+]
+},
+"tools": [],
+"safety_settings": [
+{
+"category": "HARM_CATEGORY_HARASSMENT",
+"threshold": "BLOCK_MEDIUM_AND_ABOVE"
+}
+],
+"generation_config": {
+"thinking_config": {
+"include_thoughts": false,
+"thinking_budget": 1000
+},
+"max_output_tokens": 4096,
+"response_modalities": null,
+"temperature": 1.8,
+"top_p": 0.8,
+"top_k": 40,
+"candidate_count": 1,
+"presence_penalty": 0.0,
+"frequency_penalty": 0.0,
+"stop_sequences": [
+"END",
+"STOP"
+],
+"response_mime_type": "text/plain",
+"response_schema": null,
+"seed": 12345,
+"response_logprobs": false,
+"logprobs": null,
+"audio_timestamp": false
+},
+"stream": false,
+"labels": {
+"user_id": "12345",
+"session_id": "session_001"
+}
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success" type="200">
+  Successful response
+
+```json
+{
+  "status": "success"
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+
+</ResponseExample>
+

@@ -1,0 +1,107 @@
+---
+title: 'Text to Text'
+api: 'POST /v1/audio/transcriptions'
+description: 'Text to Text'
+---
+
+## Overview
+
+This endpoint provides text to text functionality.
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required default="sk-***********">
+  Your API key in the format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="file" type="string" required>
+  file parameter
+</ParamField>
+
+<ParamField body="model" type="string" required default="gpt-4o-transcribe">
+  model parameter
+</ParamField>
+
+<ParamField body="language" type="string" required default="zh">
+  language parameter
+</ParamField>
+
+<ParamField body="prompt" type="string" required>
+  prompt parameter
+</ParamField>
+
+<ParamField body="response_format" type="string" required default="json">
+  response_format parameter
+</ParamField>
+
+<ParamField body="temperature" type="string" required default="0">
+  temperature parameter
+</ParamField>
+
+## Response
+
+<ResponseField name="Success" type="200">
+  Successful response
+
+```json
+{
+  "status": "success"
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+
+</ResponseExample>
+

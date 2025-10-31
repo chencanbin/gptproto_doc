@@ -1,0 +1,268 @@
+---
+title: 'Image to Image'
+api: 'POST /v1/images/generations'
+description: 'Image to Image'
+---
+
+## Overview
+
+This endpoint provides image to image functionality.
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required default="sk-***********">
+  Your API key in the format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="image" type="array"  default="[&quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg&quot;, &quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg&quot;]">
+  Image parameter
+</ParamField>
+
+<ParamField body="hd" type="boolean"  default="true">
+  Hd parameter
+</ParamField>
+
+<ParamField body="model" type="string" required default="doubao-seedream-4-0-250828">
+  The model to use for the request
+</ParamField>
+
+<ParamField body="n" type="integer"  default="1">
+  Number of completions to generate
+</ParamField>
+
+<ParamField body="prompt" type="string" required default="Generate close-up photos of characters in the snow">
+  Prompt parameter
+</ParamField>
+
+<ParamField body="prompt_enhancement" type="boolean"  default="false">
+  Prompt Enhancement parameter
+</ParamField>
+
+<ParamField body="quality" type="string"  default="auto">
+  Quality parameter
+</ParamField>
+
+<ParamField body="reflection_enabled" type="boolean"  default="false">
+  Reflection Enabled parameter
+</ParamField>
+
+<ParamField body="response_format" type="string"  default="url">
+  Response Format parameter
+</ParamField>
+
+<ParamField body="seed" type="integer"  default="12">
+  Seed parameter
+</ParamField>
+
+<ParamField body="size" type="string"  default="1024x1280">
+  Size parameter
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://gptproto.com/v1/images/generations" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "image": [
+    "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg",
+    "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg"
+  ],
+  "hd": true,
+  "model": "doubao-seedream-4-0-250828",
+  "n": 1,
+  "prompt": "Generate close-up photos of characters in the snow",
+  "prompt_enhancement": false,
+  "quality": "auto",
+  "reflection_enabled": false,
+  "response_format": "url",
+  "seed": 12,
+  "size": "1024x1280"
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/v1/images/generations"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+  "image": [
+    "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg",
+    "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg"
+  ],
+  "hd": true,
+  "model": "doubao-seedream-4-0-250828",
+  "n": 1,
+  "prompt": "Generate close-up photos of characters in the snow",
+  "prompt_enhancement": false,
+  "quality": "auto",
+  "reflection_enabled": false,
+  "response_format": "url",
+  "seed": 12,
+  "size": "1024x1280"
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/v1/images/generations";
+const headers = {
+  "Authorization": "Bearer YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "image": [
+    "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg",
+    "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg"
+  ],
+  "hd": true,
+  "model": "doubao-seedream-4-0-250828",
+  "n": 1,
+  "prompt": "Generate close-up photos of characters in the snow",
+  "prompt_enhancement": false,
+  "quality": "auto",
+  "reflection_enabled": false,
+  "response_format": "url",
+  "seed": 12,
+  "size": "1024x1280"
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/v1/images/generations"
+
+    payload := []byte(`{
+"image": [
+"https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg",
+"https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/cto.jpeg"
+],
+"hd": true,
+"model": "doubao-seedream-4-0-250828",
+"n": 1,
+"prompt": "Generate close-up photos of characters in the snow",
+"prompt_enhancement": false,
+"quality": "auto",
+"reflection_enabled": false,
+"response_format": "url",
+"seed": 12,
+"size": "1024x1280"
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success" type="200">
+  Successful response
+
+```json
+{
+  "status": "success"
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+
+</ResponseExample>
+

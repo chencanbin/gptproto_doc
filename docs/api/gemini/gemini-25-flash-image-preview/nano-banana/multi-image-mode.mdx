@@ -1,0 +1,212 @@
+---
+title: 'Multi-image mode'
+api: 'POST /api/v3/google/nano-banana/edit'
+description: 'Multi-image mode'
+---
+
+## Overview
+
+This endpoint provides multi-image mode functionality.
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required default="sk-***********">
+  Your API key in the format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="output_format" type="string"  default="png">
+  Output Format parameter
+</ParamField>
+
+<ParamField body="enable_sync_mode" type="boolean"  default="false">
+  Enable Sync Mode parameter
+</ParamField>
+
+<ParamField body="enable_base64_output" type="boolean"  default="false">
+  Enable Base64 Output parameter
+</ParamField>
+
+<ParamField body="images" type="array"  default="[&quot;https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/guakmauqtr.png&quot;, &quot;https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/3ox9ikxbcxc.jpeg&quot;]">
+  Images parameter
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://gptproto.com/api/v3/google/nano-banana/edit" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "output_format": "png",
+  "enable_sync_mode": false,
+  "enable_base64_output": false,
+  "images": [
+    "https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/guakmauqtr.png",
+    "https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/3ox9ikxbcxc.jpeg"
+  ]
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/api/v3/google/nano-banana/edit"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+  "output_format": "png",
+  "enable_sync_mode": false,
+  "enable_base64_output": false,
+  "images": [
+    "https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/guakmauqtr.png",
+    "https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/3ox9ikxbcxc.jpeg"
+  ]
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/api/v3/google/nano-banana/edit";
+const headers = {
+  "Authorization": "Bearer YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "output_format": "png",
+  "enable_sync_mode": false,
+  "enable_base64_output": false,
+  "images": [
+    "https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/guakmauqtr.png",
+    "https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/3ox9ikxbcxc.jpeg"
+  ]
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/api/v3/google/nano-banana/edit"
+
+    payload := []byte(`{
+"output_format": "png",
+"enable_sync_mode": false,
+"enable_base64_output": false,
+"images": [
+"https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/guakmauqtr.png",
+"https://mgszhhytxjyitifbalro.supabase.co/storage/v1/object/public/chat-attachments/uploads/3ox9ikxbcxc.jpeg"
+]
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success" type="200">
+  Successful response
+
+```json
+{
+  "status": "success"
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+
+</ResponseExample>
+

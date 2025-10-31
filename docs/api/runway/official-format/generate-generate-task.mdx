@@ -1,0 +1,248 @@
+---
+title: 'generate Generate Task'
+api: 'POST /runway/v1/pro/generate'
+description: 'generate Generate Task'
+---
+
+## Overview
+
+This endpoint provides generate generate task functionality.
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required default="sk-***********">
+  Your API key in the format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="ratio" type="string"  default="16:9">
+  Ratio parameter
+</ParamField>
+
+<ParamField body="prompt" type="string" required default="一只小猫">
+  Prompt parameter
+</ParamField>
+
+<ParamField body="style" type="string"  default="cinematic">
+  Style parameter
+</ParamField>
+
+<ParamField body="model" type="string" required default="runwayml-gen3a_turbo-5">
+  The model to use for the request
+</ParamField>
+
+<ParamField body="options" type="object"  default="{&quot;seconds&quot;: 10, &quot;motion_vector&quot;: {&quot;x&quot;: 0, &quot;y&quot;: 0.3999999999999999, &quot;z&quot;: 0, &quot;r&quot;: -6, &quot;bg_x_pan&quot;: 0, &quot;bg_y_pan&quot;: 0}}">
+  Options parameter
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://gptproto.com/runway/v1/pro/generate" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "ratio": "16:9",
+  "prompt": "一只小猫",
+  "style": "cinematic",
+  "model": "runwayml-gen3a_turbo-5",
+  "options": {
+    "seconds": 10,
+    "motion_vector": {
+      "x": 0,
+      "y": 0.3999999999999999,
+      "z": 0,
+      "r": -6,
+      "bg_x_pan": 0,
+      "bg_y_pan": 0
+    }
+  }
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/runway/v1/pro/generate"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+  "ratio": "16:9",
+  "prompt": "一只小猫",
+  "style": "cinematic",
+  "model": "runwayml-gen3a_turbo-5",
+  "options": {
+    "seconds": 10,
+    "motion_vector": {
+      "x": 0,
+      "y": 0.3999999999999999,
+      "z": 0,
+      "r": -6,
+      "bg_x_pan": 0,
+      "bg_y_pan": 0
+    }
+  }
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/runway/v1/pro/generate";
+const headers = {
+  "Authorization": "Bearer YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "ratio": "16:9",
+  "prompt": "一只小猫",
+  "style": "cinematic",
+  "model": "runwayml-gen3a_turbo-5",
+  "options": {
+    "seconds": 10,
+    "motion_vector": {
+      "x": 0,
+      "y": 0.3999999999999999,
+      "z": 0,
+      "r": -6,
+      "bg_x_pan": 0,
+      "bg_y_pan": 0
+    }
+  }
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/runway/v1/pro/generate"
+
+    payload := []byte(`{
+"ratio": "16:9",
+"prompt": "一只小猫",
+"style": "cinematic",
+"model": "runwayml-gen3a_turbo-5",
+"options": {
+"seconds": 10,
+"motion_vector": {
+"x": 0,
+"y": 0.3999999999999999,
+"z": 0,
+"r": -6,
+"bg_x_pan": 0,
+"bg_y_pan": 0
+}
+}
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success" type="200">
+  Successful response
+
+```json
+{
+  "status": "success"
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+
+</ResponseExample>
+

@@ -1,0 +1,268 @@
+---
+title: 'Image to Video'
+api: 'POST /api/v3/contents/generations/tasks'
+description: 'Image to Video'
+---
+
+## Overview
+
+This endpoint provides image to video functionality.
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required default="sk-***********">
+  Your API key in the format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="camerafixed" type="boolean"  default="false">
+  Camerafixed parameter
+</ParamField>
+
+<ParamField body="content" type="array"  default="[{&quot;type&quot;: &quot;image_url&quot;, &quot;image_url&quot;: &quot;https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg&quot;}, {&quot;type&quot;: &quot;text&quot;, &quot;text&quot;: &quot;The camera pans from left to right, revealing the full scene of the image&quot;}]">
+  Content parameter
+</ParamField>
+
+<ParamField body="framepersecond" type="integer"  default="24">
+  Framepersecond parameter
+</ParamField>
+
+<ParamField body="model" type="string" required default="seedance-1-0-lite-i2v-250428">
+  The model to use for the request
+</ParamField>
+
+<ParamField body="ratio" type="string"  default="16:9">
+  Ratio parameter
+</ParamField>
+
+<ParamField body="resolution" type="string"  default="1080p">
+  Resolution parameter
+</ParamField>
+
+<ParamField body="seed" type="integer"  default="-1">
+  Seed parameter
+</ParamField>
+
+<ParamField body="watermark" type="boolean"  default="false">
+  Watermark parameter
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://gptproto.com/api/v3/contents/generations/tasks" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "camerafixed": false,
+  "content": [
+    {
+      "type": "image_url",
+      "image_url": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg"
+    },
+    {
+      "type": "text",
+      "text": "The camera pans from left to right, revealing the full scene of the image"
+    }
+  ],
+  "framepersecond": 24,
+  "model": "seedance-1-0-lite-i2v-250428",
+  "ratio": "16:9",
+  "resolution": "1080p",
+  "seed": -1,
+  "watermark": false
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/api/v3/contents/generations/tasks"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+  "camerafixed": false,
+  "content": [
+    {
+      "type": "image_url",
+      "image_url": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg"
+    },
+    {
+      "type": "text",
+      "text": "The camera pans from left to right, revealing the full scene of the image"
+    }
+  ],
+  "framepersecond": 24,
+  "model": "seedance-1-0-lite-i2v-250428",
+  "ratio": "16:9",
+  "resolution": "1080p",
+  "seed": -1,
+  "watermark": false
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/api/v3/contents/generations/tasks";
+const headers = {
+  "Authorization": "Bearer YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "camerafixed": false,
+  "content": [
+    {
+      "type": "image_url",
+      "image_url": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg"
+    },
+    {
+      "type": "text",
+      "text": "The camera pans from left to right, revealing the full scene of the image"
+    }
+  ],
+  "framepersecond": 24,
+  "model": "seedance-1-0-lite-i2v-250428",
+  "ratio": "16:9",
+  "resolution": "1080p",
+  "seed": -1,
+  "watermark": false
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/api/v3/contents/generations/tasks"
+
+    payload := []byte(`{
+"camerafixed": false,
+"content": [
+{
+"type": "image_url",
+"image_url": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg"
+},
+{
+"type": "text",
+"text": "The camera pans from left to right, revealing the full scene of the image"
+}
+],
+"framepersecond": 24,
+"model": "seedance-1-0-lite-i2v-250428",
+"ratio": "16:9",
+"resolution": "1080p",
+"seed": -1,
+"watermark": false
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success" type="200">
+  Successful response
+
+```json
+{
+  "status": "success"
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+
+</ResponseExample>
+

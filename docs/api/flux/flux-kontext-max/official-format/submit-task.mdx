@@ -1,0 +1,264 @@
+---
+title: 'Submit Task'
+api: 'POST /flux/v1/flux-kontext-max'
+description: '参数描述，请参考官方文档 https://docs.bfl.ai/api-reference/tasks/edit-or-create-an-image-with-flux-kontext-pro'
+---
+
+## Overview
+
+参数描述，请参考官方文档 https://docs.bfl.ai/api-reference/tasks/edit-or-create-an-image-with-flux-kontext-pro
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required default="sk-***********">
+  Your API key in the format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="prompt" type="string" required default="ein fantastisches bild">
+  Prompt parameter
+</ParamField>
+
+<ParamField body="input_image" type="string"  default="base64">
+  Input Image parameter
+</ParamField>
+
+<ParamField body="input_image_2" type="string"  default="base64">
+  Input Image 2 parameter
+</ParamField>
+
+<ParamField body="input_image_3" type="string"  default="base64">
+  Input Image 3 parameter
+</ParamField>
+
+<ParamField body="input_image_4" type="string"  default="base64">
+  Input Image 4 parameter
+</ParamField>
+
+<ParamField body="seed" type="integer"  default="42">
+  Seed parameter
+</ParamField>
+
+<ParamField body="aspect_ratio" type="string"  default="21:9">
+  Aspect Ratio parameter
+</ParamField>
+
+<ParamField body="output_format" type="string"  default="jpeg">
+  Output Format parameter
+</ParamField>
+
+<ParamField body="webhook_url" type="string"  default="<string>">
+  Webhook Url parameter
+</ParamField>
+
+<ParamField body="webhook_secret" type="string"  default="<string>">
+  Webhook Secret parameter
+</ParamField>
+
+<ParamField body="prompt_upsampling" type="boolean"  default="false">
+  Prompt Upsampling parameter
+</ParamField>
+
+<ParamField body="safety_tolerance" type="integer"  default="2">
+  Safety Tolerance parameter
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://gptproto.com/flux/v1/flux-kontext-max" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "prompt": "ein fantastisches bild",
+  "input_image": "base64",
+  "input_image_2": "base64",
+  "input_image_3": "base64",
+  "input_image_4": "base64",
+  "seed": 42,
+  "aspect_ratio": "21:9",
+  "output_format": "jpeg",
+  "webhook_url": "<string>",
+  "webhook_secret": "<string>",
+  "prompt_upsampling": false,
+  "safety_tolerance": 2
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/flux/v1/flux-kontext-max"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+  "prompt": "ein fantastisches bild",
+  "input_image": "base64",
+  "input_image_2": "base64",
+  "input_image_3": "base64",
+  "input_image_4": "base64",
+  "seed": 42,
+  "aspect_ratio": "21:9",
+  "output_format": "jpeg",
+  "webhook_url": "<string>",
+  "webhook_secret": "<string>",
+  "prompt_upsampling": false,
+  "safety_tolerance": 2
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/flux/v1/flux-kontext-max";
+const headers = {
+  "Authorization": "Bearer YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "prompt": "ein fantastisches bild",
+  "input_image": "base64",
+  "input_image_2": "base64",
+  "input_image_3": "base64",
+  "input_image_4": "base64",
+  "seed": 42,
+  "aspect_ratio": "21:9",
+  "output_format": "jpeg",
+  "webhook_url": "<string>",
+  "webhook_secret": "<string>",
+  "prompt_upsampling": false,
+  "safety_tolerance": 2
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/flux/v1/flux-kontext-max"
+
+    payload := []byte(`{
+"prompt": "ein fantastisches bild",
+"input_image": "base64",
+"input_image_2": "base64",
+"input_image_3": "base64",
+"input_image_4": "base64",
+"seed": 42,
+"aspect_ratio": "21:9",
+"output_format": "jpeg",
+"webhook_url": "<string>",
+"webhook_secret": "<string>",
+"prompt_upsampling": false,
+"safety_tolerance": 2
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success" type="200">
+  Successful response
+
+```json
+{
+  "status": "success"
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+
+</ResponseExample>
+

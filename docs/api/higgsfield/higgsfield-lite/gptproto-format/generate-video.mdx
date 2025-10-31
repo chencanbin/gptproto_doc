@@ -1,0 +1,240 @@
+---
+title: 'generate video'
+api: 'POST /v1/higgsfield/generate'
+description: 'generate video'
+---
+
+## Overview
+
+This endpoint provides generate video functionality.
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required default="sk-***********">
+  Your API key in the format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="prompt" type="string" required default="Generate a dance scene">
+  Prompt parameter
+</ParamField>
+
+<ParamField body="model" type="string" required default="higgsfield-lite">
+  The model to use for the request
+</ParamField>
+
+<ParamField body="motion_id" type="string"  default="5d0eee15-569c-4006-a1c7-46d1c42d9315">
+  Motion Id parameter
+</ParamField>
+
+<ParamField body="enhance_prompt" type="boolean"  default="true">
+  Enhance Prompt parameter
+</ParamField>
+
+<ParamField body="image" type="array"  default="[&quot;https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/022cc0f0-8b08-4e8b-9822-2b41ba6c64ad.png&quot;]">
+  Image parameter
+</ParamField>
+
+<ParamField body="seed" type="integer"  default="1000">
+  Seed parameter
+</ParamField>
+
+<ParamField body="height" type="integer"  default="1080">
+  Height parameter
+</ParamField>
+
+<ParamField body="width" type="integer"  default="720">
+  Width parameter
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "gptproto/v1/higgsfield/generate" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "prompt": "Generate a dance scene",
+  "model": "higgsfield-lite",
+  "motion_id": "5d0eee15-569c-4006-a1c7-46d1c42d9315",
+  "enhance_prompt": true,
+  "image": [
+    "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/022cc0f0-8b08-4e8b-9822-2b41ba6c64ad.png"
+  ],
+  "seed": 1000,
+  "height": 1080,
+  "width": 720
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "gptproto/v1/higgsfield/generate"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+  "prompt": "Generate a dance scene",
+  "model": "higgsfield-lite",
+  "motion_id": "5d0eee15-569c-4006-a1c7-46d1c42d9315",
+  "enhance_prompt": true,
+  "image": [
+    "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/022cc0f0-8b08-4e8b-9822-2b41ba6c64ad.png"
+  ],
+  "seed": 1000,
+  "height": 1080,
+  "width": 720
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "gptproto/v1/higgsfield/generate";
+const headers = {
+  "Authorization": "Bearer YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "prompt": "Generate a dance scene",
+  "model": "higgsfield-lite",
+  "motion_id": "5d0eee15-569c-4006-a1c7-46d1c42d9315",
+  "enhance_prompt": true,
+  "image": [
+    "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/022cc0f0-8b08-4e8b-9822-2b41ba6c64ad.png"
+  ],
+  "seed": 1000,
+  "height": 1080,
+  "width": 720
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "gptproto/v1/higgsfield/generate"
+
+    payload := []byte(`{
+"prompt": "Generate a dance scene",
+"model": "higgsfield-lite",
+"motion_id": "5d0eee15-569c-4006-a1c7-46d1c42d9315",
+"enhance_prompt": true,
+"image": [
+"https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/java/test/022cc0f0-8b08-4e8b-9822-2b41ba6c64ad.png"
+],
+"seed": 1000,
+"height": 1080,
+"width": 720
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success" type="200">
+  Successful response
+
+```json
+{
+  "status": "success"
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+
+</ResponseExample>
+

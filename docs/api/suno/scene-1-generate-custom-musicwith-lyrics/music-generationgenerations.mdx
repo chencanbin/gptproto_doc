@@ -1,0 +1,266 @@
+---
+title: 'Music Generation(generations)'
+api: 'POST /suno/generate'
+description: 'Music generation interface, can generate directly or continue to write musicIf you are continuing to write a user-uploaded music, you need to add `-upload` after the mv field, such as `chirp-v3-5-upload`'
+---
+
+## Overview
+
+Music generation interface, can generate directly or continue to write musicIf you are continuing to write a user-uploaded music, you need to add `-upload` after the mv field, such as `chirp-v3-5-upload`
+
+## Authentication
+
+This endpoint requires authentication using a Bearer token.
+
+<ParamField header="Authorization" type="string" required default="sk-***********">
+  Your API key in the format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+## Request Body
+
+<ParamField body="prompt" type="string" required default="[Verse]
+Stars they shine above me
+Moonlight softly glows
+Whispers in the night sky
+Dreams that only grow
+
+[Verse 2]
+Midnight winds are calling
+Carrying a tune
+Heartbeats echo softly
+Dancing with the moon
+
+[Chorus]
+Starry night starry night
+Let your light ignite ignite
+Bright as day bright as day
+Guide my way guide my way
+
+[Verse 3]
+Shadows move and twinkle
+Nighttime come alive
+Mystery in the heavens
+Stories that survive
+
+[Bridge]
+Magic fills the darkness
+Wonder in the air
+Every star a secret
+In the sky I stare
+
+[Chorus]
+Starry night starry night
+Let your light ignite ignite
+Bright as day bright as day
+Guide my way guide my way">
+  Prompt parameter
+</ParamField>
+
+<ParamField body="tags" type="string"  default="heavy metal">
+  Tags parameter
+</ParamField>
+
+<ParamField body="mv" type="string"  default="chirp-v3-5">
+  Mv parameter
+</ParamField>
+
+<ParamField body="title" type="string"  default="Starry">
+  Title parameter
+</ParamField>
+
+<ParamField body="continue_clip_id" type="string"  default="None">
+  Continue Clip Id parameter
+</ParamField>
+
+<ParamField body="continue_at" type="string"  default="None">
+  Continue At parameter
+</ParamField>
+
+<ParamField body="infill_start_s" type="string"  default="None">
+  Infill Start S parameter
+</ParamField>
+
+<ParamField body="infill_end_s" type="string"  default="None">
+  Infill End S parameter
+</ParamField>
+
+## Request Example
+
+<CodeGroup>
+
+```bash cURL
+curl -X POST "https://gptproto.com/suno/generate" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "prompt": "[Verse]\nStars they shine above me\nMoonlight softly glows\nWhispers in the night sky\nDreams that only grow\n\n[Verse 2]\nMidnight winds are calling\nCarrying a tune\nHeartbeats echo softly\nDancing with the moon\n\n[Chorus]\nStarry night starry night\nLet your light ignite ignite\nBright as day bright as day\nGuide my way guide my way\n\n[Verse 3]\nShadows move and twinkle\nNighttime come alive\nMystery in the heavens\nStories that survive\n\n[Bridge]\nMagic fills the darkness\nWonder in the air\nEvery star a secret\nIn the sky I stare\n\n[Chorus]\nStarry night starry night\nLet your light ignite ignite\nBright as day bright as day\nGuide my way guide my way",
+  "tags": "heavy metal",
+  "mv": "chirp-v3-5",
+  "title": "Starry",
+  "continue_clip_id": null,
+  "continue_at": null,
+  "infill_start_s": null,
+  "infill_end_s": null
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/suno/generate"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+data = {
+  "prompt": "[Verse]\nStars they shine above me\nMoonlight softly glows\nWhispers in the night sky\nDreams that only grow\n\n[Verse 2]\nMidnight winds are calling\nCarrying a tune\nHeartbeats echo softly\nDancing with the moon\n\n[Chorus]\nStarry night starry night\nLet your light ignite ignite\nBright as day bright as day\nGuide my way guide my way\n\n[Verse 3]\nShadows move and twinkle\nNighttime come alive\nMystery in the heavens\nStories that survive\n\n[Bridge]\nMagic fills the darkness\nWonder in the air\nEvery star a secret\nIn the sky I stare\n\n[Chorus]\nStarry night starry night\nLet your light ignite ignite\nBright as day bright as day\nGuide my way guide my way",
+  "tags": "heavy metal",
+  "mv": "chirp-v3-5",
+  "title": "Starry",
+  "continue_clip_id": null,
+  "continue_at": null,
+  "infill_start_s": null,
+  "infill_end_s": null
+}
+
+response = requests.post(url, headers=headers, json=data)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/suno/generate";
+const headers = {
+  "Authorization": "Bearer YOUR_API_KEY",
+  "Content-Type": "application/json"
+};
+
+const data = {
+  "prompt": "[Verse]\nStars they shine above me\nMoonlight softly glows\nWhispers in the night sky\nDreams that only grow\n\n[Verse 2]\nMidnight winds are calling\nCarrying a tune\nHeartbeats echo softly\nDancing with the moon\n\n[Chorus]\nStarry night starry night\nLet your light ignite ignite\nBright as day bright as day\nGuide my way guide my way\n\n[Verse 3]\nShadows move and twinkle\nNighttime come alive\nMystery in the heavens\nStories that survive\n\n[Bridge]\nMagic fills the darkness\nWonder in the air\nEvery star a secret\nIn the sky I stare\n\n[Chorus]\nStarry night starry night\nLet your light ignite ignite\nBright as day bright as day\nGuide my way guide my way",
+  "tags": "heavy metal",
+  "mv": "chirp-v3-5",
+  "title": "Starry",
+  "continue_clip_id": null,
+  "continue_at": null,
+  "infill_start_s": null,
+  "infill_end_s": null
+};
+
+fetch(url, {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/suno/generate"
+
+    payload := []byte(`{
+"prompt": "[Verse]\nStars they shine above me\nMoonlight softly glows\nWhispers in the night sky\nDreams that only grow\n\n[Verse 2]\nMidnight winds are calling\nCarrying a tune\nHeartbeats echo softly\nDancing with the moon\n\n[Chorus]\nStarry night starry night\nLet your light ignite ignite\nBright as day bright as day\nGuide my way guide my way\n\n[Verse 3]\nShadows move and twinkle\nNighttime come alive\nMystery in the heavens\nStories that survive\n\n[Bridge]\nMagic fills the darkness\nWonder in the air\nEvery star a secret\nIn the sky I stare\n\n[Chorus]\nStarry night starry night\nLet your light ignite ignite\nBright as day bright as day\nGuide my way guide my way",
+"tags": "heavy metal",
+"mv": "chirp-v3-5",
+"title": "Starry",
+"continue_clip_id": null,
+"continue_at": null,
+"infill_start_s": null,
+"infill_end_s": null
+}`)
+
+    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+    req.Header.Set("Authorization", "Bearer YOUR_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+
+</CodeGroup>
+
+## Response
+
+<ResponseField name="Success" type="200">
+  Successful response
+
+```json
+{
+  "status": "success"
+}
+```
+</ResponseField>
+
+## Error Responses
+
+<ResponseExample>
+
+```json 401 - Invalid signature
+{
+  "error": {
+    "message": "Invalid signature",
+    "type": "401"
+  }
+}
+```
+
+```json 403 - Invalid Token
+{
+  "error": {
+    "message": "Invalid Token",
+    "type": "403"
+  }
+}
+```
+
+```json 403 - Insufficient balance
+{
+  "error": {
+    "message": "Insufficient balance",
+    "type": "403"
+  }
+}
+```
+
+```json 500 - Internal server error
+{
+  "error": {
+    "message": "Internal server error",
+    "type": "500"
+  }
+}
+```
+
+```json 503 - Content policy violation
+{
+  "error": {
+    "message": "Input may not meet the guidelines. Please adjust and try again.",
+    "type": "503"
+  }
+}
+```
+
+</ResponseExample>
+
