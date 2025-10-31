@@ -1,7 +1,7 @@
 ---
-title: 'chat mode(Support pdf analysis)'
-api: 'POST /v1/chat/completions'
-description: 'chat mode(Support pdf analysis)'
+title: "chat mode(Support pdf analysis)"
+api: "POST /v1/chat/completions"
+description: "chat mode(Support pdf analysis)"
 ---
 
 ## Overview
@@ -27,6 +27,7 @@ curl -X POST "https://gptproto.com/v1/chat/completions" \
   -d '{}'
 ```
 
+
 ```python Python
 import requests
 import json
@@ -43,6 +44,7 @@ response = requests.post(url, headers=headers, json=data)
 result = response.json()
 print(json.dumps(result, indent=2))
 ```
+
 
 ```javascript JavaScript
 const url = "https://gptproto.com/v1/chat/completions";
@@ -62,6 +64,7 @@ fetch(url, {
   .then(data => console.log(data))
   .catch(error => console.error("Error:", error));
 ```
+
 
 ```go Go
 package main
@@ -102,11 +105,11 @@ func main() {
 <ResponseField name="Success" type="200">
   Successful response
 
-```json
-{
-  "status": "success"
-}
-```
+  ```json
+  {
+    "status": "success"
+  }
+  ```
 </ResponseField>
 
 ## Error Responses
@@ -123,6 +126,7 @@ func main() {
 }
 ```
 
+
 ```json 401 - Unauthorized
 {
   "error": {
@@ -132,6 +136,7 @@ func main() {
   }
 }
 ```
+
 
 ```json 429 - Rate Limit Exceeded
 {
@@ -144,4 +149,3 @@ func main() {
 ```
 
 </ResponseExample>
-

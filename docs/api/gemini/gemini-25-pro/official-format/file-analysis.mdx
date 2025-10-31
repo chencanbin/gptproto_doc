@@ -12,19 +12,19 @@ This endpoint provides file analysis functionality.
 
 This endpoint requires authentication using a Bearer token.
 
-<ParamField header="Authorization" type="string" required default="sk-***********">
+<ParamField header="Authorization" type="string" required>
   Your API key in the format: `Bearer YOUR_API_KEY`
 </ParamField>
 
 ## Query Parameters
 
-<ParamField query="key" type="string">
+<ParamField query="" type="string" >
   
 </ParamField>
 
 ## Request Body
 
-<ParamField body="contents" type="array"  default="[{&quot;parts&quot;: [{&quot;text&quot;: &quot;Please summarize the main content of this PDF&quot;}, {&quot;file_data&quot;: {&quot;mime_type&quot;: &quot;application/pdf&quot;, &quot;file_uri&quot;: &quot;https://discovery.ucl.ac.uk/id/eprint/10089234/1/343019_3_art_0_py4t4l_convrt.pdf&quot;}}]}]">
+<ParamField body="contents" type="array" >
   Contents parameter
 </ParamField>
 
@@ -34,7 +34,7 @@ This endpoint requires authentication using a Bearer token.
 
 ```bash cURL
 curl -X POST "https://gptproto.com/v1beta/models/gemini-2.5-pro:generateContent" \
-  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
   "contents": [
@@ -189,48 +189,58 @@ func main() {
 
 <ResponseExample>
 
+
+
+
+
+
+
+{
+    "error": {
+        "message": "Internal server error",
+        "type": "500"
+    }
+}
+
+
+
+
+
+
+
 ```json 401 - Invalid signature
 {
-  "error": {
-    "message": "Invalid signature",
-    "type": "401"
-  }
+    "error": {
+        "message": "Invalid signature",
+        "type": "401"
+    }
 }
 ```
 
 ```json 403 - Invalid Token
 {
-  "error": {
-    "message": "Invalid Token",
-    "type": "403"
-  }
+    "error": {
+        "message": "Invalid Token",
+        "type": "403"
+    }
 }
 ```
 
 ```json 403 - Insufficient balance
 {
-  "error": {
-    "message": "Insufficient balance",
-    "type": "403"
-  }
+    "error": {
+        "message": "Insufficient balance",
+        "type": "403"
+    }
 }
 ```
 
-```json 500 - Internal server error
+```json 503 - Insufficient balance
 {
-  "error": {
-    "message": "Internal server error",
-    "type": "500"
-  }
-}
-```
-
-```json 503 - Content policy violation
-{
-  "error": {
-    "message": "Input may not meet the guidelines. Please adjust and try again.",
-    "type": "503"
-  }
+    "error": {
+        "message": "Input may not meet the guidelines. Please adjust and try again.",
+        "type": "503"
+    }
 }
 ```
 
