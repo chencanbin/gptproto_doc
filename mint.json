@@ -43,6 +43,10 @@
       ]
     },
     {
+      "group": "API Reference",
+      "icon": "code",
+      "pages": [
+        {
       "group": "Claude",
       "pages": [
         {
@@ -1016,7 +1020,8 @@
       "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-draw/AiIcon/Gemini.png"
     },
     {
-      "group": "Gprproto",
+      "group": "Gptproto",
+      "icon": "https://oss.heyoos.com/2025/10/23/431d4a5e2e064213b16fc8efc0624215.png",
       "pages": [
         "docs/api/gprproto/image-upscaler"
       ]
@@ -1851,6 +1856,8 @@
         }
       ],
       "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-content/1755663073115-111.png"
+    }
+      ]
     }
   ],
   "footerSocials": {
