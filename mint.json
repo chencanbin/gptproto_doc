@@ -294,6 +294,7 @@
     },
     {
       "group": "DeepSeek",
+      "icon": "https://heyoo.oss-ap-southeast-1.aliyuncs.com/ai-content/1755520099039-20250818-202809.png",
       "pages": [
         {
           "group": "deepseek-r1",
