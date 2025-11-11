@@ -43,7 +43,7 @@ This endpoint requires authentication using a Bearer token.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "gptproto/v1/video/create" \
+curl -X POST "https://gptproto.com/v1/video/create" \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -61,7 +61,7 @@ curl -X POST "gptproto/v1/video/create" \
 import requests
 import json
 
-url = "gptproto/v1/video/create"
+url = "https://gptproto.com/v1/video/create"
 headers = {
     "Authorization": "YOUR_API_KEY",
     "Content-Type": "application/json"
@@ -83,7 +83,7 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "gptproto/v1/video/create";
+const url = "https://gptproto.com/v1/video/create";
 const headers = {
   "Authorization": "YOUR_API_KEY",
   "Content-Type": "application/json"
@@ -121,7 +121,7 @@ import (
 )
 
 func main() {
-    url := "gptproto/v1/video/create"
+    url := "https://gptproto.com/v1/video/create"
 
     payload := []byte(`{
 "model": "sora-2",

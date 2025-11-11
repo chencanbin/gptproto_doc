@@ -35,7 +35,7 @@ This endpoint requires authentication using a Bearer token.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "gptproto/v1/chat/completions" \
+curl -X POST "https://gptproto.com/v1/chat/completions" \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -65,7 +65,7 @@ curl -X POST "gptproto/v1/chat/completions" \
 import requests
 import json
 
-url = "gptproto/v1/chat/completions"
+url = "https://gptproto.com/v1/chat/completions"
 headers = {
     "Authorization": "YOUR_API_KEY",
     "Content-Type": "application/json"
@@ -99,7 +99,7 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "gptproto/v1/chat/completions";
+const url = "https://gptproto.com/v1/chat/completions";
 const headers = {
   "Authorization": "YOUR_API_KEY",
   "Content-Type": "application/json"
@@ -149,7 +149,7 @@ import (
 )
 
 func main() {
-    url := "gptproto/v1/chat/completions"
+    url := "https://gptproto.com/v1/chat/completions"
 
     payload := []byte(`{
 "model": "grok-4",

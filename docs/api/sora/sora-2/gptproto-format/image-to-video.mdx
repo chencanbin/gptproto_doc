@@ -35,7 +35,7 @@ This endpoint requires authentication using a Bearer token.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "gptproto/api/v3/openai/sora-2/image-to-video" \
+curl -X POST "https://gptproto.com/api/v3/openai/sora-2/image-to-video" \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -49,7 +49,7 @@ curl -X POST "gptproto/api/v3/openai/sora-2/image-to-video" \
 import requests
 import json
 
-url = "gptproto/api/v3/openai/sora-2/image-to-video"
+url = "https://gptproto.com/api/v3/openai/sora-2/image-to-video"
 headers = {
     "Authorization": "YOUR_API_KEY",
     "Content-Type": "application/json"
@@ -67,7 +67,7 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "gptproto/api/v3/openai/sora-2/image-to-video";
+const url = "https://gptproto.com/api/v3/openai/sora-2/image-to-video";
 const headers = {
   "Authorization": "YOUR_API_KEY",
   "Content-Type": "application/json"
@@ -101,7 +101,7 @@ import (
 )
 
 func main() {
-    url := "gptproto/api/v3/openai/sora-2/image-to-video"
+    url := "https://gptproto.com/api/v3/openai/sora-2/image-to-video"
 
     payload := []byte(`{
 "prompt": "A video of a horse dancing.",

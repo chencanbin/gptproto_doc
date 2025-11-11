@@ -31,7 +31,7 @@ This endpoint requires authentication using a Bearer token.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent" \
+curl -X POST "https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent" \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -63,7 +63,7 @@ curl -X POST "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent" \
 import requests
 import json
 
-url = "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent"
+url = "https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent"
 headers = {
     "Authorization": "YOUR_API_KEY",
     "Content-Type": "application/json"
@@ -99,7 +99,7 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent";
+const url = "https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent";
 const headers = {
   "Authorization": "YOUR_API_KEY",
   "Content-Type": "application/json"
@@ -151,7 +151,7 @@ import (
 )
 
 func main() {
-    url := "gptproto/v1beta/models/gemini-2.5-flash-image:generateContent"
+    url := "https://gptproto.com/v1beta/models/gemini-2.5-flash-image:generateContent"
 
     payload := []byte(`{
 "contents": [

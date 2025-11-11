@@ -39,7 +39,7 @@ This endpoint requires authentication using a Bearer token.
 <CodeGroup>
 
 ```bash cURL
-curl -X POST "gptproto/api/v3/kwaivgi/kling-v2.1-i2v-master" \
+curl -X POST "https://gptproto.com/api/v3/kwaivgi/kling-v2.1-i2v-master" \
   -H "Authorization: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -54,7 +54,7 @@ curl -X POST "gptproto/api/v3/kwaivgi/kling-v2.1-i2v-master" \
 import requests
 import json
 
-url = "gptproto/api/v3/kwaivgi/kling-v2.1-i2v-master"
+url = "https://gptproto.com/api/v3/kwaivgi/kling-v2.1-i2v-master"
 headers = {
     "Authorization": "YOUR_API_KEY",
     "Content-Type": "application/json"
@@ -73,7 +73,7 @@ print(json.dumps(result, indent=2))
 ```
 
 ```javascript JavaScript
-const url = "gptproto/api/v3/kwaivgi/kling-v2.1-i2v-master";
+const url = "https://gptproto.com/api/v3/kwaivgi/kling-v2.1-i2v-master";
 const headers = {
   "Authorization": "YOUR_API_KEY",
   "Content-Type": "application/json"
@@ -108,7 +108,7 @@ import (
 )
 
 func main() {
-    url := "gptproto/api/v3/kwaivgi/kling-v2.1-i2v-master"
+    url := "https://gptproto.com/api/v3/kwaivgi/kling-v2.1-i2v-master"
 
     payload := []byte(`{
 "prompt": "The character in the picture walks to the anime garden to find a comb placed on the ground, without changing the proportion of the character'''s face",
