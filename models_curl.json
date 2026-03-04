@@ -7804,5 +7804,104 @@
         ]
       }
     ]
+  },
+  {
+    "vendor": "Google",
+    "icon": "https://oss.gptproto.com/ai-draw/AiIcon/Gemini.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
+    "model": "gemini-3.1-flash-lite-preview",
+    "scene": "file-analysis",
+    "url": "https://docs.gptproto.com/docs/allapi/Google/gemini-3.1-flash-lite-preview/official-format/file-analysis",
+    "labels": [
+      {
+        "label": "Official Format",
+        "curls": [
+          {
+            "name": "File Analysis",
+            "value": "curl --location 'https://gptproto.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"contents\": [\n    {\n      \"role\": \"user\",\n      \"parts\": [\n        {\n          \"text\": \"what is in this file?\"\n        },\n        {\n          \"file_data\": {\n            \"mime_type\": \"application/pdf\",\n            \"file_uri\": \"https://tos.gptproto.com/resource/gptproto.pdf\"\n          }\n        }\n      ]\n    }\n  ],\n  \"generationConfig\": {\n    \"thinkingConfig\": {\n      \"includeThoughts\": true,\n      \"thinkingLevel\": \"HIGH\"\n    }\n  }\n}'\n"
+          }
+        ]
+      },
+      {
+        "label": "OpenAI Format",
+        "curls": [
+          {
+            "name": "File Analysis",
+            "value": "curl --location 'https://gptproto.com/v1/chat/completions' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"model\": \"gemini-3.1-flash-lite-preview\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"what is in this file?\"\n        },\n        {\n          \"type\": \"image_url\",\n          \"image_url\": {\n            \"url\": \"https://tos.gptproto.com/resource/gptproto.pdf\"\n          }\n        }\n      ]\n    }\n  ]\n}'\n"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "vendor": "Google",
+    "icon": "https://oss.gptproto.com/ai-draw/AiIcon/Gemini.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
+    "model": "gemini-3.1-flash-lite-preview",
+    "scene": "image-to-text",
+    "url": "https://docs.gptproto.com/docs/allapi/Google/gemini-3.1-flash-lite-preview/official-format/image-to-text",
+    "labels": [
+      {
+        "label": "Official Format",
+        "curls": [
+          {
+            "name": "Image To Text",
+            "value": "curl --location 'https://gptproto.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"contents\": [\n    {\n      \"role\": \"user\",\n      \"parts\": [\n        {\n          \"text\": \"What is shown in this PNG image?\"\n        },\n        {\n          \"file_data\": {\n            \"mime_type\": \"image/png\",\n            \"file_uri\": \"https://tos.gptproto.com/resource/cat.png\"\n          }\n        }\n      ]\n    }\n  ],\n  \"generationConfig\": {\n    \"thinkingConfig\": {\n      \"includeThoughts\": true,\n      \"thinkingLevel\": \"HIGH\"\n    }\n  }\n}'\n"
+          }
+        ]
+      },
+      {
+        "label": "OpenAI Format",
+        "curls": [
+          {
+            "name": "Image To Text",
+            "value": "curl --location 'https://gptproto.com/v1/chat/completions' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"model\": \"gemini-3.1-flash-lite-preview\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"What is shown in this PNG image?\"\n        },\n        {\n          \"type\": \"image_url\",\n          \"image_url\": {\n            \"url\": \"https://tos.gptproto.com/resource/cat.png\"\n          }\n        }\n      ]\n    }\n  ]\n}'\n"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "vendor": "Google",
+    "icon": "https://oss.gptproto.com/ai-draw/AiIcon/Gemini.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
+    "model": "gemini-3.1-flash-lite-preview",
+    "scene": "text-to-text",
+    "url": "https://docs.gptproto.com/docs/allapi/Google/gemini-3.1-flash-lite-preview/official-format/text-to-text",
+    "labels": [
+      {
+        "label": "Official Format",
+        "curls": [
+          {
+            "name": "Text To Text",
+            "value": "curl --location 'https://gptproto.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"contents\": [\n    {\n      \"role\": \"user\",\n      \"parts\": [\n        {\n          \"text\": \"who are you?\"\n        }\n      ]\n    }\n  ],\n  \"generationConfig\": {\n    \"thinkingConfig\": {\n      \"includeThoughts\": true,\n      \"thinkingLevel\": \"HIGH\"\n    }\n  }\n}'\n"
+          }
+        ]
+      },
+      {
+        "label": "OpenAI Format",
+        "curls": [
+          {
+            "name": "Text To Text",
+            "value": "curl --location 'https://gptproto.com/v1/chat/completions' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"model\": \"gemini-3.1-flash-lite-preview\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"who are you?\"\n        }\n      ]\n    }\n  ]\n}'\n"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "vendor": "Google",
+    "icon": "https://oss.gptproto.com/ai-draw/AiIcon/Gemini.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
+    "model": "gemini-3.1-flash-lite-preview",
+    "scene": "web-search",
+    "url": "https://docs.gptproto.com/docs/allapi/Google/gemini-3.1-flash-lite-preview/official-format/web-search",
+    "labels": [
+      {
+        "label": "Official Format",
+        "curls": [
+          {
+            "name": "Web Search",
+            "value": "curl --location 'https://gptproto.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"contents\": [\n    {\n      \"role\": \"user\",\n      \"parts\": [\n        {\n          \"text\": \"Who won the euro 2024?\"\n        }\n      ]\n    }\n  ],\n  \"tools\": [\n    {\n      \"google_search\": {}\n    }\n  ],\n  \"generationConfig\": {\n    \"thinkingConfig\": {\n      \"includeThoughts\": true,\n      \"thinkingLevel\": \"HIGH\"\n    }\n  }\n}'\n"
+          }
+        ]
+      }
+    ]
   }
 ]
