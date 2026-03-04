@@ -1029,6 +1029,28 @@
                     ]
                   },
                   {
+                    "group": "gemini-3.1-flash-lite-preview",
+                    "pages": [
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/Google/gemini-3.1-flash-lite-preview/official-format/file-analysis",
+                          "docs/allapi/Google/gemini-3.1-flash-lite-preview/official-format/image-to-text",
+                          "docs/allapi/Google/gemini-3.1-flash-lite-preview/official-format/text-to-text",
+                          "docs/allapi/Google/gemini-3.1-flash-lite-preview/official-format/web-search"
+                        ]
+                      },
+                      {
+                        "group": "openai-format",
+                        "pages": [
+                          "docs/allapi/Google/gemini-3.1-flash-lite-preview/openai-format/file-analysis",
+                          "docs/allapi/Google/gemini-3.1-flash-lite-preview/openai-format/image-to-text",
+                          "docs/allapi/Google/gemini-3.1-flash-lite-preview/openai-format/text-to-text"
+                        ]
+                      }
+                    ]
+                  },
+                  {
                     "group": "gemini-3.1-pro-preview",
                     "pages": [
                       {
