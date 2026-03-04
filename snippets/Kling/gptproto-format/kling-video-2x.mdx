@@ -10,7 +10,7 @@ import QueryResult from '/snippets/common/query-result.mdx';
 | `image` | string | ❌ No | - | - | Source image for image-to-video generation. |
 | `sound` | boolean | ❌ No | `true` | `true, false` | Whether to include synchronized sound with the video. |
 | `aspect_ratio` | string | ❌ No | `16:9` | `16:9, 1:1, 9:16` | The aspect ratio of the generated video. **This parameter is required when the image-to-video or video editing features are not used.** |
-| `duration` | integer | ❌ No | `5` | `5, 10` | The duration of the generated media in seconds. |
+| `duration` | integer | ❌ No | `5` | `3-15` | The duration of the generated media in seconds. |
 | `voice_list` | array | ❌ No | - | - | The list of voices id to use for the generated video, Only V2.6 and subsequent versions of the model supports the current parameters. see [Custom Voice](#custom-voice-only-v2-6-and-subsequent-versions) to get the voices id. |
 | `voice_list.voice_id` | string | ✅ Yes | - | - | The voice id to use for the generated video. A video generation task can reference up to 2 voices at most|
 
