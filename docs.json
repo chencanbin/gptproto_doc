@@ -23,6 +23,20 @@
   "search": {
     "prompt": "Search API"
   },
+  "redirects": [
+    {
+      "source": "/quickstart",
+      "destination": "/docs/get-started/get-started/quickstart"
+    },
+    {
+      "source": "/introduction",
+      "destination": "/docs/get-started/get-started/introduction"
+    },
+    {
+      "source": "/authentication",
+      "destination": "/docs/get-started/get-started/authentication"
+    }
+  ],
   "navigation": {
     "tabs": [
       {
