@@ -67,29 +67,200 @@ Begin setup:
 
 - `I understand this is powerful and inherently risky. Continue?` | Select ● `Yes`
 - `Onboarding mode` | Select ● `Quick Start`
-- `Model/auth provider` | Select ● `GPTProto`
+- `Model/auth provider` | Select ● `Skip for now`
+- `Filter models by provider` | Select ● `anthropic`
+- `Default model` | Select ● `Keep current`
+- Complete the remaining configuration based on your own preferences.
+
+<Tip>
+  Selecting **Skip for now** for the model/auth provider is important — it lets you manually configure GPTProto's custom model parameters in the next step instead of being locked into a pre-configured provider.
+</Tip>
 
 </Step>
 
-<Step title="Configure GPTProto Provider">
+<Step title="Configure GPTProto Models">
 
-After selecting `GPTProto` as the provider, the system will prompt you to enter your API Key.
+To configure a custom model, edit `~/.openclaw/openclaw.json`. You can open it with any text editor:
 
-Paste your GPTProto API Key and press Enter, then select the model you want to use.
+```bash
+nano ~/.openclaw/openclaw.json
+```
 
-**Recommended models:**
+**1. Add GPTProto provider configuration**
 
-| Model | Description | Best For |
-|-------|-------------|----------|
-| `gptproto/claude-opus-4-6` | Anthropic Claude Opus 4 | Complex reasoning, coding |
-| `gptproto/gpt-5.2` | OpenAI GPT-5.2 | General tasks, creative writing |
-| `gptproto/gemini-3-pro` | Google Gemini 3 Pro | Multimodal, image understanding |
-| `gptproto/deepseek-v3.2` | DeepSeek V3.2 | Code generation, math |
-| `gptproto/claude-sonnet-4-6` | Anthropic Claude Sonnet 4 | Fast, balanced performance |
+Add the following under `models.providers`. If you skipped onboarding, the `models` section may not exist yet — add it manually. Replace `YOUR_GPTPROTO_KEY` with the API key from Step 1.
 
-<Tip>
-  You can switch models at any time using the `/model` command in your chat, or by updating your configuration.
-</Tip>
+```json
+{
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "gptproto": {
+        "baseUrl": "https://gptproto.com",
+        "apiKey": "YOUR_GPTPROTO_KEY",
+        "api": "anthropic-messages",
+        "models": [
+          {
+            "id": "claude-opus-4-6",
+            "name": "claude-opus-4-6",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 200000,
+            "maxTokens": 100000
+          },
+          {
+            "id": "claude-sonnet-4-6",
+            "name": "claude-sonnet-4-6",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 200000,
+            "maxTokens": 100000
+          },
+          {
+            "id": "glm-5",
+            "name": "glm-5",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 200000,
+            "maxTokens": 100000
+          },
+          {
+            "id": "MiniMax-M2.5",
+            "name": "MiniMax-M2.5",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 200000,
+            "maxTokens": 100000
+          },
+          {
+            "id": "kimi-k2.5",
+            "name": "kimi-k2.5",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 200000,
+            "maxTokens": 100000
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+**2. Set the default agent model**
+
+```json5
+{
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "gptproto/claude-opus-4-6" // default model
+      },
+      "models": { // available models
+        "gptproto/claude-opus-4-6": {},
+        "gptproto/claude-sonnet-4-6": {},
+        "gptproto/glm-5": {},
+        "gptproto/MiniMax-M2.5": {},
+        "gptproto/kimi-k2.5": {}
+      }
+    }
+  }
+}
+```
+
+**Complete `~/.openclaw/openclaw.json` example**
+
+```json5
+{
+  "meta": {...},
+  "wizard": {...},
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "gptproto": {
+        "baseUrl": "https://gptproto.com",
+        "apiKey": "YOUR_GPTPROTO_KEY",
+        "api": "anthropic-messages",
+        "models": [
+          {
+            "id": "claude-opus-4-6",
+            "name": "claude-opus-4-6",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 200000,
+            "maxTokens": 100000
+          },
+          ...
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "gptproto/claude-opus-4-6" // default model
+      },
+      "models": { // available models
+        "gptproto/claude-opus-4-6": {},
+        "gptproto/claude-sonnet-4-6": {},
+        "gptproto/glm-5": {},
+        "gptproto/MiniMax-M2.5": {},
+        "gptproto/kimi-k2.5": {}
+      },
+      ...
+    }
+  },
+  ...
+}
+```
 
 </Step>
 
@@ -140,51 +311,6 @@ openclaw dashboard  # Open Dashboard in browser
 </Warning>
 
 ## Advanced Configuration
-
-### Manual Configuration
-
-If you prefer to configure manually, edit `~/.openclaw/openclaw.json`:
-
-```json
-{
-  "models": {
-    "providers": {
-      "gptproto": {
-        "apiKey": "sk-your-api-key-here",
-        "baseUrl": "https://gptproto.com/v1"
-      }
-    }
-  },
-  "agents": {
-    "defaults": {
-      "model": {
-        "primary": "gptproto/claude-opus-4-6"
-      }
-    }
-  }
-}
-```
-
-### Model Failover
-
-Configure model failover to ensure reliability:
-
-```json
-{
-  "agents": {
-    "defaults": {
-      "model": {
-        "primary": "gptproto/gpt-5.2",
-        "fallbacks": ["gptproto/claude-opus-4-6", "gptproto/gemini-3-pro", "gptproto/deepseek-v3.2"]
-      }
-    }
-  }
-}
-```
-
-<Tip>
-  With GPTProto's unified API, failover works across different providers seamlessly. If GPT-5.2 is unavailable, it automatically switches to Claude, Gemini, or DeepSeek.
-</Tip>
 
 ### Using Skills
 
