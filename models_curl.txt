@@ -5619,14 +5619,14 @@
     "icon": "https://oss.gptproto.com/gptproto/ai-draw/java/test//2026/02/02/b7af8dc9d6694882982376598c2abfe0.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
     "model": "viduq2-pro-fast",
     "scene": "start-end-framed",
-    "url": "https://docs.gptproto.com/docs/allapi/Vidu/viduq2-pro-fast/gptproto-format/start-end-framed",
+    "url": "https://docs.gptproto.com/docs/allapi/Vidu/viduq2-pro-fast/gptproto-format/start-end-frame",
     "labels": [
       {
         "label": "Gptproto Format",
         "curls": [
           {
             "name": "Start End Frame",
-            "value": "curl --location 'https://gptproto.com/api/v3/vidu/viduq2-pro-fast/start-end-framed' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"prompt\": \"The dog ran forward, and finally turned into a Ghibli style.\",\n  \"image\": \"https://oss.gptproto.com/2025/11/12/1683f22c967d43a5b7c1dac9b50a1fe3.png\",\n  \"last_image\": \"https://oss.gptproto.com/2025/11/12/39c41d8e0421458ba848f1aaea47b4ac.png\",\n  \"duration\": 5,\n  \"seed\": 1,\n  \"resolution\": \"720p\"\n}'\n"
+            "value": "curl --location 'https://gptproto.com/api/v3/vidu/viduq2-pro-fast/start-end-frame' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"prompt\": \"The dog ran forward, and finally turned into a Ghibli style.\",\n  \"image\": \"https://oss.gptproto.com/2025/11/12/1683f22c967d43a5b7c1dac9b50a1fe3.png\",\n  \"last_image\": \"https://oss.gptproto.com/2025/11/12/39c41d8e0421458ba848f1aaea47b4ac.png\",\n  \"duration\": 5,\n  \"seed\": 1,\n  \"resolution\": \"720p\"\n}'\n"
           },
           {
             "name": "Query Result",
@@ -5663,14 +5663,14 @@
     "icon": "https://oss.gptproto.com/gptproto/ai-draw/java/test//2026/02/02/b7af8dc9d6694882982376598c2abfe0.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
     "model": "viduq2-turbo",
     "scene": "start-end-framed",
-    "url": "https://docs.gptproto.com/docs/allapi/Vidu/viduq2-turbo/gptproto-format/start-end-framed",
+    "url": "https://docs.gptproto.com/docs/allapi/Vidu/viduq2-turbo/gptproto-format/start-end-frame",
     "labels": [
       {
         "label": "Gptproto Format",
         "curls": [
           {
             "name": "Start End Frame",
-            "value": "curl --location 'https://gptproto.com/api/v3/vidu/viduq2-turbo/start-end-framed' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"prompt\": \"The dog ran forward, and finally turned into a Ghibli style.\",\n  \"image\": \"https://oss.gptproto.com/2025/11/12/1683f22c967d43a5b7c1dac9b50a1fe3.png\",\n  \"last_image\": \"https://oss.gptproto.com/2025/11/12/39c41d8e0421458ba848f1aaea47b4ac.png\",\n  \"duration\": 5,\n  \"seed\": 1,\n  \"resolution\": \"720p\"\n}'\n"
+            "value": "curl --location 'https://gptproto.com/api/v3/vidu/viduq2-turbo/start-end-frame' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"prompt\": \"The dog ran forward, and finally turned into a Ghibli style.\",\n  \"image\": \"https://oss.gptproto.com/2025/11/12/1683f22c967d43a5b7c1dac9b50a1fe3.png\",\n  \"last_image\": \"https://oss.gptproto.com/2025/11/12/39c41d8e0421458ba848f1aaea47b4ac.png\",\n  \"duration\": 5,\n  \"seed\": 1,\n  \"resolution\": \"720p\"\n}'\n"
           },
           {
             "name": "Query Result",
@@ -5707,14 +5707,14 @@
     "icon": "https://oss.gptproto.com/gptproto/ai-draw/java/test//2026/02/02/b7af8dc9d6694882982376598c2abfe0.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
     "model": "viduq2-pro",
     "scene": "start-end-framed",
-    "url": "https://docs.gptproto.com/docs/allapi/Vidu/viduq2-pro/gptproto-format/start-end-framed",
+    "url": "https://docs.gptproto.com/docs/allapi/Vidu/viduq2-pro/gptproto-format/start-end-frame",
     "labels": [
       {
         "label": "Gptproto Format",
         "curls": [
           {
             "name": "Start End Frame",
-            "value": "curl --location 'https://gptproto.com/api/v3/vidu/viduq2-pro/start-end-framed' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"prompt\": \"The dog ran forward, and finally turned into a Ghibli style.\",\n  \"image\": \"https://oss.gptproto.com/2025/11/12/1683f22c967d43a5b7c1dac9b50a1fe3.png\",\n  \"last_image\": \"https://oss.gptproto.com/2025/11/12/39c41d8e0421458ba848f1aaea47b4ac.png\",\n  \"duration\": 5,\n  \"seed\": 1,\n  \"resolution\": \"720p\"\n}'\n"
+            "value": "curl --location 'https://gptproto.com/api/v3/vidu/viduq2-pro/start-end-frame' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"prompt\": \"The dog ran forward, and finally turned into a Ghibli style.\",\n  \"image\": \"https://oss.gptproto.com/2025/11/12/1683f22c967d43a5b7c1dac9b50a1fe3.png\",\n  \"last_image\": \"https://oss.gptproto.com/2025/11/12/39c41d8e0421458ba848f1aaea47b4ac.png\",\n  \"duration\": 5,\n  \"seed\": 1,\n  \"resolution\": \"720p\"\n}'\n"
           },
           {
             "name": "Query Result",

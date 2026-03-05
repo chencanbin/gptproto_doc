@@ -2891,7 +2891,7 @@
                         "group": "gptproto-format",
                         "pages": [
                           "docs/allapi/Vidu/viduq2-pro/gptproto-format/image-to-video",
-                          "docs/allapi/Vidu/viduq2-pro/gptproto-format/start-end-framed"
+                          "docs/allapi/Vidu/viduq2-pro/gptproto-format/start-end-frame"
                         ]
                       }
                     ]
@@ -2903,7 +2903,7 @@
                         "group": "gptproto-format",
                         "pages": [
                           "docs/allapi/Vidu/viduq2-pro-fast/gptproto-format/image-to-video",
-                          "docs/allapi/Vidu/viduq2-pro-fast/gptproto-format/start-end-framed"
+                          "docs/allapi/Vidu/viduq2-pro-fast/gptproto-format/start-end-frame"
                         ]
                       }
                     ]
@@ -2915,7 +2915,7 @@
                         "group": "gptproto-format",
                         "pages": [
                           "docs/allapi/Vidu/viduq2-turbo/gptproto-format/image-to-video",
-                          "docs/allapi/Vidu/viduq2-turbo/gptproto-format/start-end-framed"
+                          "docs/allapi/Vidu/viduq2-turbo/gptproto-format/start-end-frame"
                         ]
                       }
                     ]
