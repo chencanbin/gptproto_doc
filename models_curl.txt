@@ -7936,7 +7936,7 @@
         "curls": [
           {
             "name": "Web Search",
-            "value": "curl --location 'https://gptproto.com/v1/responses' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"model\": \"gpt-5.4\",\n  \"tools\": [\n    {\n      \"type\": \"web-search\"\n    }\n  ],\n  \"input\": [\n    {\n      \"role\": \"user\",\n      \"content\": [\n        {\n          \"type\": \"input_text\",\n          \"text\": \"What are the latest breakthroughs in quantum computing and their potential applications?\"\n        }\n      ]\n    }\n  ]\n}'\n"
+            "value": "curl --location 'https://gptproto.com/v1/responses' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"model\": \"gpt-5.4\",\n  \"tools\": [\n    {\n      \"type\": \"web_search\"\n    }\n  ],\n  \"input\": [\n    {\n      \"role\": \"user\",\n      \"content\": [\n        {\n          \"type\": \"input_text\",\n          \"text\": \"What are the latest breakthroughs in quantum computing and their potential applications?\"\n        }\n      ]\n    }\n  ]\n}'\n"
           }
         ]
       }
