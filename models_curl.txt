@@ -5618,23 +5618,9 @@
     "vendor": "Vidu",
     "icon": "https://oss.gptproto.com/gptproto/ai-draw/java/test//2026/02/02/b7af8dc9d6694882982376598c2abfe0.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
     "model": "viduq2-pro-fast",
-    "scene": "start-end-framed",
+    "scene": "start-end-frame",
     "url": "https://docs.gptproto.com/docs/allapi/Vidu/viduq2-pro-fast/gptproto-format/start-end-frame",
-    "labels": [
-      {
-        "label": "Gptproto Format",
-        "curls": [
-          {
-            "name": "Start End Frame",
-            "value": "curl --location 'https://gptproto.com/api/v3/vidu/viduq2-pro-fast/start-end-frame' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"prompt\": \"The dog ran forward, and finally turned into a Ghibli style.\",\n  \"image\": \"https://oss.gptproto.com/2025/11/12/1683f22c967d43a5b7c1dac9b50a1fe3.png\",\n  \"last_image\": \"https://oss.gptproto.com/2025/11/12/39c41d8e0421458ba848f1aaea47b4ac.png\",\n  \"duration\": 5,\n  \"seed\": 1,\n  \"resolution\": \"720p\"\n}'\n"
-          },
-          {
-            "name": "Query Result",
-            "value": "curl --location --globoff --request POST 'https://gptproto.com/api/v3/predictions/{{id}}/result' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json'\n"
-          }
-        ]
-      }
-    ]
+    "labels": []
   },
   {
     "vendor": "Vidu",
@@ -5662,23 +5648,9 @@
     "vendor": "Vidu",
     "icon": "https://oss.gptproto.com/gptproto/ai-draw/java/test//2026/02/02/b7af8dc9d6694882982376598c2abfe0.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
     "model": "viduq2-turbo",
-    "scene": "start-end-framed",
+    "scene": "start-end-frame",
     "url": "https://docs.gptproto.com/docs/allapi/Vidu/viduq2-turbo/gptproto-format/start-end-frame",
-    "labels": [
-      {
-        "label": "Gptproto Format",
-        "curls": [
-          {
-            "name": "Start End Frame",
-            "value": "curl --location 'https://gptproto.com/api/v3/vidu/viduq2-turbo/start-end-frame' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"prompt\": \"The dog ran forward, and finally turned into a Ghibli style.\",\n  \"image\": \"https://oss.gptproto.com/2025/11/12/1683f22c967d43a5b7c1dac9b50a1fe3.png\",\n  \"last_image\": \"https://oss.gptproto.com/2025/11/12/39c41d8e0421458ba848f1aaea47b4ac.png\",\n  \"duration\": 5,\n  \"seed\": 1,\n  \"resolution\": \"720p\"\n}'\n"
-          },
-          {
-            "name": "Query Result",
-            "value": "curl --location --globoff --request POST 'https://gptproto.com/api/v3/predictions/{{id}}/result' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json'\n"
-          }
-        ]
-      }
-    ]
+    "labels": []
   },
   {
     "vendor": "Vidu",
@@ -5706,23 +5678,9 @@
     "vendor": "Vidu",
     "icon": "https://oss.gptproto.com/gptproto/ai-draw/java/test//2026/02/02/b7af8dc9d6694882982376598c2abfe0.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
     "model": "viduq2-pro",
-    "scene": "start-end-framed",
+    "scene": "start-end-frame",
     "url": "https://docs.gptproto.com/docs/allapi/Vidu/viduq2-pro/gptproto-format/start-end-frame",
-    "labels": [
-      {
-        "label": "Gptproto Format",
-        "curls": [
-          {
-            "name": "Start End Frame",
-            "value": "curl --location 'https://gptproto.com/api/v3/vidu/viduq2-pro/start-end-frame' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"prompt\": \"The dog ran forward, and finally turned into a Ghibli style.\",\n  \"image\": \"https://oss.gptproto.com/2025/11/12/1683f22c967d43a5b7c1dac9b50a1fe3.png\",\n  \"last_image\": \"https://oss.gptproto.com/2025/11/12/39c41d8e0421458ba848f1aaea47b4ac.png\",\n  \"duration\": 5,\n  \"seed\": 1,\n  \"resolution\": \"720p\"\n}'\n"
-          },
-          {
-            "name": "Query Result",
-            "value": "curl --location --globoff --request POST 'https://gptproto.com/api/v3/predictions/{{id}}/result' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json'\n"
-          }
-        ]
-      }
-    ]
+    "labels": []
   },
   {
     "vendor": "Vidu",
@@ -7899,6 +7857,86 @@
           {
             "name": "Web Search",
             "value": "curl --location 'https://gptproto.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"contents\": [\n    {\n      \"role\": \"user\",\n      \"parts\": [\n        {\n          \"text\": \"Who won the euro 2024?\"\n        }\n      ]\n    }\n  ],\n  \"tools\": [\n    {\n      \"google_search\": {}\n    }\n  ],\n  \"generationConfig\": {\n    \"thinkingConfig\": {\n      \"includeThoughts\": true,\n      \"thinkingLevel\": \"HIGH\"\n    }\n  }\n}'\n"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "vendor": "OpenAI",
+    "icon": "https://oss.gptproto.com/ai-draw/AiIcon/GPT.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
+    "model": "gpt-5.4",
+    "scene": "file-analysis",
+    "url": "https://docs.gptproto.com/docs/allapi/OpenAI/gpt-5.4/official-format/file-analysis",
+    "labels": [
+      {
+        "label": "Official Format",
+        "curls": [
+          {
+            "name": "File Analysis",
+            "value": "curl --location 'https://gptproto.com/v1/responses' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"model\": \"gpt-5.4\",\n  \"input\": [\n    {\n      \"role\": \"user\",\n      \"content\": [\n        {\n          \"type\": \"input_text\",\n          \"text\": \"what is in this file?\"\n        },\n        {\n          \"type\": \"input_file\",\n          \"file_url\": \"https://tos.gptproto.com/resource/gptproto.pdf\"\n        }\n      ]\n    }\n  ]\n}'\n"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "vendor": "OpenAI",
+    "icon": "https://oss.gptproto.com/ai-draw/AiIcon/GPT.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
+    "model": "gpt-5.4",
+    "scene": "image-to-text",
+    "url": "https://docs.gptproto.com/docs/allapi/OpenAI/gpt-5.4/official-format/image-to-text",
+    "labels": [
+      {
+        "label": "Official Format",
+        "curls": [
+          {
+            "name": "Image To Text (Response)",
+            "value": "curl --location 'https://gptproto.com/v1/responses' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"model\": \"gpt-5.4\",\n  \"input\": [\n    {\n      \"role\": \"user\",\n      \"content\": [\n        {\n          \"type\": \"input_text\",\n          \"text\": \"What is in this image?\"\n        },\n        {\n          \"type\": \"input_image\",\n          \"image_url\": \"https://tos.gptproto.com/resource/cat.png\"\n        }\n      ]\n    }\n  ]\n}'\n"
+          },
+          {
+            "name": "Image To Text (Chat)",
+            "value": "curl --location 'https://gptproto.com/v1/chat/completions' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"model\": \"gpt-5.4\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"What is in this image?\"\n        },\n        {\n          \"type\": \"image_url\",\n          \"image_url\": {\n            \"url\": \"https://tos.gptproto.com/resource/cat.png\"\n          }\n        }\n      ]\n    }\n  ],\n  \"max_tokens\": 300\n}'\n"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "vendor": "OpenAI",
+    "icon": "https://oss.gptproto.com/ai-draw/AiIcon/GPT.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
+    "model": "gpt-5.4",
+    "scene": "text-to-text",
+    "url": "https://docs.gptproto.com/docs/allapi/OpenAI/gpt-5.4/official-format/text-to-text",
+    "labels": [
+      {
+        "label": "Official Format",
+        "curls": [
+          {
+            "name": "Text To Text (Response)",
+            "value": "curl --location 'https://gptproto.com/v1/responses' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"model\": \"gpt-5.4\",\n  \"input\": [\n    {\n      \"role\": \"user\",\n      \"content\": [\n        {\n          \"type\": \"input_text\",\n          \"text\": \"Write a short poem about artificial intelligence and its impact on humanity.\"\n        }\n      ]\n    }\n  ]\n}'\n"
+          },
+          {
+            "name": "Text to Text (Chat)",
+            "value": "curl --location 'https://gptproto.com/v1/chat/completions' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"model\": \"gpt-5.4\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"Who are you?\"\n    }\n  ],\n  \"stream\": false\n}'\n"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "vendor": "OpenAI",
+    "icon": "https://oss.gptproto.com/ai-draw/AiIcon/GPT.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
+    "model": "gpt-5.4",
+    "scene": "web-search",
+    "url": "https://docs.gptproto.com/docs/allapi/OpenAI/gpt-5.4/official-format/web-search",
+    "labels": [
+      {
+        "label": "Official Format",
+        "curls": [
+          {
+            "name": "Web Search",
+            "value": "curl --location 'https://gptproto.com/v1/responses' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"model\": \"gpt-5.4\",\n  \"tools\": [\n    {\n      \"type\": \"web_search_preview\"\n    }\n  ],\n  \"input\": [\n    {\n      \"role\": \"user\",\n      \"content\": [\n        {\n          \"type\": \"input_text\",\n          \"text\": \"What are the latest breakthroughs in quantum computing and their potential applications?\"\n        }\n      ]\n    }\n  ]\n}'\n"
           }
         ]
       }
