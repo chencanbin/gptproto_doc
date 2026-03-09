@@ -11,8 +11,39 @@ import QueryResult from '/snippets/common/query-result.mdx';
 | `sound` | boolean | ❌ No | `true` | `true, false` | Whether to include synchronized sound with the video. |
 | `aspect_ratio` | string | ❌ No | `16:9` | `16:9, 1:1, 9:16` | The aspect ratio of the generated video. **This parameter is required when the image-to-video or video editing features are not used.** |
 | `duration` | integer | ❌ No | `5` | `3-15` | The duration of the generated media in seconds. |
+| `guidance_scale` | number | ❌ No | - | `0-1` | The guidance scale for the generation. Controls how closely the output follows the prompt. |
+| `multi_prompt` | array | ❌ No | - | - | A list of segmented prompts for multi-scene video generation. Each segment specifies its own prompt and duration. **Only supported by V3.0 (`kling-v3.0`).** |
+| `multi_prompt[].index` | integer | ✅ Yes | - | - | The index of the segment, starting from 1. |
+| `multi_prompt[].prompt` | string | ✅ Yes | - | - | The prompt for this specific segment. |
+| `multi_prompt[].duration` | string | ✅ Yes | - | - | The duration of this segment in seconds. The sum of all segment durations should match the total `duration`. |
 | `voice_list` | array | ❌ No | - | - | The list of voices id to use for the generated video, Only V2.6 and subsequent versions of the model supports the current parameters. see [Custom Voice](#custom-voice-only-v2-6-and-subsequent-versions) to get the voices id. |
 | `voice_list.voice_id` | string | ✅ Yes | - | - | The voice id to use for the generated video. A video generation task can reference up to 2 voices at most|
+
+### Multi-Prompt (V3.0 Only)
+<CodeGroup>
+```json Multi-Prompt
+{
+  "prompt": "A cyberpunk girl walking through neon-lit alleyways, rain falling, close-up of her eyes, camera pans to her silhouette, smoke in the background, futuristic music vibe",
+  "negative_prompt": "blur, distort, and low quality",
+  "aspect_ratio": "16:9",
+  "duration": 5,
+  "guidance_scale": 0.5,
+  "sound": false,
+  "multi_prompt": [
+    {
+      "index": 1,
+      "prompt": "Two friends talking under a streetlight at night. Warm glow, casual poses, no dialogue.",
+      "duration": "2"
+    },
+    {
+      "index": 2,
+      "prompt": "A runner sprinting through a forest, leaves flying. Low-angle shot, focus on movement.",
+      "duration": "3"
+    }
+  ]
+}
+```
+</CodeGroup>
 
 import CustomVoice from '/snippets/Kling/gptproto-format/kling-custom-voice.mdx';
 
