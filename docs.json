@@ -2947,6 +2947,18 @@
                         ]
                       }
                     ]
+                  },
+                  {
+                    "group": "viduq3-turbo",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/Vidu/viduq3-turbo/gptproto-format/image-to-video",
+                          "docs/allapi/Vidu/viduq3-turbo/gptproto-format/text-to-video"
+                        ]
+                      }
+                    ]
                   }
                 ],
                 "icon": "https://oss.gptproto.com/gptproto/ai-draw/java/test//2026/02/02/b7af8dc9d6694882982376598c2abfe0.png"
