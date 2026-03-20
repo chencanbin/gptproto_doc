@@ -13,4 +13,31 @@ import QueryResult from '/snippets/common/query-result.mdx';
 | `video` | string | ❌ No | - | - | The video URL for reference-to-video generation. |
 | `aspect_ratio` | string | ❌ No | `16:9` | `16:9, 1:1, 9:16` | The aspect ratio of the generated video. **This parameter is required when the image-to-video or video editing features are not used.** |
 | `duration` | integer | ❌ No | `5` | `3, 4, 5, 6, 7, 8, 9, 10` or <br />`5, 10` | The duration of the generated media in seconds. When using text generated videos, and first frame image generated videos, only 5 and 10 seconds are supported. |
+| `multi_prompt` | array | ❌ No | - | - | A list of segmented prompts for multi-scene video generation. Each segment specifies its own prompt and duration. |
+| `multi_prompt[].index` | integer | ✅ Yes | - | - | The index of the segment, starting from 1. |
+| `multi_prompt[].prompt` | string | ✅ Yes | - | - | The prompt for this specific segment. |
+| `multi_prompt[].duration` | string | ✅ Yes | - | - | The duration of this segment in seconds. The sum of all segment durations should match the total `duration`. |
 | `keep_original_sound` | boolean | ❌ No | `true` | `true, false` | Select whether to keep the video original sound through the parameter. |
+
+### Multi-Prompt
+<CodeGroup>
+```json Multi-Prompt
+{
+  "prompt": "A cyberpunk girl walking through neon-lit alleyways, rain falling, close-up of her eyes, camera pans to her silhouette, smoke in the background, futuristic music vibe",
+  "aspect_ratio": "16:9",
+  "duration": 5,
+  "multi_prompt": [
+    {
+      "index": 1,
+      "prompt": "Two friends talking under a streetlight at night. Warm glow, casual poses, no dialogue.",
+      "duration": "2"
+    },
+    {
+      "index": 2,
+      "prompt": "A runner sprinting through a forest, leaves flying. Low-angle shot, focus on movement.",
+      "duration": "3"
+    }
+  ]
+}
+```
+</CodeGroup>
