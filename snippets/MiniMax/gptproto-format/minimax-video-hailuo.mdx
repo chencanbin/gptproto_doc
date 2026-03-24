@@ -18,27 +18,18 @@ Endpoint: `https://gptproto.com/api/v3/minimax/{model}/{scene}`
 | `prompt` | string | ✅ Yes | - | - | Prompt parameter |
 | `image` | string | ✅ Yes<br />(required in image-to-video scene) | - | - | The model generates video with the picture passed in as the first frame.Base64 encoded strings in data:image/jpeg; base64,{data} format for incoming images, or URLs accessible via the public network. The uploaded image needs to meet the following conditions: Format is JPG/JPEG/PNG; The aspect ratio is greater than 2:5 and less than 5:2; Short side pixels greater than 300px; The image file size cannot exceed 20MB. |
 | `end_image` | string | ❌ No | - | - | The model generates video with the picture passed in as the first frame.Base64 encoded strings in data:image/jpeg; base64,{data} format for incoming images, or URLs accessible via the public network. The uploaded image needs to meet the following conditions: Format is JPG/JPEG/PNG; The aspect ratio is greater than 2:5 and less than 5:2; Short side pixels greater than 300px; The image file size cannot exceed 20MB. |
-| `duration` | integer | ❌ No | `6` | `6`, `10`| The duration of the generated media in seconds. See [Duration](#duration) for more details. |
-| `resolution` | string | ❌ No | `768P` | `512P`, `720P`, `768P`, `1080P` | Resolution parameter. See [Resolution](#resolution) for more details. |
+| `duration` | integer | ❌ No | `6` | `6`, `10`| The duration of the generated media in seconds. See [Duration & Resolution](#duration-resolution) for more details. |
+| `resolution` | string | ❌ No | `768P` | `512P`, `720P`, `768P`, `1080P` | Resolution parameter. See [Resolution & Duration](#duration-resolution) for more details. |
 | `enable_prompt_expansion` | boolean | ❌ No | `true` | - | The model automatically optimizes incoming prompts to enhance output quality. This also activates the safety checker, which ensures content safety by detecting and filtering potential risks. |
 
-### Duration
-Video duration (seconds), default value is 6. Available values depend on model and resolution:
+### Duration & Resolution
+Available video duration (seconds) and resolution combinations. Default duration is 6 seconds. Values vary by model:
 
-| Model | 720P | 768P | 1080P |
-| :--- | :--- | :--- | :--- |
-| MiniMax-Hailuo-2.3 | - | `6` or `10` | `6` |
-| MiniMax-Hailuo-2.3-Fast | - | `6` or `10` | `6` |
-| MiniMax-Hailuo-02 | - | `6` or `10` | `6` |
-| Other models | `6` | - | `6` |
-
-### Resolution
-Video resolution. Available values depend on model:
-
-| Model | 6s | 10s |
+| Model | 768P | 1080P |
 | :--- | :--- | :--- |
-| MiniMax-Hailuo-2.3 | `768P` (default), `1080P` | `768P` (default) |
-| MiniMax-Hailuo-2.3-Fast | `768P` (default), `1080P` | `768P` (default) |
-| MiniMax-Hailuo-02 | `512P`, `768P` (default), `1080P` | `512P`, `768P` (default) |
-| Other models | `720P` (default) | Not supported |
-
+| MiniMax-Hailuo-2.3-fast | `6` or `10` | `6` |
+| MiniMax-Hailuo-2.3-standard | `6` or `10` | - |
+| MiniMax-Hailuo-2.3-pro | - | `6` |
+| MiniMax-Hailuo-02-fast | `6` or `10` | - |
+| MiniMax-Hailuo-02-standard | `6` or `10` | - |
+| MiniMax-Hailuo-02-pro | - | `6` |

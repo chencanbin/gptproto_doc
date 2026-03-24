@@ -2546,8 +2546,7 @@
                       {
                         "group": "gptproto-format",
                         "pages": [
-                          "docs/allapi/MiniMax/hailuo-02-fast/gptproto-format/image-to-video",
-                          "docs/allapi/MiniMax/hailuo-02-fast/gptproto-format/text-to-video"
+                          "docs/allapi/MiniMax/hailuo-02-fast/gptproto-format/image-to-video"
                         ]
                       }
                     ]
@@ -2582,8 +2581,7 @@
                       {
                         "group": "gptproto-format",
                         "pages": [
-                          "docs/allapi/MiniMax/hailuo-2.3-fast/gptproto-format/image-to-video",
-                          "docs/allapi/MiniMax/hailuo-2.3-fast/gptproto-format/text-to-video"
+                          "docs/allapi/MiniMax/hailuo-2.3-fast/gptproto-format/image-to-video"
                         ]
                       }
                     ]
