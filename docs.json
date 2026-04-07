@@ -13,6 +13,9 @@
       "canonical": "https://docs.gptproto.com"
     }
   },
+  "styling": {
+    "eyebrows": "breadcrumbs"
+  },
   "title": "GPTProto API Documentation",
   "favicon": "/favicon.png",
   "logo": {
