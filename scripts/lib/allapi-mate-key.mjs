@@ -79,14 +79,14 @@ export function formatModelSlugForTitle(model) {
 
 /**
  * Mintlify frontmatter `title`（TDK），格式：
- * `GPT-4.1 ｜ Image To Text ｜ Response ｜ GPTProto API`
+ * `GPT-4.1 ｜ Image To Text ｜ Response`
  * 无 -response/-chat/-request 时省略变体段。
  */
 export function buildMintlifyModelPageTitle({ model, fileBase, apiScene }) {
   const modelPart = formatModelSlugForTitle(model)
   const scenePart = kebabSceneToTitleWords(apiScene)
   const variantLabels = extractDocVariantLabels(fileBase, apiScene)
-  const parts = [modelPart, scenePart, ...variantLabels, 'GPTProto API']
+  const parts = [modelPart, scenePart, ...variantLabels]
   return parts.join(MODEL_PAGE_TITLE_SEP)
 }
 

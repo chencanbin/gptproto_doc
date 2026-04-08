@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "aspen",
-  "name": "GPTProto API Documentation",
+  "name": "GPTProto API",
   "description": "GPTProto API Documentation",
   "colors": {
     "primary": "#0D9373",
@@ -16,7 +16,6 @@
   "styling": {
     "eyebrows": "breadcrumbs"
   },
-  "title": "GPTProto API Documentation",
   "favicon": "/favicon.png",
   "logo": {
     "light": "/logo/light.png",
