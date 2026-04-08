@@ -42,3 +42,6 @@ yarn-error.log*
 .env.local
 .env.*.local
 .history/
+
+# 本地说明（不上传）
+TDK-WORKFLOW.local.md
