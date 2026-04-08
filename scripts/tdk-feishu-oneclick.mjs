@@ -2,7 +2,7 @@
 /**
  * 一键完成 TDK 与飞书多维表格同步：
  *
- * 1. 将括号格式 title 写回各 MDX（与 model-tdk-export 一致）
+ * 1. 将 Mintlify 竖线格式 title 写回各 MDX（与 model-tdk-export 一致）
  * 2. 导出/刷新 scripts/data/model-tdk-export.csv
  * 3. 推送到飞书（--merge：表格里已有内容的格子不被 CSV 覆盖，只填空行/空列）
  * 4. 从飞书拉回 scripts/data/feishu-tdk-pull.csv

@@ -1,0 +1,24 @@
+{
+  "name": "gptproto-doc",
+  "private": true,
+  "description": "Mintlify 文档站；scripts/ 为 TDK / 飞书 / CMS 同步工具（Node 18+）",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "tdk:export": "node scripts/model-tdk-export.mjs",
+    "tdk:export:titles": "node scripts/model-tdk-export.mjs --write-titles",
+    "tdk:import": "node scripts/model-tdk-import.mjs scripts/data/feishu-tdk-pull.csv",
+    "tdk:to-feishu": "node scripts/tdk-sync.mjs to-feishu",
+    "tdk:to-feishu:titles": "node scripts/tdk-sync.mjs to-feishu --write-titles",
+    "tdk:from-feishu": "node scripts/tdk-sync.mjs from-feishu",
+    "tdk:oneclick": "node scripts/tdk-feishu-oneclick.mjs",
+    "tdk:oneclick:no-titles": "node scripts/tdk-feishu-oneclick.mjs --skip-write-titles",
+    "sync:mate": "node scripts/sync-mate-from-api.mjs",
+    "feishu:pull": "node scripts/feishu-model-tdk.mjs pull --out scripts/data/feishu-tdk-pull.csv",
+    "feishu:push": "node scripts/feishu-model-tdk.mjs push scripts/data/model-tdk-export.csv",
+    "feishu:push:merge": "node scripts/feishu-model-tdk.mjs push scripts/data/model-tdk-export.csv --merge",
+    "feishu:apply": "node scripts/feishu-model-tdk.mjs apply"
+  }
+}

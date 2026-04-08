@@ -7,7 +7,7 @@
  *
  * 用法：
  *   node scripts/tdk-sync.mjs to-feishu              # 导出 + 推送
- *   node scripts/tdk-sync.mjs to-feishu --write-titles   # 同上，并把括号标题写进 MDX title
+ *   node scripts/tdk-sync.mjs to-feishu --write-titles   # 同上，并把 Mintlify 竖线 title 写进 MDX
  *   node scripts/tdk-sync.mjs from-feishu            # 拉取 + 写入 MDX
  *   node scripts/tdk-sync.mjs from-feishu --csv path/to.csv
  *

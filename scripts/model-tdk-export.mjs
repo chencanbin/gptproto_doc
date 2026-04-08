@@ -1,19 +1,19 @@
 #!/usr/bin/env node
 /**
- * 导出 docs/allapi 下各页的 TDK 模板 CSV（括号标题格式，供飞书/人工填 Description、Keywords）
+ * 导出 docs/allapi 下各页的 TDK 模板 CSV（Mintlify 竖线 title，供飞书/人工填 Description、Keywords）
  *
- * 标题格式示例：gpt-4.1 (Image To Text (Response))
+ * 标题格式示例：GPT-4.1 ｜ Image To Text ｜ Response ｜ GPTProto API
  *
  * 用法：
  *   node scripts/model-tdk-export.mjs
  *   node scripts/model-tdk-export.mjs --out scripts/data/model-tdk.csv
- *   node scripts/model-tdk-export.mjs --write-titles   # 同时将括号标题写回各 MDX 的 title:
+ *   node scripts/model-tdk-export.mjs --write-titles   # 同时将上述格式 title 写回各 MDX 的 title:
  */
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import {
-  buildParenStyleSheetTitle,
+  buildMintlifyModelPageTitle,
   parseAllapiMdxPath,
 } from './lib/allapi-mate-key.mjs'
 import { stringifyCsvRow } from './lib/csv.mjs'
@@ -85,7 +85,7 @@ async function main() {
     const parsed = parseAllapiMdxPath(abs)
     if (!parsed) continue
     const rel = path.relative(REPO, abs).replace(/\\/g, '/')
-    const title = buildParenStyleSheetTitle(parsed)
+    const title = buildMintlifyModelPageTitle(parsed)
     const raw = fs.readFileSync(abs, 'utf8')
     const fmMatch = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/)
     const fm = fmMatch ? fmMatch[1] : ''
@@ -118,7 +118,7 @@ async function main() {
     `Exported ${rows.length} rows to ${path.relative(REPO, outPath)}`
   )
   if (writeTitles) {
-    console.log('Wrote paren-style titles to MDX frontmatter (--write-titles).')
+    console.log('Wrote Mintlify-style titles to MDX frontmatter (--write-titles).')
   }
 }
 

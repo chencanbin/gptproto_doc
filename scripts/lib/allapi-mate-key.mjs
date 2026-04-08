@@ -91,7 +91,7 @@ export function buildMintlifyModelPageTitle({ model, fileBase, apiScene }) {
 }
 
 /**
- * 飞书/表格导出用括号标题（模型目录名保持小写，与路径一致）：
+ * 旧版括号标题（仅兼容/对照用；**标准 title 请用 `buildMintlifyModelPageTitle`**）：
  * `gpt-4.1 (Image To Text (Response))`；无文档后缀时为 `gpt-4.1 (Text To Text)`。
  */
 export function buildParenStyleSheetTitle({ model, fileBase, apiScene }) {

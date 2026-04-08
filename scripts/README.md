@@ -2,18 +2,47 @@
 
 本目录包含 **allapi 文档 TDK**（Title / Description / Keywords）与 **飞书多维表格** 同步工具。需 **Node.js 18+**（内置 `fetch`）。
 
+## 常用命令（`npm run`）
+
+在仓库**根目录**执行。列出全部脚本：`npm run`（不传脚本名）。
+
+| 命令 | 作用 |
+|------|------|
+| `npm run tdk:export` | allapi → `scripts/data/model-tdk-export.csv` |
+| `npm run tdk:export:titles` | 同上，并把 Mintlify `title` 写回各 MDX |
+| `npm run tdk:to-feishu` | 导出 CSV → **推飞书**（`push` 无 `--merge`，会覆盖表格行） |
+| `npm run tdk:to-feishu:titles` | 同上并写 MDX `title` |
+| `npm run tdk:from-feishu` | **拉飞书** → CSV → 写回 MDX（description / keywords 等，仅非空覆盖） |
+| `npm run tdk:oneclick` | 导出 → `push --merge` → pull → import（表格已有内容不覆盖） |
+| `npm run tdk:oneclick:no-titles` | 一键流程但跳过改 MDX 标题 |
+| `npm run tdk:import` | 用默认 `scripts/data/feishu-tdk-pull.csv` 导入 MDX |
+| `npm run sync:mate` | CMS → MDX（需 `GPTPROTO_API_BASE` 等，见下文） |
+| `npm run feishu:pull` | 飞书 → `scripts/data/feishu-tdk-pull.csv` |
+| `npm run feishu:push` | `model-tdk-export.csv` → 飞书 |
+| `npm run feishu:push:merge` | 推送时合并填空（不覆盖已有非空） |
+| `npm run feishu:apply` | 调用 `model-tdk-import` 把拉取的 CSV 写进 MDX |
+
+**附带参数**：写在 `--` 之后传给底层脚本，例如：
+
+```bash
+npm run sync:mate -- --dry-run
+npm run sync:mate -- --limit=10 --mdx-only
+npm run tdk:from-feishu -- --csv path/to.csv
+```
+
+不使用 npm 时，等价于对应用 `node scripts/....mjs ...`（与 `package.json` 的 `scripts` 字段一致）。
+
 ## 路径与标题（`lib/allapi-mate-key.mjs`）
 
 - **model**：`docs/allapi/厂商/模型名/...` 中的模型目录名，如 `gpt-4.1`
 - **scene**：`.mdx` 文件名去掉扩展名后，再去掉 `-response`、`-chat`、`-request`
 - **mateKey**：`厂商/model/格式/scene`，用于 CSV 与飞书行唯一对应
 
-**两种标题格式**：
+**标题格式（统一标准）**：Mintlify frontmatter `title`，与 `sync-mate-from-api`、`model-tdk-export` 一致：
 
-| 场景 | 示例 |
-|------|------|
-| Mintlify `title`（CMS 同步 `sync-mate-from-api`） | `GPT-4.1 ｜ Image To Text ｜ Response ｜ GPTProto API` |
-| 导出 CSV / 人工核对（`buildParenStyleSheetTitle`） | `gpt-4.1 (Image To Text (Response))` |
+`GPT-4.1 ｜ Image To Text ｜ Response ｜ GPTProto API`
+
+旧括号样式 `gpt-4.1 (Image To Text (Response))` 已弃用；库中仍保留 `buildParenStyleSheetTitle` 仅供对照。
 
 ---
 
@@ -24,7 +53,7 @@
 ```bash
 # 本地 allapi → CSV → 飞书（push 默认会更新已有行，见下方说明）
 node scripts/tdk-sync.mjs to-feishu
-node scripts/tdk-sync.mjs to-feishu --write-titles   # 同时把括号标题写入各 MDX 的 title
+node scripts/tdk-sync.mjs to-feishu --write-titles   # 同时把 Mintlify 竖线 title 写入各 MDX
 
 # 飞书 → CSV → 写回 MDX 的 description / keywords（仅 CSV 非空单元格会覆盖）
 node scripts/tdk-sync.mjs from-feishu
@@ -106,7 +135,7 @@ node scripts/feishu-model-tdk.mjs apply [--csv scripts/data/feishu-tdk-pull.csv]
 
 | 文件 | 作用 |
 |------|------|
-| `allapi-mate-key.mjs` | 解析路径、`mateKey`、Mintlify 标题、括号标题 |
+| `allapi-mate-key.mjs` | 解析路径、`mateKey`、`buildMintlifyModelPageTitle`（标准 title） |
 | `csv.mjs` | CSV 转义与解析 |
 | `mdx-frontmatter-tdk.mjs` | 局部更新 YAML frontmatter |
 | `repo-env.mjs` | 读取仓库根 `.env` 到 `process.env` |
