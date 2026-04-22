@@ -1,10 +1,10 @@
 ---
-title: 'GPT-Image-1 ｜ Image Edit'
-sidebarTitle: 'Image Edit'
-api: 'POST https://gptproto.com/api/v3/openai/gpt-image-1/image-edit'
-description: 'Standard gpt image 1 edit. Reliable AI photo manipulation for creative retouching and visual adjustments.'
+title: 'GPT-Image-2-Plus ｜ Text To Image'
+sidebarTitle: 'Text To Image'
+api: 'POST https://gptproto.com/api/v3/openai/gpt-image-2-plus/text-to-image'
+description: 'Beautiful gpt image 1 text to image. Generate high-quality AI visuals and illustrations with ease and speed.'
 keywords:
-  - 'gpt-image-1/image-edit'
+  - 'gpt-image-2-plus/image-edit'
   - 'multimodal AI'
   - 'generative image editing'
   - 'vision API'
@@ -26,13 +26,10 @@ import Authentication from '/snippets/common/authentication.mdx';
 ## Initiate Request
 <CodeGroup>
 ```bash cURL
-curl --location 'https://gptproto.com/api/v3/openai/gpt-image-1/image-edit' \
+curl --location 'https://gptproto.com/api/v3/openai/gpt-image-2-plus/text-to-image' \
 --header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
 --data '{
-  "images": [
-    "https://tos.gptproto.com/resource/cat.png"
-  ],
   "prompt": "Girl holding cat",
   "quality": "medium",
   "size": "1024x1024",
@@ -45,9 +42,6 @@ curl --location 'https://gptproto.com/api/v3/openai/gpt-image-1/image-edit' \
 ```javascript JavaScript
 const axios = require('axios');
 let data = JSON.stringify({
-  "images": [
-    "https://tos.gptproto.com/resource/cat.png"
-  ],
   "prompt": "Girl holding cat",
   "quality": "medium",
   "size": "1024x1024",
@@ -59,7 +53,7 @@ let data = JSON.stringify({
 let config = {
   method: 'post',
   maxBodyLength: Infinity,
-  url: 'https://gptproto.com/api/v3/openai/gpt-image-1/image-edit',
+  url: 'https://gptproto.com/api/v3/openai/gpt-image-2-plus/text-to-image',
   headers: { 
     'Authorization': 'GPTPROTO_API_KEY', 
     'Content-Type': 'application/json'
@@ -81,12 +75,9 @@ axios.request(config)
 import requests
 import json
 
-url = "https://gptproto.com/api/v3/openai/gpt-image-1/image-edit"
+url = "https://gptproto.com/api/v3/openai/gpt-image-2-plus/text-to-image"
 
 payload = json.dumps({
-  "images": [
-    "https://tos.gptproto.com/resource/cat.png"
-  ],
   "prompt": "Girl holding cat",
   "quality": "medium",
   "size": "1024x1024",
@@ -117,13 +108,10 @@ import (
 
 func main() {
 
-  url := "https://gptproto.com/api/v3/openai/gpt-image-1/image-edit"
+  url := "https://gptproto.com/api/v3/openai/gpt-image-2-plus/text-to-image"
   method := "POST"
 
   payload := strings.NewReader(`{
-  "images": [
-    "https://tos.gptproto.com/resource/cat.png"
-  ],
   "prompt": "Girl holding cat",
   "quality": "medium",
   "size": "1024x1024",

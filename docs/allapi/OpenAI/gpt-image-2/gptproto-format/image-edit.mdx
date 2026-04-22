@@ -1,10 +1,10 @@
 ---
-title: 'GPT-Image-1 ｜ Image Edit'
+title: 'GPT-Image-2 ｜ Image Edit'
 sidebarTitle: 'Image Edit'
-api: 'POST https://gptproto.com/api/v3/openai/gpt-image-1/image-edit'
+api: 'POST https://gptproto.com/api/v3/openai/gpt-image-2/image-edit'
 description: 'Standard gpt image 1 edit. Reliable AI photo manipulation for creative retouching and visual adjustments.'
 keywords:
-  - 'gpt-image-1/image-edit'
+  - 'gpt-image-2/image-edit'
   - 'multimodal AI'
   - 'generative image editing'
   - 'vision API'
@@ -26,7 +26,7 @@ import Authentication from '/snippets/common/authentication.mdx';
 ## Initiate Request
 <CodeGroup>
 ```bash cURL
-curl --location 'https://gptproto.com/api/v3/openai/gpt-image-1/image-edit' \
+curl --location 'https://gptproto.com/api/v3/openai/gpt-image-2/image-edit' \
 --header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -59,7 +59,7 @@ let data = JSON.stringify({
 let config = {
   method: 'post',
   maxBodyLength: Infinity,
-  url: 'https://gptproto.com/api/v3/openai/gpt-image-1/image-edit',
+  url: 'https://gptproto.com/api/v3/openai/gpt-image-2/image-edit',
   headers: { 
     'Authorization': 'GPTPROTO_API_KEY', 
     'Content-Type': 'application/json'
@@ -81,7 +81,7 @@ axios.request(config)
 import requests
 import json
 
-url = "https://gptproto.com/api/v3/openai/gpt-image-1/image-edit"
+url = "https://gptproto.com/api/v3/openai/gpt-image-2/image-edit"
 
 payload = json.dumps({
   "images": [
@@ -117,7 +117,7 @@ import (
 
 func main() {
 
-  url := "https://gptproto.com/api/v3/openai/gpt-image-1/image-edit"
+  url := "https://gptproto.com/api/v3/openai/gpt-image-2/image-edit"
   method := "POST"
 
   payload := strings.NewReader(`{

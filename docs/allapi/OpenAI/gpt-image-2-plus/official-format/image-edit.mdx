@@ -1,0 +1,185 @@
+---
+title: 'GPT-Image-2-Plus ｜ Image Edit'
+sidebarTitle: 'Image Edit'
+api: 'POST https://gptproto.com/v1/images/edits'
+description: 'Clean gpt image 1 image edit. Fast and effective AI-powered photo editing for everyday creative needs.'
+keywords:
+  - 'gpt-image-2-plus/image-edit'
+  - 'multimodal AI'
+  - 'generative image editing'
+  - 'vision API'
+  - 'AI design tools'
+mode: 'wide'
+---
+
+
+
+
+
+
+
+import Authentication from '/snippets/common/authentication.mdx';
+
+<Authentication/>
+
+
+## Initiate Request
+<CodeGroup>
+```bash cURL
+curl --location 'https://gptproto.com/v1/images/edits' \
+--header 'Authorization: GPTPROTO_API_KEY' \
+--form 'model="gpt-image-2-plus"' \
+--form 'image[]=@"/path/to/file"' \
+--form 'prompt="Put a hat on the cat"'
+
+```
+```javascript JavaScript
+const axios = require('axios');
+const FormData = require('form-data');
+const fs = require('fs');
+let data = new FormData();
+data.append('model', 'gpt-image-2-plus');
+data.append('image[]', fs.createReadStream('/path/to/file'));
+data.append('prompt', 'Put a hat on the cat');
+
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'https://gptproto.com/v1/images/edits',
+  headers: { 
+    'Authorization': 'GPTPROTO_API_KEY', 
+    ...data.getHeaders()
+  },
+  data : data
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+
+
+```
+```python Python
+import http.client
+import mimetypes
+from codecs import encode
+
+conn = http.client.HTTPSConnection("gptproto.com")
+dataList = []
+boundary = 'wL36Yn8afVp8Ag7AmP8qZ0SA4n1v9T'
+dataList.append(encode('--' + boundary))
+dataList.append(encode('Content-Disposition: form-data; name=model;'))
+
+dataList.append(encode('Content-Type: {}'.format('text/plain')))
+dataList.append(encode(''))
+
+dataList.append(encode("gpt-image-2-plus"))
+dataList.append(encode('--' + boundary))
+dataList.append(encode('Content-Disposition: form-data; name=image[]; filename={0}'.format('file')))
+
+fileType = mimetypes.guess_type('/path/to/file')[0] or 'application/octet-stream'
+dataList.append(encode('Content-Type: {}'.format(fileType)))
+dataList.append(encode(''))
+
+with open('/path/to/file', 'rb') as f:
+  dataList.append(f.read())
+dataList.append(encode('--' + boundary))
+dataList.append(encode('Content-Disposition: form-data; name=prompt;'))
+
+dataList.append(encode('Content-Type: {}'.format('text/plain')))
+dataList.append(encode(''))
+
+dataList.append(encode("Put a hat on the cat"))
+dataList.append(encode('--'+boundary+'--'))
+dataList.append(encode(''))
+body = b'\r\n'.join(dataList)
+payload = body
+headers = {
+  'Authorization': 'GPTPROTO_API_KEY',
+  'Content-type': 'multipart/form-data; boundary={}'.format(boundary)
+}
+conn.request("POST", "/v1/images/edits", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+
+```
+```go Go
+package main
+
+import (
+  "fmt"
+  "bytes"
+  "mime/multipart"
+  "os"
+  "path/filepath"
+  "net/http"
+  "io"
+)
+
+func main() {
+
+  url := "https://gptproto.com/v1/images/edits"
+  method := "POST"
+
+  payload := &bytes.Buffer{}
+  writer := multipart.NewWriter(payload)
+  _ = writer.WriteField("model", "gpt-image-2-plus")
+  file, errFile2 := os.Open("/path/to/file")
+  defer file.Close()
+  part2,
+         errFile2 := writer.CreateFormFile("image[]",filepath.Base("/path/to/file"))
+  _, errFile2 = io.Copy(part2, file)
+  if errFile2 != nil {
+    fmt.Println(errFile2)
+    return
+  }
+  _ = writer.WriteField("prompt", "Put a hat on the cat")
+  err := writer.Close()
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Authorization", "GPTPROTO_API_KEY")
+
+  req.Header.Set("Content-Type", writer.FormDataContentType())
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := io.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+
+```
+</CodeGroup>
+
+import Parameters from '/snippets/OpenAI/official-format/gpt-image-plus.mdx';
+
+<Parameters/>
+
+
+import ErrorCode from '/snippets/common/errors_code.mdx';
+
+<ErrorCode/>

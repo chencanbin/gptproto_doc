@@ -1,0 +1,29 @@
+<Accordion title="Response Example">
+```json
+{
+    "data": [
+        {
+            "b64_json": "data:image/png;base64,<BASE64_DATA>"}
+    ],
+    "created": 1776841668
+}
+```
+</Accordion>
+## Parameters
+<Tabs>
+  <Tab title="Text to Image" icon="image">
+    | Parameter | Type | Required | Default | Range | Description |
+    |-----|-----|-----|-----|--------|--------------------|
+    | `model` | string | ✅ Yes | - | `gpt-image-1.5-plus`<br />`gpt-image-2-plus` | The model to use for image generation. |
+    | `prompt` | string | ✅ Yes | - | - | A text description of the desired image(s). The maximum length is 32000 characters. |
+    | `size` | string | ❌ No | `auto` | `auto`<br />`1536x1024`<br />`1024x1536`<br />`1672x941`<br />`941x1672` | The size of the generated images.|
+  </Tab>
+  <Tab title="Image Edit" icon="pencil">
+    | Parameter | Type | Required | Default | Range | Description |
+    |-----|-----|-----|-----|--------|--------------------|
+    | `model` | string | ✅ Yes | - | `gpt-image-1.5-plus`<br />`gpt-image-2-plus` | The model to use for image editing. |
+    | `prompt` | string | ✅ Yes | - | 1–32000 chars | A text description of the desired image edit. |
+    | `images` | file | ✅ Yes | - | max 16 images<br />< 50MB each | The input image(s) to edit. Each image should be a png, webp, or jpg file. You can provide up to 16 images. |
+    | `size` | string | ❌ No | `auto` | `auto`<br />`1536x1024`<br />`1024x1536`<br />`1672x941`<br />`941x1672` | The size of the generated images.|
+  </Tab>
+</Tabs>

@@ -24,7 +24,7 @@ curl --location 'https://gptproto.com/api/v3/openai/gpt-image-1-vip/image-edit' 
 --header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
 --data '{
-  "image": [
+  "images": [
     "https://tos.gptproto.com/resource/cat.png"
   ],
   "prompt": "Girl holding cat",
@@ -39,7 +39,7 @@ curl --location 'https://gptproto.com/api/v3/openai/gpt-image-1-vip/image-edit' 
 ```javascript JavaScript
 const axios = require('axios');
 let data = JSON.stringify({
-  "image": [
+  "images": [
     "https://tos.gptproto.com/resource/cat.png"
   ],
   "prompt": "Girl holding cat",
@@ -78,7 +78,7 @@ import json
 url = "https://gptproto.com/api/v3/openai/gpt-image-1-vip/image-edit"
 
 payload = json.dumps({
-  "image": [
+  "images": [
     "https://tos.gptproto.com/resource/cat.png"
   ],
   "prompt": "Girl holding cat",
@@ -115,7 +115,7 @@ func main() {
   method := "POST"
 
   payload := strings.NewReader(`{
-  "image": [
+  "images": [
     "https://tos.gptproto.com/resource/cat.png"
   ],
   "prompt": "Girl holding cat",

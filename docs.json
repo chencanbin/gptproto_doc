@@ -659,6 +659,44 @@
                       }
                     ]
                   },
+                                    {
+                    "group": "gpt-image-2",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/OpenAI/gpt-image-2/gptproto-format/image-edit",
+                          "docs/allapi/OpenAI/gpt-image-2/gptproto-format/text-to-image"
+                        ]
+                      },
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/OpenAI/gpt-image-2/official-format/image-edit",
+                          "docs/allapi/OpenAI/gpt-image-2/official-format/text-to-image"
+                        ]
+                      }
+                    ]
+                  },
+                                    {
+                    "group": "gpt-image-2-plus",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/OpenAI/gpt-image-2-plus/gptproto-format/image-edit",
+                          "docs/allapi/OpenAI/gpt-image-2-plus/gptproto-format/text-to-image"
+                        ]
+                      },
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/OpenAI/gpt-image-2-plus/official-format/image-edit", 
+                          "docs/allapi/OpenAI/gpt-image-2-plus/official-format/text-to-image"
+                        ]
+                      }
+                    ]
+                  },
                   {
                     "group": "o3",
                     "pages": [

@@ -1,41 +1,67 @@
-## Parameters
-### Core Parameters
-| Parameter | Type | Required | Default | Range | Description |
-|-----|-----|-----|-----|--------|--------------------|
-| `model` | string | ✅ Yes | `gpt-image-1` | - | The model to use for image editing. Defaults to gpt-image-1. |
-| `prompt` | string | ✅ Yes | - | - | A text description of the desired image(s). The maximum length is 32000 characters for gpt-image-1. |
-| `image` | string or file | ❌ No | - | - | For gpt-image-1, each image should be a png, webp, or jpg file less than 50MB. You can provide up to 16 images. |
-
-### Advanced Parameters
-| Parameter | Type | Required | Default | Range | Description |
-|-----|-----|-----|-----|--------|--------------------|
-| `mask` | file | ❌ No | - | - | An additional image whose fully transparent areas (e.g. where alpha is zero) indicate where image should be edited. Must be a valid PNG file, less than 4MB, and have the same dimensions as image. |
-| `n` | integer | ❌ No | `1` | `1-10` | The number of images to generate. Must be between 1 and 10. |
-| `size` | string | ❌ No | `auto` | `256x256`<br />`512x512`<br />`1024x1024`<br />`1536x1024`<br />`1024x1536` | The size of the generated images. Must be one of 256x256, 512x512, or 1024x1024 for dall-e-2, and one of 1024x1024, 1792x1024, or 1024x1792 for dall-e-3. |
-| `quality` | string | ❌ No | `auto` | `high`<br />`medium`<br />`low` | The quality of the generated images. Must be one of low, high or medium. Defaults to auto. |
-| `background` | string | ❌ No | `auto` | `transparent`<br />`opaque`<br />`auto` | Allows to set transparency for the background of the generated image(s). Must be one of transparent, opaque or auto (default value). When auto is used, the model will automatically determine the best background for the image. |
-
-## Response Example
+<Accordion title="Response Example">
 ```json
 {
-  "created": 1768372402,
+  "created": 1776843003,
   "background": "opaque",
   "data": [
     {
-      "b64_json": "B64_DATA"
+      "b64_json": "<BASE64_DATA>"
     }
   ],
   "output_format": "png",
-  "quality": "high",
+  "quality": "low",
   "size": "1024x1024",
   "usage": {
-    "input_tokens": 222,
+    "input_tokens": 8,
     "input_tokens_details": {
-      "image_tokens": 194,
-      "text_tokens": 28
+      "image_tokens": 0,
+      "text_tokens": 8
     },
-    "output_tokens": 4160,
-    "total_tokens": 4382
+    "output_tokens": 196,
+    "output_tokens_details": {
+      "image_tokens": 196,
+      "text_tokens": 0
+    },
+    "total_tokens": 204
   }
 }
 ```
+</Accordion>
+## Parameters
+<Tabs>
+  <Tab title="Text to Image" icon="image">
+    | Parameter | Type | Required | Default | Range | Description |
+    |-----|-----|-----|-----|--------|--------------------|
+    | `model` | string | ✅ Yes | `gpt-image-1` | `gpt-image-1`<br />`gpt-image-1-mini`<br />`gpt-image-1.5`<br />`gpt-image-2` | The model to use for image generation. Defaults to gpt-image-1. |
+    | `prompt` | string | ✅ Yes | - | - | A text description of the desired image(s). The maximum length is 32000 characters. |
+    | `n` | integer | ❌ No | `1` | `1-10` | The number of images to generate. Must be between 1 and 10. |
+    | `size` | string | ❌ No | `auto` | `auto`<br />`1024x1024`<br />`1536x1024`<br />`1024x1536`<br />`2048x2048`<br />`2048x1152`<br />`3840x2160`<br />`2160x3840`<br />_or any valid custom size_ | The size of the generated images. For gpt-image-1: one of auto, 1024x1024, 1536x1024, or 1024x1536. For gpt-image-2: supports arbitrary resolutions (max edge ≤ 3840px, both sides must be multiples of 16px, aspect ratio ≤ 3:1, total pixels between 655,360 and 8,294,400). Outputs exceeding 2560×1440 are considered experimental. |
+    | `quality` | string | ❌ No | `auto` | `auto`<br />`high`<br />`medium`<br />`low` | The quality of the generated images. One of auto, low, medium, or high. Defaults to auto. Not supported by `-plus` suffixed models. |
+    | `background` | string | ❌ No | `auto` | `opaque`<br />`auto`<br />`transparent` | Allows to set transparency for the background of the generated image(s). `transparent` is only supported by gpt-image-1 (not gpt-image-2) and requires output_format to be png or webp. When auto is used, the model will automatically determine the best background. |
+    | `moderation` | string | ❌ No | `auto` | `low`<br />`auto` | Content moderation level for generated images. `low` is less restrictive, `auto` is the default. |
+    | `output_format` | string | ❌ No | `auto` | `auto`<br />`png`<br />`jpeg`<br />`webp` | The output format of the generated image(s). Defaults to auto. jpeg is faster than png for latency-sensitive scenarios. |
+    | `output_compression` | integer | ❌ No | `100` | `0-100` | The compression level (0-100%) for the output image. Only applicable with webp or jpeg format. Defaults to 100. |
+    | `stream` | boolean | ❌ No | `false` | `true`<br />`false` | Whether to stream the response in real-time. When enabled, partial images can be received during generation. |
+    | `partial_images` | integer | ❌ No | - | `0-3` | The number of partial images to receive during streaming. Only used when stream is true. Each partial image incurs an additional 100 image output tokens. |
+    | `user` | string | ❌ No | - | - | A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. |
+  </Tab>
+  <Tab title="Image Edit" icon="pencil">
+    | Parameter | Type | Required | Default | Range | Description |
+    |-----|-----|-----|-----|--------|--------------------|
+    | `model` | string | ✅ Yes | `gpt-image-1` | `gpt-image-1`<br />`gpt-image-1-mini`<br />`gpt-image-1.5`<br />`gpt-image-2` | The model to use for image editing. Defaults to gpt-image-1. |
+    | `prompt` | string | ✅ Yes | - | 1–32000 chars | A text description of the desired image edit. |
+    | `images` | file | ✅ Yes | - | max 16 images<br />< 50MB each | The input image(s) to edit. Each image should be a png, webp, or jpg file. You can provide up to 16 images. |
+    | `mask` | file | ❌ No | - | - | An additional image whose fully transparent areas indicate where the image should be edited. |
+    | `input_fidelity` | string | ❌ No | - | `high`<br />`low` | Controls how faithfully the model preserves the original input image. Only supported by gpt-image-1. gpt-image-2 always uses high fidelity. |
+    | `n` | integer | ❌ No | `1` | `1-10` | The number of images to generate. Must be between 1 and 10. |
+    | `size` | string | ❌ No | `auto` | `auto`<br />`1024x1024`<br />`1536x1024`<br />`1024x1536`<br />`2048x2048`<br />`2048x1152`<br />`3840x2160`<br />`2160x3840`<br />_or any valid custom size_ | The size of the generated images. For gpt-image-1: one of auto, 1024x1024, 1536x1024, or 1024x1536. For gpt-image-2: supports arbitrary resolutions (max edge ≤ 3840px, both sides must be multiples of 16px, aspect ratio ≤ 3:1, total pixels between 655,360 and 8,294,400). |
+    | `quality` | string | ❌ No | `auto` | `auto`<br />`high`<br />`medium`<br />`low` | The quality of the generated images. One of auto, low, medium, or high. Defaults to auto. Not supported by `-plus` suffixed models. |
+    | `background` | string | ❌ No | `auto` | `opaque`<br />`auto`<br />`transparent` | Allows to set transparency for the background of the generated image(s). `transparent` is only supported by gpt-image-1 (not gpt-image-2) and requires output_format to be png or webp. |
+    | `moderation` | string | ❌ No | `auto` | `low`<br />`auto` | Content moderation level for generated images. `low` is less restrictive, `auto` is the default. |
+    | `output_format` | string | ❌ No | `auto` | `auto`<br />`png`<br />`jpeg`<br />`webp` | The output format of the generated image(s). Defaults to auto. jpeg is faster than png for latency-sensitive scenarios. |
+    | `output_compression` | integer | ❌ No | `100` | `0-100` | The compression level (0-100%) for the output image. Only applicable with webp or jpeg format. Defaults to 100. |
+    | `stream` | boolean | ❌ No | `false` | `true`<br />`false` | Whether to stream the response in real-time. When enabled, partial images can be received during generation. |
+    | `partial_images` | integer | ❌ No | - | `0-3` | The number of partial images to receive during streaming. Only used when stream is true. Set to 0 for a single streaming event with the complete image. Each partial image incurs an additional 100 image output tokens. |
+    | `user` | string | ❌ No | - | - | A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. |
+  </Tab>
+</Tabs>
