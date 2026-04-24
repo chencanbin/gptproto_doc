@@ -13,8 +13,8 @@ const DOC_SUFFIX_LABEL = {
   '-request': 'Request',
 }
 
-/** 全角竖线，用于 Mintlify 页面 title（TDK）分段 */
-export const MODEL_PAGE_TITLE_SEP = ' ｜ '
+/** Title 分段连接符（短横线 + 空格，控制长度） */
+export const MODEL_PAGE_TITLE_SEP = ' - '
 
 /** @param {string} fileBase 不含扩展名，如 image-to-text-response */
 export function fileBaseToApiScene(fileBase) {
@@ -62,6 +62,23 @@ export function kebabSceneToTitleWords(apiScene) {
     .join(' ')
 }
 
+/**
+ * 路径中的格式目录 → 标题末尾短后缀。
+ * **仅**官方线不拼：`official-format`、目录名 `official`、或去后缀后为 `official` 的 `*-format`（不写 `- official`）。
+ * 其余 `openai-format`、`gptproto-format`、`official-format-copy` 等仍保留可区分的一段后缀。
+ */
+export function formatFolderToShortSuffix(format) {
+  if (!format || typeof format !== 'string') return ''
+  const k = format.trim().toLowerCase()
+  if (k === 'official') return ''
+  if (k.endsWith('-format')) {
+    const base = k.slice(0, -'-format'.length)
+    if (base === 'official') return ''
+    return base
+  }
+  return k
+}
+
 function formatModelSegment(seg) {
   const lower = seg.toLowerCase()
   if (lower === 'gpt') return 'GPT'
@@ -78,16 +95,37 @@ export function formatModelSlugForTitle(model) {
 }
 
 /**
- * Mintlify frontmatter `title`（TDK），格式：
- * `GPT-4.1 ｜ Image To Text ｜ Response`
- * 无 -response/-chat/-request 时省略变体段。
+ * Mintlify frontmatter `title`（页面短标题；**不含站点名**）。
+ * 浏览器完整标题由 Mintlify 用 `docs.json` 的 `name` 自动拼接（当前 `name` 为 `API`）。
+ * 例：`Gemini-3-Pro-Preview-11-2025 - File Analysis - openai`；`official-format` 无格式后缀（不拼 `- official`）。
+ * 有变体：`GPT-4.1 - Image To Text - Response - gptproto`。无 -response/-chat/-request 时省略变体段。
  */
-export function buildMintlifyModelPageTitle({ model, fileBase, apiScene }) {
+export function buildMintlifyModelPageTitle({ model, format, fileBase, apiScene }) {
   const modelPart = formatModelSlugForTitle(model)
   const scenePart = kebabSceneToTitleWords(apiScene)
   const variantLabels = extractDocVariantLabels(fileBase, apiScene)
+  const formatSuffix = format ? formatFolderToShortSuffix(format) : ''
   const parts = [modelPart, scenePart, ...variantLabels]
+  if (formatSuffix) parts.push(formatSuffix)
   return parts.join(MODEL_PAGE_TITLE_SEP)
+}
+
+/**
+ * docs/api 等页的默认 Meta Description（与 title 区分格式，避免多套路径 description 雷同）。
+ */
+export function buildDefaultModelPageDescription({
+  model,
+  format,
+  fileBase,
+  apiScene,
+}) {
+  const modelPart = formatModelSlugForTitle(model)
+  const formatShort = format ? formatFolderToShortSuffix(format) : ''
+  const scenePart = kebabSceneToTitleWords(apiScene)
+  const variantLabels = extractDocVariantLabels(fileBase, apiScene)
+  const v = variantLabels.length ? ` (${variantLabels.join(' ')})` : ''
+  const fmt = formatShort ? ` (${formatShort})` : ''
+  return `${modelPart} — ${scenePart}${v}${fmt}. GPTProto API reference.`
 }
 
 /**
@@ -107,9 +145,8 @@ export function buildParenStyleSheetTitle({ model, fileBase, apiScene }) {
  * @param {string} absOrRel 绝对路径或相对 docs/allapi 的路径
  * @returns {{ vendor: string, model: string, format: string, fileBase: string, apiScene: string, mateKey: string } | null}
  */
-export function parseAllapiMdxPath(absOrRel) {
+function parseUnderDocsMarker(absOrRel, marker) {
   const normalized = absOrRel.replace(/\\/g, '/')
-  const marker = 'docs/allapi/'
   const idx = normalized.indexOf(marker)
   const rel = idx >= 0 ? normalized.slice(idx + marker.length) : normalized
   const parts = rel.split('/').filter(Boolean)
@@ -123,4 +160,22 @@ export function parseAllapiMdxPath(absOrRel) {
   const apiScene = fileBaseToApiScene(fileBase)
   const mateKey = `${vendor}/${model}/${format}/${apiScene}`
   return { vendor, model, format, fileBase, apiScene, mateKey }
+}
+
+export function parseAllapiMdxPath(absOrRel) {
+  return parseUnderDocsMarker(absOrRel, 'docs/allapi/')
+}
+
+/** 与 parseAllapiMdxPath 结构一致，根目录为 docs/api/ */
+export function parseApiMdxPath(absOrRel) {
+  return parseUnderDocsMarker(absOrRel, 'docs/api/')
+}
+
+/** @returns {({ docRoot: 'allapi'|'api', vendor: string, model: string, format: string, fileBase: string, apiScene: string, mateKey: string }) | null} */
+export function parseModelDocsMdxPath(absOrRel) {
+  const a = parseAllapiMdxPath(absOrRel)
+  if (a) return { ...a, docRoot: 'allapi' }
+  const p = parseApiMdxPath(absOrRel)
+  if (p) return { ...p, docRoot: 'api' }
+  return null
 }

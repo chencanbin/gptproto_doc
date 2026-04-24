@@ -21,8 +21,9 @@
  *   node scripts/sync-mate-from-api.mjs --limit=10
  *   GPTPROTO_API_BASE=... node scripts/sync-mate-from-api.mjs
  *
- * 默认**只写 TDK**（title / description / keywords）。title 格式：
- *   GPT-4.1 ｜ Image To Text ｜ Response ｜ GPTProto API
+ * 默认**只写 TDK**（title / description / keywords）。title：仅路径段 + 可选 openai/gptproto（**不含站点名**；站点名见 docs.json `name`，由 Mintlify 拼接）：
+ *   GPT-4.1 - Image To Text - Response - openai
+ *   GPT-4.1 - Image To Text（official-format）
  * 同步时会顺带**去掉** MDX 里历史遗留的 CMS 同步块（__sync_mate_* / ModelPageDescription 等）。
  * 仅按路径重写 **title**：**--tdk-titles-from-path**（无需 GPTPROTO_API_BASE）
  */
@@ -33,11 +34,13 @@ import { fileURLToPath } from 'url'
 import {
   buildMintlifyModelPageTitle,
   parseAllapiMdxPath,
+  parseModelDocsMdxPath,
 } from './lib/allapi-mate-key.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const REPO = path.resolve(__dirname, '..')
 const ALLAPI = path.join(REPO, 'docs/allapi')
+const API_DOCS = path.join(REPO, 'docs/api')
 
 const MATE_MARK_START = '{/* __sync_mate_start__ */}'
 const MATE_MARK_END = '{/* __sync_mate_end__ */}'
@@ -216,7 +219,13 @@ function upsertFrontmatter(fmText, { title, description, keywords }) {
   }
 
   if (description !== undefined) {
-    out = out.replace(/^description:\s.*$/m, `description: ${yamlSq(description)}`)
+    if (/^description:\s/m.test(out)) {
+      out = out.replace(/^description:\s.*$/m, `description: ${yamlSq(description)}`)
+    } else if (/^title:\s/m.test(out)) {
+      out = out.replace(/(^title:[^\n]+\n)/, `$1description: ${yamlSq(description)}\n`)
+    } else {
+      out = `description: ${yamlSq(description)}\n${out}`
+    }
   }
 
   if (keywords && keywords.length) {
@@ -278,8 +287,11 @@ async function main() {
 
   if (tdkTitlesFromPath) {
     let n = 0
-    for (const abs of files) {
-      const parsed = parseAllapiMdxPath(abs)
+    const tdkFiles = [...listMdx(ALLAPI), ...listMdx(API_DOCS)].sort((a, b) =>
+      a.localeCompare(b)
+    )
+    for (const abs of tdkFiles) {
+      const parsed = parseModelDocsMdxPath(abs)
       if (!parsed) continue
       if (limit && n >= limit) break
       const raw = fs.readFileSync(abs, 'utf8')
@@ -293,8 +305,8 @@ async function main() {
     }
     console.log(
       limit
-        ? `--tdk-titles-from-path: updated title in ${n} MDX files (--limit=${limit}).`
-        : `--tdk-titles-from-path: updated title in ${n} MDX files.`
+        ? `--tdk-titles-from-path: updated title only in ${n} MDX files (--limit=${limit}).`
+        : `--tdk-titles-from-path: updated title only in ${n} MDX files.`
     )
     return
   }

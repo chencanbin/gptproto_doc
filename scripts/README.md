@@ -32,15 +32,19 @@ npm run tdk:from-feishu -- --csv path/to.csv
 
 不使用 npm 时，等价于对应用 `node scripts/....mjs ...`（与 `package.json` 的 `scripts` 字段一致）。
 
+### 只改 Title 规则、飞书与本地 Description 都不要动
+
+1. **若本地 MDX 的 description 曾被误改**：先用飞书恢复仓库——`npm run tdk:from-feishu`（仅 CSV **非空** 列会覆盖 MDX；飞书里完整的 description 会写回）。
+2. **只按新规则重写 frontmatter 的 `title`**（不写 description）：`npm run tdk:export:titles`（仅扫描 **docs/allapi**）；若也要改 **docs/api** 的标题：`npm run sync:mate -- --tdk-titles-from-path`（同样**只动 title**）。
+3. **把新 Title 同步到飞书**：先 `npm run tdk:export` 生成带新 title、且 description 来自当前 MDX（应与飞书一致）的 CSV，再 `npm run feishu:push`。**不要**用本地「空 description」的 CSV 去无 merge 推飞书，否则会覆盖掉飞书描述。若暂不能先 `from-feishu` 对齐本地，可用 `npm run feishu:push:merge` 尽量保留飞书已有非空格（注意：`--merge` 对**所有**列都是「飞书非空则保留」，可能也会挡掉你想更新的 title，见 `feishu-model-tdk.mjs` 注释）。
+
 ## 路径与标题（`lib/allapi-mate-key.mjs`）
 
 - **model**：`docs/allapi/厂商/模型名/...` 中的模型目录名，如 `gpt-4.1`
 - **scene**：`.mdx` 文件名去掉扩展名后，再去掉 `-response`、`-chat`、`-request`
 - **mateKey**：`厂商/model/格式/scene`，用于 CSV 与飞书行唯一对应
 
-**标题格式（统一标准）**：Mintlify frontmatter `title`，与 `sync-mate-from-api`、`model-tdk-export` 一致：
-
-`GPT-4.1 ｜ Image To Text ｜ Response ｜ GPTProto API`
+**标题格式（统一标准）**：frontmatter `title` 与 `buildMintlifyModelPageTitle` 一致：`模型 - 场景 - [变体] - [格式后缀]`；**仅** `official-format`（及去 `-format` 后为 `official`）**不写**格式后缀（不拼 `- official`）；`openai-format`→`openai`、`gptproto-format`→`gptproto`，其余 `*-format` 去掉 `-format` 后作为后缀（如 `official-format-copy`）。**不写站点名**，站点名见 **`docs.json` 的 `name`**。统计长度：`npm run tdk:report:title-lengths`。
 
 旧括号样式 `gpt-4.1 (Image To Text (Response))` 已弃用；库中仍保留 `buildParenStyleSheetTitle` 仅供对照。
 
@@ -86,7 +90,7 @@ GPTPROTO_API_BASE=https://你的网关 node scripts/sync-mate-from-api.mjs
 node scripts/sync-mate-from-api.mjs --dry-run
 node scripts/sync-mate-from-api.mjs --limit=10
 node scripts/sync-mate-from-api.mjs --mdx-only
-node scripts/sync-mate-from-api.mjs --tdk-titles-from-path
+node scripts/sync-mate-from-api.mjs --tdk-titles-from-path   # 仅写 frontmatter `title`（allapi + api），不改 description
 ```
 
 ### `model-tdk-export.mjs` — allapi → CSV

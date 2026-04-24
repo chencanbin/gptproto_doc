@@ -15,6 +15,7 @@
     "tdk:from-feishu": "node scripts/tdk-sync.mjs from-feishu",
     "tdk:oneclick": "node scripts/tdk-feishu-oneclick.mjs",
     "tdk:oneclick:no-titles": "node scripts/tdk-feishu-oneclick.mjs --skip-write-titles",
+    "tdk:report:title-lengths": "node scripts/tdk-report-title-lengths.mjs",
     "sync:mate": "node scripts/sync-mate-from-api.mjs",
     "feishu:pull": "node scripts/feishu-model-tdk.mjs pull --out scripts/data/feishu-tdk-pull.csv",
     "feishu:push": "node scripts/feishu-model-tdk.mjs push scripts/data/model-tdk-export.csv",

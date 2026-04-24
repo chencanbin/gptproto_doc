@@ -2,7 +2,7 @@
 /**
  * 导出 docs/allapi 下各页的 TDK 模板 CSV（Mintlify 竖线 title，供飞书/人工填 Description、Keywords）
  *
- * 标题格式示例：GPT-4.1 ｜ Image To Text ｜ Response ｜ GPTProto API
+ * 标题格式示例：… - openai（无站点后缀；站点名由 docs.json name + Mintlify 拼接）；official-format 无 openai/gptproto 段
  *
  * 用法：
  *   node scripts/model-tdk-export.mjs
