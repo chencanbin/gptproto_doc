@@ -9,7 +9,7 @@ import QueryResult from '/snippets/common/query-result.mdx';
     | Parameter | Type | Required | Default | Range | Description |
     |-----|-----|-----|-----|--------|--------------------|
     | `prompt` | string | ✅ Yes | - | 1–32000 chars | A text description of the desired image(s). The maximum length is 32000 characters. |
-    | `size` | string | ❌ No | `1254x1254` | `1254x1254`<br />`1536x1024`<br />`1024x1536`<br />`2048x2048`<br />`2048x1152`<br />`3840x2160`<br />`2160x3840`<br />_or any valid custom size_ | The size of the generated images. For gpt-image-1: one of 1024x1024, 1536x1024, or 1024x1536. For gpt-image-2: supports arbitrary resolutions (max edge ≤ 3840px, both sides must be multiples of 16px, aspect ratio ≤ 3:1, total pixels between 655,360 and 8,294,400). |
+    | `size` | string | ❌ No | `1254x1254` | `1254x1254`<br />`1536x1024`<br />`1024x1536`<br />`1672x941`<br />`941x1672` | The size of the generated images.|
     | `enable_sync_mode` | boolean | ❌ No | `false` | `true`<br />`false` | Whether to enable synchronous mode for image generation. When enabled, the API will wait until the image is fully generated before returning the response. |
     | `response_format` | string | ❌ No | `url` | `url`<br />`b64_json` | The format in which the generated images are returned. `url` returns a temporary URL, `b64_json` returns base64-encoded JSON. |
   </Tab>
@@ -20,7 +20,7 @@ import QueryResult from '/snippets/common/query-result.mdx';
     | `prompt` | string | ✅ Yes | - | 1–32000 chars | A text description of the desired image edit. The maximum length is 32000 characters. |
     | `base64_images` | array of string | ⚠️ Conditional | - | - | A list of base64-encoded input images. Each entry should be a data URI (e.g. `data:image/png;base64,...`). At least one of `base64_images` or `images` is required. |
     | `images` | array of string | ⚠️ Conditional | - | - | A list of image URLs to use as input for editing. At least one of `base64_images` or `images` is required. Both can be provided simultaneously. |
-    | `size` | string | ❌ No | `1254x1254` | `1254x1254`<br />`1536x1024`<br />`1024x1536`<br />`2048x2048`<br />`2048x1152`<br />`3840x2160`<br />`2160x3840`<br />_or any valid custom size_ | The size of the generated images. For gpt-image-1: one of 1024x1024, 1536x1024, or 1024x1536. For gpt-image-2: supports arbitrary resolutions (max edge ≤ 3840px, both sides must be multiples of 16px, aspect ratio ≤ 3:1, total pixels between 655,360 and 8,294,400). |
+    | `size` | string | ❌ No | `1254x1254` | `1254x1254`<br />`1536x1024`<br />`1024x1536`<br />`1672x941`<br />`941x1672` | The size of the generated images.|
     | `enable_sync_mode` | boolean | ❌ No | `false` | `true`<br />`false` | Whether to enable synchronous mode for image generation. When enabled, the API will wait until the image is fully generated before returning the response. |
     | `response_format` | string | ❌ No | `url` | `url`<br />`b64_json` | The format in which the generated images are returned. `url` returns a temporary URL, `b64_json` returns base64-encoded JSON. |
   </Tab>
