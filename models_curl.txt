@@ -5528,7 +5528,7 @@
   },
   {
     "vendor": "Vidu",
-    "icon": "https://oss.gptproto.com/gptproto/ai-draw/java/test//2026/02/02/b7af8dc9d6694882982376598c2abfe0.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
+    "icon": "https://oss.gptproto.com/gptproto/production/2026/02/02/b7af8dc9d6694882982376598c2abfe0.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
     "model": "viduq2",
     "scene": "text-to-image",
     "url": "https://docs.gptproto.com/docs/allapi/Vidu/viduq2/gptproto-format/text-to-image",
@@ -5550,7 +5550,7 @@
   },
   {
     "vendor": "Vidu",
-    "icon": "https://oss.gptproto.com/gptproto/ai-draw/java/test//2026/02/02/b7af8dc9d6694882982376598c2abfe0.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
+    "icon": "https://oss.gptproto.com/gptproto/production/2026/02/02/b7af8dc9d6694882982376598c2abfe0.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
     "model": "viduq2",
     "scene": "image-to-image",
     "url": "https://docs.gptproto.com/docs/allapi/Vidu/viduq2/gptproto-format/image-to-image",
@@ -5572,7 +5572,7 @@
   },
   {
     "vendor": "Vidu",
-    "icon": "https://oss.gptproto.com/gptproto/ai-draw/java/test//2026/02/02/b7af8dc9d6694882982376598c2abfe0.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
+    "icon": "https://oss.gptproto.com/gptproto/production/2026/02/02/b7af8dc9d6694882982376598c2abfe0.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
     "model": "viduq2",
     "scene": "text-to-video",
     "url": "https://docs.gptproto.com/docs/allapi/Vidu/viduq2/gptproto-format/text-to-video",
@@ -5594,7 +5594,7 @@
   },
   {
     "vendor": "Vidu",
-    "icon": "https://oss.gptproto.com/gptproto/ai-draw/java/test//2026/02/02/b7af8dc9d6694882982376598c2abfe0.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
+    "icon": "https://oss.gptproto.com/gptproto/production/2026/02/02/b7af8dc9d6694882982376598c2abfe0.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
     "model": "viduq2-pro-fast",
     "scene": "image-to-video",
     "url": "https://docs.gptproto.com/docs/allapi/Vidu/viduq2-pro-fast/gptproto-format/image-to-video",
@@ -5616,7 +5616,7 @@
   },
   {
     "vendor": "Vidu",
-    "icon": "https://oss.gptproto.com/gptproto/ai-draw/java/test//2026/02/02/b7af8dc9d6694882982376598c2abfe0.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
+    "icon": "https://oss.gptproto.com/gptproto/production/2026/02/02/b7af8dc9d6694882982376598c2abfe0.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
     "model": "viduq2-pro-fast",
     "scene": "start-end-frame",
     "url": "https://docs.gptproto.com/docs/allapi/Vidu/viduq2-pro-fast/gptproto-format/start-end-frame",
@@ -5624,7 +5624,7 @@
   },
   {
     "vendor": "Vidu",
-    "icon": "https://oss.gptproto.com/gptproto/ai-draw/java/test//2026/02/02/b7af8dc9d6694882982376598c2abfe0.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
+    "icon": "https://oss.gptproto.com/gptproto/production/2026/02/02/b7af8dc9d6694882982376598c2abfe0.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
     "model": "viduq2-turbo",
     "scene": "image-to-video",
     "url": "https://docs.gptproto.com/docs/allapi/Vidu/viduq2-turbo/gptproto-format/image-to-video",
@@ -5646,7 +5646,7 @@
   },
   {
     "vendor": "Vidu",
-    "icon": "https://oss.gptproto.com/gptproto/ai-draw/java/test//2026/02/02/b7af8dc9d6694882982376598c2abfe0.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
+    "icon": "https://oss.gptproto.com/gptproto/production/2026/02/02/b7af8dc9d6694882982376598c2abfe0.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
     "model": "viduq2-turbo",
     "scene": "start-end-frame",
     "url": "https://docs.gptproto.com/docs/allapi/Vidu/viduq2-turbo/gptproto-format/start-end-frame",
@@ -5654,7 +5654,7 @@
   },
   {
     "vendor": "Vidu",
-    "icon": "https://oss.gptproto.com/gptproto/ai-draw/java/test//2026/02/02/b7af8dc9d6694882982376598c2abfe0.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
+    "icon": "https://oss.gptproto.com/gptproto/production/2026/02/02/b7af8dc9d6694882982376598c2abfe0.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
     "model": "viduq2-pro",
     "scene": "image-to-video",
     "url": "https://docs.gptproto.com/docs/allapi/Vidu/viduq2-pro/gptproto-format/image-to-video",
@@ -5676,7 +5676,7 @@
   },
   {
     "vendor": "Vidu",
-    "icon": "https://oss.gptproto.com/gptproto/ai-draw/java/test//2026/02/02/b7af8dc9d6694882982376598c2abfe0.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
+    "icon": "https://oss.gptproto.com/gptproto/production/2026/02/02/b7af8dc9d6694882982376598c2abfe0.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
     "model": "viduq2-pro",
     "scene": "start-end-frame",
     "url": "https://docs.gptproto.com/docs/allapi/Vidu/viduq2-pro/gptproto-format/start-end-frame",
@@ -5684,7 +5684,7 @@
   },
   {
     "vendor": "Vidu",
-    "icon": "https://oss.gptproto.com/gptproto/ai-draw/java/test//2026/02/02/b7af8dc9d6694882982376598c2abfe0.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
+    "icon": "https://oss.gptproto.com/gptproto/production/2026/02/02/b7af8dc9d6694882982376598c2abfe0.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
     "model": "viduq3-pro",
     "scene": "text-to-video",
     "url": "https://docs.gptproto.com/docs/allapi/Vidu/viduq3-pro/gptproto-format/text-to-video",
@@ -5706,7 +5706,7 @@
   },
   {
     "vendor": "Vidu",
-    "icon": "https://oss.gptproto.com/gptproto/ai-draw/java/test//2026/02/02/b7af8dc9d6694882982376598c2abfe0.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
+    "icon": "https://oss.gptproto.com/gptproto/production/2026/02/02/b7af8dc9d6694882982376598c2abfe0.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
     "model": "viduq3-pro",
     "scene": "image-to-video",
     "url": "https://docs.gptproto.com/docs/allapi/Vidu/viduq3-pro/gptproto-format/image-to-video",
@@ -5728,7 +5728,7 @@
   },
   {
     "vendor": "Vidu",
-    "icon": "https://oss.gptproto.com/gptproto/ai-draw/java/test//2026/02/02/b7af8dc9d6694882982376598c2abfe0.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
+    "icon": "https://oss.gptproto.com/gptproto/production/2026/02/02/b7af8dc9d6694882982376598c2abfe0.png?x-oss-process=image/format,webp/quality,q_100/resize,w_160,h_160,m_fill",
     "model": "viduq2",
     "scene": "reference-to-video",
     "url": "https://docs.gptproto.com/docs/allapi/Vidu/viduq2/gptproto-format/reference-to-video",
