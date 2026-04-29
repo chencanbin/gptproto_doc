@@ -3,7 +3,7 @@ title: "Codex"
 description: "Installation, configuration and usage guide - Support for direct API connection in China"
 ---
 
-# OpenAI Codex CLI Complete Tutorial
+## OpenAI Codex CLI Complete Tutorial
 
 Installation, Configuration and Usage Guide - Support for Direct API Connection in China
 
@@ -13,13 +13,13 @@ Installation, Configuration and Usage Guide - Support for Direct API Connection 
   This article provides detailed instructions on how to install and configure [OpenAI Codex CLI](https://github.com/openai/openai-codex), combined with [GPT Proto Aggregation API](https://gptproto.com), which can be used directly in China without configuring a proxy. Supports Windows/Linux/Mac multi-platform, and can be configured with third-party IDEs such as VS Code.
 </Note>
 
-## 1. Codex CLI Introduction and System Requirements
+### 1. Codex CLI Introduction and System Requirements
 
-### What is OpenAI Codex?
+#### What is OpenAI Codex?
 
 [OpenAI Codex](https://openai.com/index/openai-codex/) is an open-source command-line tool (CLI) that serves as a lightweight coding agent, capable of reading, modifying, and running code in the terminal. Codex is based on GPT models and is specifically optimized for code generation and understanding.
 
-### System Requirements
+#### System Requirements
 
 | Item                         | Requirement                                                                                                         |
 | ---------------------------- | ------------------------------------------------------------------------------------------------------------------- |
@@ -30,9 +30,9 @@ Installation, Configuration and Usage Guide - Support for Direct API Connection 
 
 ---
 
-## 2. Codex CLI Installation Tutorial
+### 2. Codex CLI Installation Tutorial
 
-### Installation Steps (Using Ubuntu as Example)
+#### Installation Steps (Using Ubuntu as Example)
 
 **Step 1: Update System Packages**
 
@@ -79,7 +79,7 @@ codex --version  # Should display version number, e.g., 0.40.0
   **🎉 Congratulations! Codex CLI installation is complete!**
 </Note>
 
-### macOS Installation Method
+#### macOS Installation Method
 
 macOS users are recommended to use [Homebrew](https://brew.sh/) for installation:
 
@@ -101,7 +101,7 @@ brew install node
 npm install -g @openai/codex@latest
 ```
 
-### Windows (WSL) Installation Method
+#### Windows (WSL) Installation Method
 
 Windows users need to install WSL first, then follow the Ubuntu installation steps.
 
@@ -121,9 +121,9 @@ After restarting, follow the Ubuntu installation steps above to complete Codex C
 
 ---
 
-## 3. Codex CLI Configuration Tutorial
+### 3. Codex CLI Configuration Tutorial
 
-### Configure API Key
+#### Configure API Key
 
 **1. Get API Key**
 
@@ -171,7 +171,7 @@ source ~/.bashrc
 source ~/.zshrc
 ```
 
-### Configure config.toml
+#### Configure config.toml
 
 Default configuration file path: `~/.codex/config.toml`
 
@@ -210,9 +210,9 @@ show_token_count = true
 
 ---
 
-## 4. IDE Integration Configuration
+### 4. IDE Integration Configuration
 
-### VS Code Integration
+#### VS Code Integration
 
 For third-party IDEs (such as [VS Code](https://code.visualstudio.com/)), you need to install the corresponding Codex plugin.
 
@@ -223,7 +223,7 @@ For third-party IDEs (such as [VS Code](https://code.visualstudio.com/)), you ne
 3. Configure Codex CLI path in settings
 4. Configure API Key (using the environment variable above)
 
-### Other IDE Support
+#### Other IDE Support
 
 | IDE              | Support Status    | Description                 |
 | ---------------- | ----------------- | --------------------------- |
@@ -233,9 +233,9 @@ For third-party IDEs (such as [VS Code](https://code.visualstudio.com/)), you ne
 
 ---
 
-## 5. Getting Started with Codex CLI
+### 5. Getting Started with Codex CLI
 
-### Initialize Project
+#### Initialize Project
 
 ```bash
 # Navigate to project directory
@@ -245,7 +245,7 @@ cd /path/to/your/project
 codex
 ```
 
-### Common Command Examples
+#### Common Command Examples
 
 **1. Basic Prompt**
 
@@ -277,7 +277,7 @@ codex
 > Optimize performance
 ```
 
-### Common Interactive Commands
+#### Common Interactive Commands
 
 | Command             | Function Description       |
 | ------------------- | -------------------------- |
@@ -288,7 +288,7 @@ codex
 | `/model <name>`     | Switch model               |
 | `/tokens`           | View token usage           |
 
-### Usage Scenario Examples
+#### Usage Scenario Examples
 
 **Scenario 1: Code Generation**
 
@@ -322,9 +322,9 @@ codex "Generate API documentation for the entire project"
 
 ---
 
-## 6. Troubleshooting and Common Issues
+### 6. Troubleshooting and Common Issues
 
-### Common Issue Solutions
+#### Common Issue Solutions
 
 **1. Permission Issues**
 
@@ -392,7 +392,7 @@ codex "Generate API documentation for the entire project"
   ```
 </Warning>
 
-### Verify Configuration
+#### Verify Configuration
 
 ```bash
 # Check environment variable
@@ -411,7 +411,7 @@ codex --version
 cat ~/.codex/config.toml
 ```
 
-### Debug Mode
+#### Debug Mode
 
 Enable verbose log output to help diagnose issues:
 
@@ -426,9 +426,9 @@ tail -f ~/.codex/logs/codex.log
 
 ---
 
-## 7. Advanced Usage Tips
+### 7. Advanced Usage Tips
 
-### 1. Custom Prompt Templates
+#### 1. Custom Prompt Templates
 
 Create commonly used prompt templates to improve efficiency:
 
@@ -444,7 +444,7 @@ Please review the following code, focusing on:
 codex --template review.txt file.py
 ```
 
-### 2. Batch Processing
+#### 2. Batch Processing
 
 ```bash
 # Batch process multiple files
@@ -453,7 +453,7 @@ for file in src/*.py; do
 done
 ```
 
-### 3. Git Integration
+#### 3. Git Integration
 
 ```bash
 # Review uncommitted changes
@@ -463,7 +463,7 @@ git diff | codex "Review these code changes"
 git diff --cached | codex "Generate a clear commit message"
 ```
 
-### 4. Configure Aliases
+#### 4. Configure Aliases
 
 Add aliases in `~/.bashrc` or `~/.zshrc`:
 
@@ -476,7 +476,7 @@ alias cdx-doc="codex --mode documentation"
 
 ---
 
-## 8. Best Practice Recommendations
+### 8. Best Practice Recommendations
 
 | Recommendation         | Description                                                                                            |
 | ---------------------- | ------------------------------------------------------------------------------------------------------ |
@@ -490,16 +490,16 @@ alias cdx-doc="codex --mode documentation"
 
 ---
 
-## 9. Resource Links
+### 9. Resource Links
 
-### Official Resources
+#### Official Resources
 
 - [OpenAI Official Website](https://openai.com/)
 - [Codex CLI GitHub Repository](https://github.com/openai/openai-codex)
 - [OpenAI API Documentation](https://platform.openai.com/docs)
 - [OpenAI Community Forum](https://community.openai.com/)
 
-### Third-Party Resources
+#### Third-Party Resources
 
 - [GPT Proto - Direct Connection API Service in China](https://gptproto.com)
 - [Node.js Official Website](https://nodejs.org/)
@@ -508,7 +508,7 @@ alias cdx-doc="codex --mode documentation"
 
 ---
 
-## Summary
+### Summary
 
 <Note>
   **Through this guide, you have successfully:**
@@ -524,7 +524,7 @@ alias cdx-doc="codex --mode documentation"
   **🚀 You can now start enjoying the efficient coding experience brought by Codex CLI!**
 </Note>
 
-### Need Help?
+#### Need Help?
 
 If you encounter problems during use:
 
