@@ -1,0 +1,125 @@
+import QueryResult from '/snippets/common/query-result.mdx';
+
+<QueryResult/>
+
+## Parameters
+> **Note:** Different models may support different parameter options. For more details, please refer to the [Model Field Compatibility](#model-field-compatibility) table.
+
+<Tabs>
+  <Tab title="Text to Video" icon="video">
+    ### Core Parameters
+    | Parameter | Type | Required | Default | Range | Description |
+    |-----|------|---------|---------|--------|-------------|
+    | `prompt` | string | ✅ Yes | - | - | The positive prompt for the generation. |
+    | `aspect_ratio` | string | ❌ No | `16:9` | `21:9`<br />`16:9`<br />`4:3`<br />`1:1`<br />`3:4`<br />`9:16` | The aspect ratio of the generated media. |
+    | `duration` | string | ❌ No | `5` | `4 ~ 15` | The duration of the generated media in seconds. |
+    | `resolution` | string | ❌ No | `720p` | `720p`<br />`480p`<br />`1080p` | Video resolution. |
+    | `generate_audio` | boolean | ❌ No | `true` | `false`, `true` | Whether to generate audio. |
+    | `camera_fixed` | boolean | ❌ No | `false` | `false`, `true` | Whether to fix the camera position. |
+    | `seed` | integer | ❌ No | `-1` | `-1 ~ 2147483647` | The random seed to use for the generation. `-1` means a random seed will be used. |
+  </Tab>
+  <Tab title="Image to Video" icon="image">
+    ### Video Generation Scenarios
+
+    <CodeGroup>
+    ```json First Frame
+      {
+          "prompt": "A girl holding a fox opens her eyes and looks gently at the camera. The fox is held affectionately. The camera slowly pulls back as the girl's hair is blown by the wind. Wind sounds can be heard",
+          "image": "https://example.com/ref_image_1.png"
+      }
+    ```
+
+    ```json First & Last Frame
+      {
+          "prompt": "The girl in the picture says 'cheese' to the camera with 360-degree surrounding camera movement",
+          "image": "https://example.com/ref_image_1.png",
+          "last_image": "https://example.com/ref_image_2.png"
+      }
+    ```
+    </CodeGroup>
+    ### Core Parameters
+    | Parameter | Type | Required | Default | Range | Description |
+    |-----|------|---------|---------|--------|-------------|
+    | `prompt` | string | ✅ Yes | - | - | The positive prompt for the generation. |
+    | `image` | string | ✅ Yes | - | - | The input image URL for video generation. |
+    | `last_image` | string | ❌ No | - | - | The ending frame image URL (optional, for controlling video ending). |
+    | `aspect_ratio` | string | ❌ No | `16:9` | `21:9`<br />`16:9`<br />`4:3`<br />`1:1`<br />`3:4`<br />`9:16` | The aspect ratio of the generated media. |
+    | `duration` | string | ❌ No | `5` | `4 ~ 15` | The duration of the generated media in seconds. |
+    | `resolution` | string | ❌ No | `720p` | `720p`<br />`480p`<br />`1080p` | Video resolution. |
+    | `generate_audio` | boolean | ❌ No | `true` | `false`, `true` | Whether to generate audio. |
+    | `camera_fixed` | boolean | ❌ No | `false` | `false`, `true` | Whether to fix the camera position. |
+    | `seed` | integer | ❌ No | `-1` | `-1 ~ 2147483647` | The random seed to use for the generation. `-1` means a random seed will be used. |
+    | `is_upload_media` | boolean | ❌ No | `false` | `false`, `true` | Whether the input image is uploaded media (base64/Data URI). |
+  </Tab>
+  <Tab title="Reference to Video" icon="layers">
+    ### Video Generation Scenarios
+
+    <CodeGroup>
+    ```json Image-only
+    {
+        "prompt": "A cat walking on the beach at sunset, cinematic lighting",
+        "images": [
+            "https://example.com/ref_image_1.png",
+            "https://example.com/ref_image_2.png"
+        ]
+    }
+    ```
+
+    ```json Image + Video
+    {
+        "prompt": "A dog running through a park, following the style and motion of the reference video",
+        "videos": [
+            "https://example.com/ref_video.mp4"
+        ],
+        "images": [
+            "https://example.com/ref_image_1.png"
+        ],
+        "audios": [
+            "https://example.com/ref_audio.mp3"
+        ]
+    }
+    ```
+    </CodeGroup>
+    ### Core Parameters
+    | Parameter | Type | Required | Default | Range | Description |
+    |-----|------|---------|---------|--------|-------------|
+    | `prompt` | string | ✅ Yes | - | - | The positive prompt for the generation. |
+    | `videos` | array of string | ❌ No | - | - | Array of URLs to reference videos. At least one of `videos` or `images` is required. |
+    | `images` | array of string | ❌ No | - | Max 10 items | Including reference images of the element, scene, style, etc. Maximum 10 images. At least one of `videos` or `images` is required. |
+    | `audios` | array of string | ❌ No | - | - | Reference audio URLs for audio style transfer. |
+    | `aspect_ratio` | string | ❌ No | `16:9` | `21:9`<br />`16:9`<br />`4:3`<br />`1:1`<br />`3:4`<br />`9:16` | The aspect ratio of the generated media. |
+    | `duration` | string | ❌ No | `5` | `4 ~ 15` | The duration of the generated media in seconds. |
+    | `resolution` | string | ❌ No | `720p` | `720p`<br />`480p`<br />`1080p` | Video resolution. |
+    | `generate_audio` | boolean | ❌ No | `true` | `false`, `true` | Whether to generate audio. |
+    | `camera_fixed` | boolean | ❌ No | `false` | `false`, `true` | Whether to fix the camera position. |
+    | `seed` | integer | ❌ No | `-1` | `-1 ~ 2147483647` | The random seed to use for the generation. `-1` means a random seed will be used. |
+    | `is_upload_media` | boolean | ❌ No | `false` | `false`, `true` | Whether the input media is uploaded (base64/Data URI). |
+  </Tab>
+</Tabs>
+
+### Aspect Ratio & Resolution
+
+> **Note:** 1080p is not supported in reference image scene for Seedance 1.0 lite. 1080p is not supported for Seedance 2.0 fast.
+
+| Resolution | Aspect Ratio | Width x Height <br />Seedance 1.0 | Width x Height <br />Seedance 1.5 pro<br />Seedance 2.0 & 2.0 fast |
+|------------|--------------|-------------------------------|-----------------------------------|
+| 480p       | 16:9         | 864×480                       | 864×496                           |
+| 480p       | 4:3          | 736×544                       | 752×560                           |
+| 480p       | 1:1          | 640×640                       | 640×640                           |
+| 480p       | 3:4          | 544×736                       | 560×752                           |
+| 480p       | 9:16         | 480×864                       | 496×864                           |
+| 480p       | 21:9         | 960×416                       | 992×432                           |
+| 720p       | 16:9         | 1248×704                      | 1280×720                          |
+| 720p       | 4:3          | 1120×832                      | 1112×834                          |
+| 720p       | 1:1          | 960×960                       | 960×960                           |
+| 720p       | 3:4          | 832×1120                      | 834×1112                          |
+| 720p       | 9:16         | 704×1248                      | 720×1280                          |
+| 720p       | 21:9         | 1504×640                      | 1470×630                          |
+| 1080p      | 16:9         | 1920×1088                     | 1920×1088                         |
+| 1080p      | 4:3          | 1664×1248                     | 1664×1248                         |
+| 1080p      | 1:1          | 1440×1440                     | 1440×1440                         |
+| 1080p      | 3:4          | 1248×1664                     | 1248×1664                         |
+| 1080p      | 9:16         | 1088×1920                     | 1088×1920                         |
+| 1080p      | 21:9         | 2176×928                      | 2176×928                          |
+
+

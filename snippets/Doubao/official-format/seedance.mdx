@@ -1,0 +1,243 @@
+## Query Result
+
+<CodeGroup>
+
+```bash cURL
+curl -X GET "https://gptproto.com/api/v3/contents/generations/tasks/{id}" \
+  -H "Authorization: GPTPROTO_API_KEY" \
+  -H "Content-Type: application/json"
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/api/v3/contents/generations/tasks/{id}"
+headers = {
+    "Authorization: GPTPROTO_API_KEY",
+    "Content-Type": "application/json"
+}
+
+response = requests.get(url, headers=headers)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/api/v3/contents/generations/tasks/{id}";
+const headers = {
+  "Authorization: GPTPROTO_API_KEY",
+  "Content-Type": "application/json"
+};
+
+fetch(url, {
+  method: "GET",
+  headers: headers
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/api/v3/contents/generations/tasks/{id}"
+
+    req, _ := http.NewRequest("GET", url, nil)
+    req.Header.Set("Authorization", "GPTPROTO_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+</CodeGroup>
+
+### Response
+```json
+{
+    "id": "cgt-20251225195352-123",
+    "model": "doubao-seedance-1-5-pro-251215",
+    "status": "succeeded",
+    "content": {
+        "video_url": "https://example.com/video.mp4"
+    },
+    "usage": {
+        "completion_tokens": 260100,
+        "total_tokens": 260100
+    },
+    "seed": "16108",
+    "resolution": "720p",
+    "duration": 12,
+    "ratio": "16:9",
+    "created_at": "1766663633",
+    "updated_at": "1766663715",
+    "framespersecond": 24
+}
+```
+## Parameters
+### Core Parameters
+| Parameter | Type | Required | Default | Range | Description |
+|-----|-----|-----|-----|--------|--------------------|
+| `model` | string | ✅ Yes | - | - | The ID of the model you want to call. You need to enable model service and query the Model ID. You can also call the model through Endpoint ID to get advanced capabilities such as rate limiting, billing type (prepaid/postpaid), running status query, monitoring, and security. |
+| `content` | array | ✅ Yes | - | - | Information input to the model for video generation, supporting text and image information. |
+| >`content.type` | string | ✅ Yes | - | `text`<br />`image_url` | Type of input content. Use `text` for text input, `image_url` for image input (supports image URL or Base64 encoding). |
+| >`content.text` | string | ✅ Yes (if type is text) | - | - | Text content input to the model, describing the expected video to be generated. |
+| >`content.image_url` | object | ✅ Yes (if type is image_url) | - | - | Image object input to the model. |
+| >>`content.image_url.url` | string | ✅ Yes (if image_url is used) | - | - | Image information, which can be an image URL or Base64 encoded image. |
+| >`content.role` | string | ❌ No | - | `first_frame`<br />`last_frame`<br />`reference_image` | Position or purpose of the image. Different roles correspond to different video generation scenarios. See [Video Generation Scenarios](#video-generation-scenarios) for details. |
+| `generate_audio` | boolean | ❌ No | true | - | Whether to include synchronized sound with the video. Only supported by Seedance 1.5 pro. |
+
+### Advanced Parameters
+> **Note:** Different models may support different parameter options. For more details, please refer to the [Model Field Compatibility](#model-field-compatibility) table.
+
+| Parameter | Type | Required | Default | Range | Description |
+|-----------|------|----------|---------|-------|-------------|
+| `resolution` | string | ❌ No | 720p/1080p | `480p`<br />`720p`<br />`1080p` | Video resolution. Default values vary by model. |
+| `ratio` | string | ❌ No | 16:9/adaptive | `16:9`<br />`4:3`<br />`1:1`<br />`3:4`<br />`9:16`<br />`21:9`<br />`adaptive` | Aspect ratio of the generated video. |
+| `duration` | integer | ❌ No | 5 | [2, 12] | Duration of the generated video in seconds. |
+| `frames` | integer | ❌ No | - | [29, 289] (25+4n) | Number of frames of the generated video. |
+| `framespersecond` | integer | ❌ No | 24 | 24 | Frame rate of the video in frames per second. |
+| `seed` | integer | ❌ No | -1 | [-1, 2^32-1] | Seed integer for controlling randomness. |
+| `camerafixed` | boolean | ❌ No | false | - | Whether to fix the camera. |
+| `watermark` | boolean | ❌ No | false | - | Whether to include watermark in the generated video. |
+
+#### Video Generation Scenarios
+First frame video generation, first and last frame video generation, and reference image video generation are three mutually exclusive scenarios and cannot be mixed.
+<CodeGroup>
+```json Text-to-Video
+{
+    "content": [
+        {
+            "type": "text",
+            "text": "Multiple shots. A detective enters a dimly lit room. He examines the clues on the table and picks up an item. The camera shifts to him deep in thought. --ratio 16:9"
+        }
+    ]
+}
+```
+
+```json First Frame
+{
+    "content": [
+        {
+            "type": "text",
+            "text": "A girl holding a fox opens her eyes and looks gently at the camera. The fox is held affectionately. The camera slowly pulls back as the girl's hair is blown by the wind. Wind sounds can be heard. --ratio adaptive --dur 5"
+        },
+        {
+            "type": "image_url",
+            "image_url": {
+                "url": "https://ark-project.tos-cn-beijing.volces.com/doc_image/i2v_foxrgirl.png"
+            }
+        }
+    ],
+}
+```
+
+```json First & Last Frame
+{
+    "model": "doubao-seedance-1-5-pro-251215",
+    "content": [
+         {
+            "type": "text",
+            "text": "The girl in the picture says 'cheese' to the camera with 360-degree surrounding camera movement"
+        },
+        {
+            "type": "image_url",
+            "image_url": {
+                "url": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seepro_first_frame.jpeg"
+            },
+            "role": "first_frame"
+        },
+        {
+            "type": "image_url",
+            "image_url": {
+                "url": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seepro_last_frame.jpeg"
+            },
+            "role": "last_frame"
+        }
+    ],
+    "generate_audio": true
+}
+```
+
+```json Reference Images
+{
+    "content": [
+         {
+            "type": "text",
+            "text": "[Image 1] A boy wearing glasses and a blue T-shirt with [Image 2] a corgi puppy, sitting on [Image 3] a lawn, in 3D cartoon style"
+        },
+        {
+            "type": "image_url",
+            "image_url": {
+                "url": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seelite_ref_1.png"
+            },
+            "role": "reference_image"
+        },
+        {
+            "type": "image_url",
+            "image_url": {
+                "url": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seelite_ref_2.png"
+            },
+            "role": "reference_image"
+        },
+        {
+            "type": "image_url",
+            "image_url": {
+                "url": "https://ark-project.tos-cn-beijing.volces.com/doc_image/seelite_ref_3.png"
+            },
+            "role": "reference_image"
+        }
+    ]
+}
+```
+</CodeGroup>
+
+
+### Aspect Ratio & Resolution
+
+> **Note:** 1080p is not supported in reference image scene for Seedance 1.0 lite. 1080p is not supported for Seedance 2.0 fast.
+
+| Resolution | Aspect Ratio | Width x Height <br />Seedance 1.0 | Width x Height <br />Seedance 1.5 pro<br />Seedance 2.0 & 2.0 fast |
+|------------|--------------|-------------------------------|-----------------------------------|
+| 480p       | 16:9         | 864×480                       | 864×496                           |
+| 480p       | 4:3          | 736×544                       | 752×560                           |
+| 480p       | 1:1          | 640×640                       | 640×640                           |
+| 480p       | 3:4          | 544×736                       | 560×752                           |
+| 480p       | 9:16         | 480×864                       | 496×864                           |
+| 480p       | 21:9         | 960×416                       | 992×432                           |
+| 720p       | 16:9         | 1248×704                      | 1280×720                          |
+| 720p       | 4:3          | 1120×832                      | 1112×834                          |
+| 720p       | 1:1          | 960×960                       | 960×960                           |
+| 720p       | 3:4          | 832×1120                      | 834×1112                          |
+| 720p       | 9:16         | 704×1248                      | 720×1280                          |
+| 720p       | 21:9         | 1504×640                      | 1470×630                          |
+| 1080p      | 16:9         | 1920×1088                     | 1920×1088                         |
+| 1080p      | 4:3          | 1664×1248                     | 1664×1248                         |
+| 1080p      | 1:1          | 1440×1440                     | 1440×1440                         |
+| 1080p      | 3:4          | 1248×1664                     | 1248×1664                         |
+| 1080p      | 9:16         | 1088×1920                     | 1088×1920                         |
+| 1080p      | 21:9         | 2176×928                      | 2176×928                          |
+
+
+
+
+
+
+
