@@ -780,6 +780,7 @@
                       },
                       {
                         "group": "reverse-format",
+                        "hidden": true,
                         "pages": [
                           "docs/allapi/OpenAI/sora-2/reverse-format/image-to-video",
                           "docs/allapi/OpenAI/sora-2/reverse-format/text-to-video"
@@ -806,6 +807,7 @@
                       },
                       {
                         "group": "reverse-format",
+                        "hidden": true,
                         "pages": [
                           "docs/allapi/OpenAI/sora-2-pro/reverse-format/image-to-video",
                           "docs/allapi/OpenAI/sora-2-pro/reverse-format/text-to-video"
@@ -2539,6 +2541,7 @@
               },
               {
                 "group": "Midjourney",
+                "hidden": true,
                 "pages": [
                   {
                     "group": "Midjourney",
@@ -2744,6 +2747,7 @@
               },
               {
                 "group": "Suno",
+                "hidden": true,
                 "pages": [
                   {
                     "group": "suno-lyrics(unmaintained)",
@@ -3006,6 +3010,7 @@
               },
               {
                 "group": "NovelAI",
+                "hidden": true,
                 "pages": [
                   {
                     "group": "nai-diffusion-4-5-curated",
