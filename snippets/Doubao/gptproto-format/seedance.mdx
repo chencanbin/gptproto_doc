@@ -1,6 +1,102 @@
-import QueryResult from '/snippets/common/query-result.mdx';
+## Query Result
+<CodeGroup>
 
-<QueryResult/>
+```bash cURL
+curl -X GET "https://gptproto.com/api/v3/predictions/{id}/result" \
+  -H "Authorization: GPTPROTO_API_KEY" \
+  -H "Content-Type: application/json"
+```
+
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/api/v3/predictions/{id}/result"
+headers = {
+    "Authorization: GPTPROTO_API_KEY",
+    "Content-Type": "application/json"
+}
+
+response = requests.get(url, headers=headers)
+result = response.json()
+print(json.dumps(result, indent=2))
+```
+
+```javascript JavaScript
+const url = "https://gptproto.com/api/v3/predictions/{id}/result";
+const headers = {
+  "Authorization: GPTPROTO_API_KEY",
+  "Content-Type": "application/json"
+};
+
+fetch(url, {
+  method: "GET",
+  headers: headers
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+```
+
+```go Go
+package main
+
+import (
+    "encoding/json"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+)
+
+func main() {
+    url := "https://gptproto.com/api/v3/predictions/{id}/result"
+
+    req, _ := http.NewRequest("GET", url, nil)
+    req.Header.Set("Authorization", "GPTPROTO_API_KEY")
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+}
+```
+</CodeGroup>
+After submitting your prediction request, the response will contain the id you need.  
+You can find it in either:
+
+- `data.id` – the unique identifier of the prediction  
+- `data.urls[0].get` – a ready-to-use GET URL that already embeds the id
+
+<Accordion title="Response Example">
+```json
+{
+    "data": {
+        "id": "abc",
+        "model": "model_name",
+        "outputs": [],
+        "urls": {
+            "get": "https://gptproto.com/api/v3/predictions/abc/result"
+        },
+        "status": "created",
+        "error": null,
+        "executionTime": 0,
+        "timings": {
+            "inference": 0
+        },
+        "has_nsfw_contents": [],
+        "created_at": "2026-01-01 00:00:00"
+    },
+    "message": "success",
+    "code": 200
+}
+```
+</Accordion>
 
 ## Parameters
 > **Note:** Different models may support different parameter options. For more details, please refer to the [Model Field Compatibility](#model-field-compatibility) table.
