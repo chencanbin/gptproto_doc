@@ -1,174 +1,150 @@
 ---
-title: 'Doubao-Seedance-1-5-Pro-251215 - Text To Video'
-sidebarTitle: 'Text to Video'
-api: "POST /api/v3/contents/generations/tasks"
-description: 'Powerful text to video using doubao seedance 1.5 pro. Create complex scenes and realistic movements from simple text descriptions.'
-keywords:
-  - 'doubao seedance 1.5 pro'
-  - 'doubao seedance 1.5 pro api'
-  - 'doubao seedance'
+title: 'doubao-seedance-1-5-pro-251215 (Text To Video)'
+sidebarTitle: 'Text To Video'
+api: 'POST https://gptproto.com/api/v3/contents/generations/tasks'
+description: ''
 mode: 'wide'
 ---
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 import Authentication from '/snippets/common/authentication.mdx';
 
 <Authentication/>
 
+
 ## Initiate Request
 <CodeGroup>
-
 ```bash cURL
-curl --location --request POST 'https://gptproto.com/api/v3/contents/generations/tasks' \
+curl --location 'https://gptproto.com/api/v3/contents/generations/tasks' \
 --header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
---data-raw '{
-    "model": "doubao-seedance-1-5-pro-251215",
-    "content": [
-        {
-            "type": "text",
-            "text": "Multiple shots. A detective enters a dimly lit room. He examines the clues on the table and picks up an item. The camera shifts to him deep in thought."
-        }
-    ],
-    "resolution": "720p",
-    "ratio": "16:9",
-    "duration": 12
+--data '{
+  "model": "doubao-seedance-1-5-pro-251215",
+  "content": [
+    {
+      "type": "text",
+      "text": "Multiple shots. A detective enters a dimly lit room, slow camera pan reveals scattered papers on a mahogany desk. Cut to close-up of a flickering candle, then wide shot of the detective picking up a blood-stained letter. Cinematic lighting, film noir style, 35mm lens."
+    }
+  ]
 }'
-```
 
+```
+```javascript JavaScript
+const axios = require('axios');
+let data = JSON.stringify({
+  "model": "doubao-seedance-1-5-pro-251215",
+  "content": [
+    {
+      "type": "text",
+      "text": "Multiple shots. A detective enters a dimly lit room, slow camera pan reveals scattered papers on a mahogany desk. Cut to close-up of a flickering candle, then wide shot of the detective picking up a blood-stained letter. Cinematic lighting, film noir style, 35mm lens."
+    }
+  ]
+});
+
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'https://gptproto.com/api/v3/contents/generations/tasks',
+  headers: { 
+    'Authorization': 'GPTPROTO_API_KEY', 
+    'Content-Type': 'application/json'
+  },
+  data : data
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+
+
+```
 ```python Python
 import requests
 import json
 
 url = "https://gptproto.com/api/v3/contents/generations/tasks"
 
+payload = json.dumps({
+  "model": "doubao-seedance-1-5-pro-251215",
+  "content": [
+    {
+      "type": "text",
+      "text": "Multiple shots. A detective enters a dimly lit room, slow camera pan reveals scattered papers on a mahogany desk. Cut to close-up of a flickering candle, then wide shot of the detective picking up a blood-stained letter. Cinematic lighting, film noir style, 35mm lens."
+    }
+  ]
+})
 headers = {
-    "Authorization": "GPTPROTO_API_KEY",
-    "Content-Type": "application/json"
+  'Authorization': 'GPTPROTO_API_KEY',
+  'Content-Type': 'application/json'
 }
 
-payload = {
-    "model": "doubao-seedance-1-5-pro-251215",
-    "content": [
-        {
-            "type": "text",
-            "text": "Multiple shots. A detective enters a dimly lit room. He examines the clues on the table and picks up an item. The camera shifts to him deep in thought."
-        }
-    ],
-    "resolution": "720p",
-    "ratio": "16:9",
-    "duration": 12
-}
+response = requests.request("POST", url, headers=headers, data=payload)
 
-response = requests.post(url, headers=headers, data=json.dumps(payload))
-print(response.json())
+print(response.text)
+
+
 ```
-
-```javascript JavaScript
-const axios = require('axios');
-
-const url = 'https://gptproto.com/api/v3/contents/generations/tasks';
-
-const headers = {
-    'Authorization': 'GPTPROTO_API_KEY',
-    'Content-Type': 'application/json'
-};
-
-const data = {
-    model: 'doubao-seedance-1-5-pro-251215',
-    content: [
-        {
-            type: 'text',
-            text: 'Multiple shots. A detective enters a dimly lit room. He examines the clues on the table and picks up an item. The camera shifts to him deep in thought.'
-        }
-    ],
-    resolution: '720p',
-    ratio: '16:9',
-    duration: 12
-};
-
-axios.post(url, data, { headers })
-    .then(response => console.log(response.data))
-    .catch(error => console.error(error));
-```
-
 ```go Go
 package main
 
 import (
-    "bytes"
-    "encoding/json"
-    "fmt"
-    "io/ioutil"
-    "net/http"
+  "fmt"
+  "strings"
+  "net/http"
+  "io"
 )
 
 func main() {
-    url := "https://gptproto.com/api/v3/contents/generations/tasks"
 
-    payload := map[string]interface{}{
-        "model": "doubao-seedance-1-5-pro-251215",
-        "content": []map[string]string{
-            {
-                "type": "text",
-                "text": "Multiple shots. A detective enters a dimly lit room. He examines the clues on the table and picks up an item. The camera shifts to him deep in thought.",
-            },
-        },
-        "resolution": "720p",
-        "ratio":      "16:9",
-        "duration":   12,
+  url := "https://gptproto.com/api/v3/contents/generations/tasks"
+  method := "POST"
+
+  payload := strings.NewReader(`{
+  "model": "doubao-seedance-1-5-pro-251215",
+  "content": [
+    {
+      "type": "text",
+      "text": "Multiple shots. A detective enters a dimly lit room, slow camera pan reveals scattered papers on a mahogany desk. Cut to close-up of a flickering candle, then wide shot of the detective picking up a blood-stained letter. Cinematic lighting, film noir style, 35mm lens."
     }
+  ]
+}`)
 
-    jsonData, _ := json.Marshal(payload)
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
 
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
-    req.Header.Set("Authorization", "GPTPROTO_API_KEY")
-    req.Header.Set("Content-Type", "application/json")
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Authorization", "GPTPROTO_API_KEY")
+  req.Header.Add("Content-Type", "application/json")
 
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    if err != nil {
-        panic(err)
-    }
-    defer resp.Body.Close()
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
 
-    body, _ := ioutil.ReadAll(resp.Body)
-    fmt.Println(string(body))
+  body, err := io.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
 }
+
 ```
 </CodeGroup>
 
-## Response Example
-```json
-{
-    "id": "cgt-20251225201056-abc"
-}
-```
-
-import QueryResult from '/snippets/parameters/official-format/Doubao/query-result.mdx';
-
-<QueryResult/>
-
-import Parameters from '/snippets/parameters/official-format/Doubao/seedance.mdx';
+import Parameters from '/snippets/Doubao/official-format/seedance.mdx';
 
 <Parameters/>
+
 
 import ErrorCode from '/snippets/common/errors_code.mdx';
 

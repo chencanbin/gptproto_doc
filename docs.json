@@ -780,7 +780,6 @@
                       },
                       {
                         "group": "reverse-format",
-                        "hidden": true,
                         "pages": [
                           "docs/allapi/OpenAI/sora-2/reverse-format/image-to-video",
                           "docs/allapi/OpenAI/sora-2/reverse-format/text-to-video"
@@ -807,7 +806,6 @@
                       },
                       {
                         "group": "reverse-format",
-                        "hidden": true,
                         "pages": [
                           "docs/allapi/OpenAI/sora-2-pro/reverse-format/image-to-video",
                           "docs/allapi/OpenAI/sora-2-pro/reverse-format/text-to-video"
@@ -1829,6 +1827,48 @@
                     ]
                   },
                   {
+                    "group": "doubao-seedance-2-0-260128",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/Doubao/doubao-seedance-2-0-260128/gptproto-format/image-to-video",
+                          "docs/allapi/Doubao/doubao-seedance-2-0-260128/gptproto-format/reference-to-video",
+                          "docs/allapi/Doubao/doubao-seedance-2-0-260128/gptproto-format/text-to-video"
+                        ]
+                      },
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/Doubao/doubao-seedance-2-0-260128/official-format/image-to-video",
+                          "docs/allapi/Doubao/doubao-seedance-2-0-260128/official-format/reference-to-video",
+                          "docs/allapi/Doubao/doubao-seedance-2-0-260128/official-format/text-to-video"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "doubao-seedance-2-0-fast-260128",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/Doubao/doubao-seedance-2-0-fast-260128/gptproto-format/image-to-video",
+                          "docs/allapi/Doubao/doubao-seedance-2-0-fast-260128/gptproto-format/reference-to-video",
+                          "docs/allapi/Doubao/doubao-seedance-2-0-fast-260128/gptproto-format/text-to-video"
+                        ]
+                      },
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/Doubao/doubao-seedance-2-0-fast-260128/official-format/image-to-video",
+                          "docs/allapi/Doubao/doubao-seedance-2-0-fast-260128/official-format/reference-to-video",
+                          "docs/allapi/Doubao/doubao-seedance-2-0-fast-260128/official-format/text-to-video"
+                        ]
+                      }
+                    ]
+                  },
+                  {
                     "group": "doubao-seedream-4-0-250828",
                     "pages": [
                       {
@@ -1881,6 +1921,48 @@
                         "pages": [
                           "docs/allapi/Doubao/doubao-seedream-5-0-260128/official-format/image-edit",
                           "docs/allapi/Doubao/doubao-seedream-5-0-260128/official-format/text-to-image"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "dreamina-seedance-2-0-260128",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/Doubao/dreamina-seedance-2-0-260128/gptproto-format/image-to-video",
+                          "docs/allapi/Doubao/dreamina-seedance-2-0-260128/gptproto-format/reference-to-video",
+                          "docs/allapi/Doubao/dreamina-seedance-2-0-260128/gptproto-format/text-to-video"
+                        ]
+                      },
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/Doubao/dreamina-seedance-2-0-260128/official-format/image-to-video",
+                          "docs/allapi/Doubao/dreamina-seedance-2-0-260128/official-format/reference-to-video",
+                          "docs/allapi/Doubao/dreamina-seedance-2-0-260128/official-format/text-to-video"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "dreamina-seedance-2-0-fast-260128",
+                    "pages": [
+                      {
+                        "group": "gptproto-format",
+                        "pages": [
+                          "docs/allapi/Doubao/dreamina-seedance-2-0-fast-260128/gptproto-format/image-to-video",
+                          "docs/allapi/Doubao/dreamina-seedance-2-0-fast-260128/gptproto-format/reference-to-video",
+                          "docs/allapi/Doubao/dreamina-seedance-2-0-fast-260128/gptproto-format/text-to-video"
+                        ]
+                      },
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/Doubao/dreamina-seedance-2-0-fast-260128/official-format/image-to-video",
+                          "docs/allapi/Doubao/dreamina-seedance-2-0-fast-260128/official-format/reference-to-video",
+                          "docs/allapi/Doubao/dreamina-seedance-2-0-fast-260128/official-format/text-to-video"
                         ]
                       }
                     ]

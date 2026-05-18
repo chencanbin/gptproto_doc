@@ -1,6 +1,6 @@
 ---
-title: 'seedance-1-5-pro-251215 (Text To Video)'
-sidebarTitle: 'Text To Video'
+title: 'dreamina-seedance-2-0-fast-260128 (Reference To Video)'
+sidebarTitle: 'Reference To Video'
 api: 'POST https://gptproto.com/api/v3/contents/generations/tasks'
 description: ''
 mode: 'wide'
@@ -18,26 +18,40 @@ curl --location 'https://gptproto.com/api/v3/contents/generations/tasks' \
 --header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
 --data '{
-  "model": "seedance-1-5-pro-251215",
+  "model": "dreamina-seedance-2-0-fast-260128",
   "content": [
     {
       "type": "text",
-      "text": "Multiple shots. A detective enters a dimly lit room, slow camera pan reveals scattered papers on a mahogany desk. Cut to close-up of a flickering candle, then wide shot of the detective picking up a blood-stained letter. Cinematic lighting, film noir style, 35mm lens."
+      "text": "A girl holding a fox, gentle breeze blowing through her hair, golden sunset light, cinematic, shallow depth of field"
+    },
+    {
+      "type": "image_url",
+      "image_url": {
+        "url": "https://tos.gptproto.com/resource/cat.png"
+      }
     }
-  ]
+  ],
+  "generate_audio": true
 }'
 
 ```
 ```javascript JavaScript
 const axios = require('axios');
 let data = JSON.stringify({
-  "model": "seedance-1-5-pro-251215",
+  "model": "dreamina-seedance-2-0-fast-260128",
   "content": [
     {
       "type": "text",
-      "text": "Multiple shots. A detective enters a dimly lit room, slow camera pan reveals scattered papers on a mahogany desk. Cut to close-up of a flickering candle, then wide shot of the detective picking up a blood-stained letter. Cinematic lighting, film noir style, 35mm lens."
+      "text": "A girl holding a fox, gentle breeze blowing through her hair, golden sunset light, cinematic, shallow depth of field"
+    },
+    {
+      "type": "image_url",
+      "image_url": {
+        "url": "https://tos.gptproto.com/resource/cat.png"
+      }
     }
-  ]
+  ],
+  "generate_audio": true
 });
 
 let config = {
@@ -68,13 +82,20 @@ import json
 url = "https://gptproto.com/api/v3/contents/generations/tasks"
 
 payload = json.dumps({
-  "model": "seedance-1-5-pro-251215",
+  "model": "dreamina-seedance-2-0-fast-260128",
   "content": [
     {
       "type": "text",
-      "text": "Multiple shots. A detective enters a dimly lit room, slow camera pan reveals scattered papers on a mahogany desk. Cut to close-up of a flickering candle, then wide shot of the detective picking up a blood-stained letter. Cinematic lighting, film noir style, 35mm lens."
+      "text": "A girl holding a fox, gentle breeze blowing through her hair, golden sunset light, cinematic, shallow depth of field"
+    },
+    {
+      "type": "image_url",
+      "image_url": {
+        "url": "https://tos.gptproto.com/resource/cat.png"
+      }
     }
-  ]
+  ],
+  "generate_audio": True
 })
 headers = {
   'Authorization': 'GPTPROTO_API_KEY',
@@ -103,13 +124,20 @@ func main() {
   method := "POST"
 
   payload := strings.NewReader(`{
-  "model": "seedance-1-5-pro-251215",
+  "model": "dreamina-seedance-2-0-fast-260128",
   "content": [
     {
       "type": "text",
-      "text": "Multiple shots. A detective enters a dimly lit room, slow camera pan reveals scattered papers on a mahogany desk. Cut to close-up of a flickering candle, then wide shot of the detective picking up a blood-stained letter. Cinematic lighting, film noir style, 35mm lens."
+      "text": "A girl holding a fox, gentle breeze blowing through her hair, golden sunset light, cinematic, shallow depth of field"
+    },
+    {
+      "type": "image_url",
+      "image_url": {
+        "url": "https://tos.gptproto.com/resource/cat.png"
+      }
     }
-  ]
+  ],
+  "generate_audio": true
 }`)
 
   client := &http.Client {

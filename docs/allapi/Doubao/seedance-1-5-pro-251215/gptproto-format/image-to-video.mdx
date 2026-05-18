@@ -1,166 +1,146 @@
 ---
-title: 'Seedance-1-5-Pro-251215 - Image To Video - gptproto'
-sidebarTitle: 'Image to Video'
-api: "POST /api/v3/doubao/seedance-1-5-pro-251215/image-to-video"
-description: 'Next-gen seedance 1.5 pro image to video. Superior motion consistency and high-resolution animation for premium video content.'
-keywords:
-  - 'seedance-1-5-pro-251215'
-  - 'text-to-video'
-  - 'AI video generation'
-  - 'multimedia'
-  - 'content creation'
-  - 'AI models'
+title: 'seedance-1-5-pro-251215 (Image To Video)'
+sidebarTitle: 'Image To Video'
+api: 'POST https://gptproto.com/api/v3/bytedance/seedance-1-5-pro-251215/image-to-video'
+description: ''
 mode: 'wide'
 ---
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 import Authentication from '/snippets/common/authentication.mdx';
 
 <Authentication/>
 
+
 ## Initiate Request
 <CodeGroup>
-
 ```bash cURL
-curl --request POST 'https://gptproto.com/api/v3/doubao/seedance-1-5-pro-251215/image-to-video' \
+curl --location 'https://gptproto.com/api/v3/bytedance/seedance-1-5-pro-251215/image-to-video' \
 --header 'Authorization: GPTPROTO_API_KEY' \
 --header 'Content-Type: application/json' \
---data-raw '{
-    "image": "https://example.com/input-image.jpg",
-    "prompt": "A beautiful sunset scene with waves crashing on the beach"
+--data '{
+  "prompt": "A girl holding a fox, gentle breeze blowing through her hair, golden sunset light, cinematic, shallow depth of field",
+  "image": "https://tos.gptproto.com/resource/cat.png",
+  "aspect_ratio": "16:9",
+  "duration": 5,
+  "resolution": "720p",
+  "seed": -1
 }'
-```
 
+```
+```javascript JavaScript
+const axios = require('axios');
+let data = JSON.stringify({
+  "prompt": "A girl holding a fox, gentle breeze blowing through her hair, golden sunset light, cinematic, shallow depth of field",
+  "image": "https://tos.gptproto.com/resource/cat.png",
+  "aspect_ratio": "16:9",
+  "duration": 5,
+  "resolution": "720p",
+  "seed": -1
+});
+
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'https://gptproto.com/api/v3/bytedance/seedance-1-5-pro-251215/image-to-video',
+  headers: { 
+    'Authorization': 'GPTPROTO_API_KEY', 
+    'Content-Type': 'application/json'
+  },
+  data : data
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+
+
+```
 ```python Python
 import requests
 import json
 
-url = "https://gptproto.com/api/v3/doubao/seedance-1-5-pro-251215/image-to-video"
+url = "https://gptproto.com/api/v3/bytedance/seedance-1-5-pro-251215/image-to-video"
 
-headers = {
-    "Authorization": "GPTPROTO_API_KEY",
-    "Content-Type": "application/json"
-}
-
-payload = {
-    "image": "https://example.com/input-image.jpg",
-    "prompt": "A beautiful sunset scene with waves crashing on the beach"
-}
-
-response = requests.post(url, headers=headers, data=json.dumps(payload))
-print(response.json())
-```
-
-```javascript JavaScript
-const fetch = require('node-fetch');
-
-const url = 'https://gptproto.com/api/v3/doubao/seedance-1-5-pro-251215/image-to-video';
-
-const headers = {
-    'Authorization': 'GPTPROTO_API_KEY',
-    'Content-Type': 'application/json'
-};
-
-const payload = {
-    image: 'https://example.com/input-image.jpg',
-    prompt: 'A beautiful sunset scene with waves crashing on the beach'
-};
-
-fetch(url, {
-    method: 'POST',
-    headers: headers,
-    body: JSON.stringify(payload)
+payload = json.dumps({
+  "prompt": "A girl holding a fox, gentle breeze blowing through her hair, golden sunset light, cinematic, shallow depth of field",
+  "image": "https://tos.gptproto.com/resource/cat.png",
+  "aspect_ratio": "16:9",
+  "duration": 5,
+  "resolution": "720p",
+  "seed": -1
 })
-.then(response => response.json())
-.then(data => console.log(data))
-.catch(error => console.error('Error:', error));
-```
+headers = {
+  'Authorization': 'GPTPROTO_API_KEY',
+  'Content-Type': 'application/json'
+}
 
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
+
+
+```
 ```go Go
 package main
 
 import (
-    "bytes"
-    "encoding/json"
-    "fmt"
-    "io/ioutil"
-    "net/http"
+  "fmt"
+  "strings"
+  "net/http"
+  "io"
 )
 
 func main() {
-    url := "https://gptproto.com/api/v3/doubao/seedance-1-5-pro-251215/image-to-video"
-    
-    payload := map[string]interface{}{
-        "image": "https://example.com/input-image.jpg",
-        "prompt": "A beautiful sunset scene with waves crashing on the beach",
-    }
-    
-    jsonPayload, _ := json.Marshal(payload)
-    
-    req, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonPayload))
-    req.Header.Set("Authorization", "GPTPROTO_API_KEY")
-    req.Header.Set("Content-Type", "application/json")
-    
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    if err != nil {
-        panic(err)
-    }
-    defer resp.Body.Close()
-    
-    body, _ := ioutil.ReadAll(resp.Body)
-    fmt.Println(string(body))
+
+  url := "https://gptproto.com/api/v3/bytedance/seedance-1-5-pro-251215/image-to-video"
+  method := "POST"
+
+  payload := strings.NewReader(`{
+  "prompt": "A girl holding a fox, gentle breeze blowing through her hair, golden sunset light, cinematic, shallow depth of field",
+  "image": "https://tos.gptproto.com/resource/cat.png",
+  "aspect_ratio": "16:9",
+  "duration": 5,
+  "resolution": "720p",
+  "seed": -1
+}`)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Authorization", "GPTPROTO_API_KEY")
+  req.Header.Add("Content-Type", "application/json")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := io.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
 }
+
 ```
 </CodeGroup>
-
-## Response Example
-```json
-{
-    "data": {
-        "id": "cgt-20251225201409-abc",
-        "model": "seedance-1-5-pro-251215",
-        "outputs": [],
-        "urls": {
-            "get": "https://gptproto.com/api/v3/predictions/cgt-20251225201409-abc/result"
-        },
-        "hasNsfwContents": [],
-        "status": "created",
-        "createdAt": "2025-12-25 20:14:09",
-        "executionTime": 0,
-        "timings": {
-            "inference": 0
-        }
-    },
-    "message": "success",
-    "code": 200
-}
-```
-
-import QueryResult from '/snippets/parameters/gptproto-format/common/query-result.mdx';
-
-<QueryResult/>
 
 import Parameters from '/snippets/Doubao/gptproto-format/seedance.mdx';
 
 <Parameters/>
+
 
 import ErrorCode from '/snippets/common/errors_code.mdx';
 
