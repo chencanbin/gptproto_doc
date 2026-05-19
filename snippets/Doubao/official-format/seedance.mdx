@@ -91,6 +91,17 @@ func main() {
     "framespersecond": 24
 }
 ```
+
+**Status Enum**
+
+| Status | Description |
+|--------|-------------|
+| `queued` | Queued |
+| `running` | Running |
+| `succeeded` | Succeeded |
+| `failed` | Failed |
+| `expired` | Expired |
+
 ## Parameters
 ### Core Parameters
 | Parameter | Type | Required | Default | Range | Description |
@@ -120,6 +131,8 @@ func main() {
 
 #### Video Generation Scenarios
 First frame video generation, first and last frame video generation, and reference image video generation are three mutually exclusive scenarios and cannot be mixed.
+
+> **Note:** Reference scenarios are only supported by Seedance 2.0.
 <CodeGroup>
 ```json Text-to-Video
 {

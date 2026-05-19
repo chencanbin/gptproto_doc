@@ -96,6 +96,17 @@ You can find it in either:
     "code": 200
 }
 ```
+
+**Status Enum**
+
+| Status | Description |
+|--------|-------------|
+| `queued` | Queued |
+| `running` | Running |
+| `succeeded` | Succeeded |
+| `failed` | Failed |
+| `expired` | Expired |
+
 </Accordion>
 
 ## Parameters
@@ -148,6 +159,8 @@ You can find it in either:
     | `is_upload_media` | boolean | ❌ No | `false` | `false`, `true` | Whether the input image is uploaded media (base64/Data URI). |
   </Tab>
   <Tab title="Reference to Video" icon="layers">
+    > **Note:** Reference scenarios are only supported by Seedance 2.0.
+
     ### Video Generation Scenarios
 
     <CodeGroup>
