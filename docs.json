@@ -208,6 +208,7 @@
                   },
                   {
                     "group": "gpt-4o-all",
+                    "hidden": true,
                     "pages": [
                       {
                         "group": "official-format",
@@ -326,6 +327,7 @@
                   },
                   {
                     "group": "gpt-5-all",
+                    "hidden": true,
                     "pages": [
                       {
                         "group": "official-format",
@@ -604,6 +606,7 @@
                   },
                   {
                     "group": "gpt-image-1-vip",
+                    "hidden": true,
                     "pages": [
                       {
                         "group": "gptproto-format",
@@ -642,6 +645,7 @@
                   },
                   {
                     "group": "gpt-image-1.5-plus",
+                    "hidden": true,
                     "pages": [
                       {
                         "group": "gptproto-format",
@@ -680,6 +684,7 @@
                   },
                   {
                     "group": "gpt-image-2-plus",
+                    "hidden": true,
                     "pages": [
                       {
                         "group": "gptproto-format",
