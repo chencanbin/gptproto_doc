@@ -2419,6 +2419,7 @@
               },
               {
                 "group": "Ideogram",
+                "hidden": true,
                 "pages": [
                   {
                     "group": "ideogram-edit-v3",
@@ -2860,6 +2861,7 @@
               },
               {
                 "group": "Higgsfield",
+                "hidden": true,
                 "pages": [
                   {
                     "group": "higgsfield-lite",
