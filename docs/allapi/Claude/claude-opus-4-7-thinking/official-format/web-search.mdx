@@ -1,0 +1,187 @@
+---
+title: 'claude-opus-4-7-thinking (Web Search)'
+sidebarTitle: 'Web Search'
+api: 'POST https://gptproto.com/v1/messages'
+description: ''
+mode: 'wide'
+---
+
+import Authentication from '/snippets/common/authentication.mdx';
+
+<Authentication/>
+
+
+## Initiate Request
+<CodeGroup>
+```bash cURL
+curl --location 'https://gptproto.com/v1/messages' \
+--header 'Authorization: GPTPROTO_API_KEY' \
+--header 'Content-Type: application/json' \
+--header 'anthropic-version: 2023-06-01' \
+--data '{
+  "model": "claude-opus-4-7-thinking",
+  "max_tokens": 1024,
+  "messages": [
+    {
+      "role": "user",
+      "content": "What'\''s the weather in NYC?"
+    }
+  ],
+  "tools": [
+    {
+      "type": "web_search_20250305",
+      "name": "web_search",
+      "max_uses": 5
+    }
+  ]
+}'
+
+```
+```javascript JavaScript
+const axios = require('axios');
+let data = JSON.stringify({
+  "model": "claude-opus-4-7-thinking",
+  "max_tokens": 1024,
+  "messages": [
+    {
+      "role": "user",
+      "content": "What's the weather in NYC?"
+    }
+  ],
+  "tools": [
+    {
+      "type": "web_search_20250305",
+      "name": "web_search",
+      "max_uses": 5
+    }
+  ]
+});
+
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'https://gptproto.com/v1/messages',
+  headers: { 
+    'Authorization': 'GPTPROTO_API_KEY', 
+    'Content-Type': 'application/json', 
+    'anthropic-version': '2023-06-01'
+  },
+  data : data
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+
+
+```
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/v1/messages"
+
+payload = json.dumps({
+  "model": "claude-opus-4-7-thinking",
+  "max_tokens": 1024,
+  "messages": [
+    {
+      "role": "user",
+      "content": "What's the weather in NYC?"
+    }
+  ],
+  "tools": [
+    {
+      "type": "web_search_20250305",
+      "name": "web_search",
+      "max_uses": 5
+    }
+  ]
+})
+headers = {
+  'Authorization': 'GPTPROTO_API_KEY',
+  'Content-Type': 'application/json',
+  'anthropic-version': '2023-06-01'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
+
+
+```
+```go Go
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io"
+)
+
+func main() {
+
+  url := "https://gptproto.com/v1/messages"
+  method := "POST"
+
+  payload := strings.NewReader(`{
+  "model": "claude-opus-4-7-thinking",
+  "max_tokens": 1024,
+  "messages": [
+    {
+      "role": "user",
+      "content": "What's the weather in NYC?"
+    }
+  ],
+  "tools": [
+    {
+      "type": "web_search_20250305",
+      "name": "web_search",
+      "max_uses": 5
+    }
+  ]
+}`)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Authorization", "GPTPROTO_API_KEY")
+  req.Header.Add("Content-Type", "application/json")
+  req.Header.Add("anthropic-version", "2023-06-01")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := io.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+
+```
+</CodeGroup>
+
+import Parameters from '/snippets/Claude/official-format/claude-chat.mdx';
+
+<Parameters/>
+
+
+import ErrorCode from '/snippets/common/errors_code.mdx';
+
+<ErrorCode/>

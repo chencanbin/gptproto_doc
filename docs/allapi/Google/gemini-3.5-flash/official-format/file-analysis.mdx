@@ -1,0 +1,211 @@
+---
+title: 'gemini-3.5-flash (File Analysis)'
+sidebarTitle: 'File Analysis'
+api: 'POST https://gptproto.com/v1beta/models/gemini-3.5-flash:generateContent'
+description: ''
+mode: 'wide'
+---
+
+import Authentication from '/snippets/common/authentication.mdx';
+
+<Authentication/>
+
+
+## Initiate Request
+<CodeGroup>
+```bash cURL
+curl --location 'https://gptproto.com/v1beta/models/gemini-3.5-flash:generateContent' \
+--header 'Authorization: GPTPROTO_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
+        {
+          "text": "what is in this file?"
+        },
+        {
+          "file_data": {
+            "mime_type": "application/pdf",
+            "file_uri": "https://tos.gptproto.com/resource/gptproto.pdf"
+          }
+        }
+      ]
+    }
+  ],
+  "generationConfig": {
+    "thinkingConfig": {
+      "includeThoughts": true,
+      "thinkingLevel": "HIGH"
+    }
+  }
+}'
+
+```
+```javascript JavaScript
+const axios = require('axios');
+let data = JSON.stringify({
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
+        {
+          "text": "what is in this file?"
+        },
+        {
+          "file_data": {
+            "mime_type": "application/pdf",
+            "file_uri": "https://tos.gptproto.com/resource/gptproto.pdf"
+          }
+        }
+      ]
+    }
+  ],
+  "generationConfig": {
+    "thinkingConfig": {
+      "includeThoughts": true,
+      "thinkingLevel": "HIGH"
+    }
+  }
+});
+
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'https://gptproto.com/v1beta/models/gemini-3.5-flash:generateContent',
+  headers: { 
+    'Authorization': 'GPTPROTO_API_KEY', 
+    'Content-Type': 'application/json'
+  },
+  data : data
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+
+
+```
+```python Python
+import requests
+import json
+
+url = "https://gptproto.com/v1beta/models/gemini-3.5-flash:generateContent"
+
+payload = json.dumps({
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
+        {
+          "text": "what is in this file?"
+        },
+        {
+          "file_data": {
+            "mime_type": "application/pdf",
+            "file_uri": "https://tos.gptproto.com/resource/gptproto.pdf"
+          }
+        }
+      ]
+    }
+  ],
+  "generationConfig": {
+    "thinkingConfig": {
+      "includeThoughts": True,
+      "thinkingLevel": "HIGH"
+    }
+  }
+})
+headers = {
+  'Authorization': 'GPTPROTO_API_KEY',
+  'Content-Type': 'application/json'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
+
+
+```
+```go Go
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io"
+)
+
+func main() {
+
+  url := "https://gptproto.com/v1beta/models/gemini-3.5-flash:generateContent"
+  method := "POST"
+
+  payload := strings.NewReader(`{
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
+        {
+          "text": "what is in this file?"
+        },
+        {
+          "file_data": {
+            "mime_type": "application/pdf",
+            "file_uri": "https://tos.gptproto.com/resource/gptproto.pdf"
+          }
+        }
+      ]
+    }
+  ],
+  "generationConfig": {
+    "thinkingConfig": {
+      "includeThoughts": true,
+      "thinkingLevel": "HIGH"
+    }
+  }
+}`)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Authorization", "GPTPROTO_API_KEY")
+  req.Header.Add("Content-Type", "application/json")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := io.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+
+```
+</CodeGroup>
+
+import Parameters from '/snippets/Google/official-format/chat-gemini.mdx';
+
+<Parameters/>
+
+
+import ErrorCode from '/snippets/common/errors_code.mdx';
+
+<ErrorCode/>

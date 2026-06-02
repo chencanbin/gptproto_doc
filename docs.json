@@ -1181,6 +1181,28 @@
                     ]
                   },
                   {
+                    "group": "gemini-3.5-flash",
+                    "pages": [
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/Google/gemini-3.5-flash/official-format/file-analysis",
+                          "docs/allapi/Google/gemini-3.5-flash/official-format/image-to-text",
+                          "docs/allapi/Google/gemini-3.5-flash/official-format/text-to-text",
+                          "docs/allapi/Google/gemini-3.5-flash/official-format/web-search"
+                        ]
+                      },
+                      {
+                        "group": "openai-format",
+                        "pages": [
+                          "docs/allapi/Google/gemini-3.5-flash/openai-format/file-analysis",
+                          "docs/allapi/Google/gemini-3.5-flash/openai-format/image-to-text",
+                          "docs/allapi/Google/gemini-3.5-flash/openai-format/text-to-text"
+                        ]
+                      }
+                    ]
+                  },
+                  {
                     "group": "google-file-upload",
                     "pages": [
                       "docs/api/Google/google-file-upload/file-upload"
@@ -1479,6 +1501,90 @@
                           "docs/allapi/Claude/claude-opus-4-6-thinking/openai-format/file-analysis",
                           "docs/allapi/Claude/claude-opus-4-6-thinking/openai-format/text-to-text",
                           "docs/allapi/Claude/claude-opus-4-6-thinking/openai-format/web-search"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "claude-opus-4-7",
+                    "pages": [
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/Claude/claude-opus-4-7/official-format/file-analysis",
+                          "docs/allapi/Claude/claude-opus-4-7/official-format/text-to-text",
+                          "docs/allapi/Claude/claude-opus-4-7/official-format/web-search"
+                        ]
+                      },
+                      {
+                        "group": "openai-format",
+                        "pages": [
+                          "docs/allapi/Claude/claude-opus-4-7/openai-format/file-analysis",
+                          "docs/allapi/Claude/claude-opus-4-7/openai-format/text-to-text",
+                          "docs/allapi/Claude/claude-opus-4-7/openai-format/web-search"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "claude-opus-4-7-thinking",
+                    "pages": [
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/Claude/claude-opus-4-7-thinking/official-format/file-analysis",
+                          "docs/allapi/Claude/claude-opus-4-7-thinking/official-format/text-to-text",
+                          "docs/allapi/Claude/claude-opus-4-7-thinking/official-format/web-search"
+                        ]
+                      },
+                      {
+                        "group": "openai-format",
+                        "pages": [
+                          "docs/allapi/Claude/claude-opus-4-7-thinking/openai-format/file-analysis",
+                          "docs/allapi/Claude/claude-opus-4-7-thinking/openai-format/text-to-text",
+                          "docs/allapi/Claude/claude-opus-4-7-thinking/openai-format/web-search"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "claude-opus-4-8",
+                    "pages": [
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/Claude/claude-opus-4-8/official-format/file-analysis",
+                          "docs/allapi/Claude/claude-opus-4-8/official-format/text-to-text",
+                          "docs/allapi/Claude/claude-opus-4-8/official-format/web-search"
+                        ]
+                      },
+                      {
+                        "group": "openai-format",
+                        "pages": [
+                          "docs/allapi/Claude/claude-opus-4-8/openai-format/file-analysis",
+                          "docs/allapi/Claude/claude-opus-4-8/openai-format/text-to-text",
+                          "docs/allapi/Claude/claude-opus-4-8/openai-format/web-search"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "claude-opus-4-8-thinking",
+                    "pages": [
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/Claude/claude-opus-4-8-thinking/official-format/file-analysis",
+                          "docs/allapi/Claude/claude-opus-4-8-thinking/official-format/text-to-text",
+                          "docs/allapi/Claude/claude-opus-4-8-thinking/official-format/web-search"
+                        ]
+                      },
+                      {
+                        "group": "openai-format",
+                        "pages": [
+                          "docs/allapi/Claude/claude-opus-4-8-thinking/openai-format/file-analysis",
+                          "docs/allapi/Claude/claude-opus-4-8-thinking/openai-format/text-to-text",
+                          "docs/allapi/Claude/claude-opus-4-8-thinking/openai-format/web-search"
                         ]
                       }
                     ]
