@@ -583,6 +583,22 @@
                     ]
                   },
                   {
+                    "group": "gpt-5.5-pro",
+                    "pages": [
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/OpenAI/gpt-5.5-pro/official-format/file-analysis-response",
+                          "docs/allapi/OpenAI/gpt-5.5-pro/official-format/image-to-text-chat",
+                          "docs/allapi/OpenAI/gpt-5.5-pro/official-format/image-to-text-response",
+                          "docs/allapi/OpenAI/gpt-5.5-pro/official-format/text-to-text-chat",
+                          "docs/allapi/OpenAI/gpt-5.5-pro/official-format/text-to-text-response",
+                          "docs/allapi/OpenAI/gpt-5.5-pro/official-format/web-search-response"
+                        ]
+                      }
+                    ]
+                  },
+                  {
                     "group": "gpt-image-1",
                     "pages": [
                       {
