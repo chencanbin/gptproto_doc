@@ -208,7 +208,6 @@
                   },
                   {
                     "group": "gpt-4o-all",
-                    "hidden": true,
                     "pages": [
                       {
                         "group": "official-format",
@@ -217,7 +216,8 @@
                           "docs/allapi/OpenAI/gpt-4o-all/official-format/text-to-text-chat"
                         ]
                       }
-                    ]
+                    ],
+                    "hidden": true
                   },
                   {
                     "group": "gpt-4o-image",
@@ -327,7 +327,6 @@
                   },
                   {
                     "group": "gpt-5-all",
-                    "hidden": true,
                     "pages": [
                       {
                         "group": "official-format",
@@ -336,7 +335,8 @@
                           "docs/allapi/OpenAI/gpt-5-all/official-format/text-to-text-chat"
                         ]
                       }
-                    ]
+                    ],
+                    "hidden": true
                   },
                   {
                     "group": "gpt-5-chat",
@@ -567,6 +567,22 @@
                     ]
                   },
                   {
+                    "group": "gpt-5.5",
+                    "pages": [
+                      {
+                        "group": "official-format",
+                        "pages": [
+                          "docs/allapi/OpenAI/gpt-5.5/official-format/file-analysis-response",
+                          "docs/allapi/OpenAI/gpt-5.5/official-format/image-to-text-chat",
+                          "docs/allapi/OpenAI/gpt-5.5/official-format/image-to-text-response",
+                          "docs/allapi/OpenAI/gpt-5.5/official-format/text-to-text-chat",
+                          "docs/allapi/OpenAI/gpt-5.5/official-format/text-to-text-response",
+                          "docs/allapi/OpenAI/gpt-5.5/official-format/web-search-response"
+                        ]
+                      }
+                    ]
+                  },
+                  {
                     "group": "gpt-image-1",
                     "pages": [
                       {
@@ -606,7 +622,6 @@
                   },
                   {
                     "group": "gpt-image-1-vip",
-                    "hidden": true,
                     "pages": [
                       {
                         "group": "gptproto-format",
@@ -622,7 +637,8 @@
                           "docs/allapi/OpenAI/gpt-image-1-vip/official-format/text-to-image"
                         ]
                       }
-                    ]
+                    ],
+                    "hidden": true
                   },
                   {
                     "group": "gpt-image-1.5",
@@ -645,7 +661,6 @@
                   },
                   {
                     "group": "gpt-image-1.5-plus",
-                    "hidden": true,
                     "pages": [
                       {
                         "group": "gptproto-format",
@@ -661,7 +676,8 @@
                           "docs/allapi/OpenAI/gpt-image-1.5-plus/official-format/text-to-image"
                         ]
                       }
-                    ]
+                    ],
+                    "hidden": true
                   },
                   {
                     "group": "gpt-image-2",
@@ -684,7 +700,6 @@
                   },
                   {
                     "group": "gpt-image-2-plus",
-                    "hidden": true,
                     "pages": [
                       {
                         "group": "gptproto-format",
@@ -700,7 +715,8 @@
                           "docs/allapi/OpenAI/gpt-image-2-plus/official-format/text-to-image"
                         ]
                       }
-                    ]
+                    ],
+                    "hidden": true
                   },
                   {
                     "group": "o3",
