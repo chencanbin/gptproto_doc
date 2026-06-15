@@ -6869,7 +6869,7 @@
         "curls": [
           {
             "name": "Text To Image",
-            "value": "curl --location 'https://gptproto.com/api/v3/bytedance/doubao-seedream-4-0-250828/text-to-imgae' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"enable_base64_output\": false,\n  \"enable_sync_mode\": false,\n  \"prompt\": \"Turn this photo into a characterfigure. Behind it, place a box withthe character'\\''s image printed on it,and a computer showing the Blendermodeling process on its screen. In frontof the box, add a round plastic basewith the character figure standing on it .set the scene indoors if possible.\",\n  \"size\": \"2227*3183\"\n}'\n"
+            "value": "curl --location 'https://gptproto.com/api/v3/bytedance/doubao-seedream-4-0-250828/text-to-image' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"enable_base64_output\": false,\n  \"enable_sync_mode\": false,\n  \"prompt\": \"Turn this photo into a characterfigure. Behind it, place a box withthe character'\\''s image printed on it,and a computer showing the Blendermodeling process on its screen. In frontof the box, add a round plastic basewith the character figure standing on it .set the scene indoors if possible.\",\n  \"size\": \"2227*3183\"\n}'\n"
           },
           {
             "name": "Query Result",
@@ -6931,7 +6931,7 @@
         "curls": [
           {
             "name": "Text To Image",
-            "value": "curl --location 'https://gptproto.com/api/v3/bytedance/seedream-4-0-250828/text-to-imgae' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"enable_base64_output\": false,\n  \"enable_sync_mode\": false,\n  \"prompt\": \"Turn this photo into a characterfigure. Behind it, place a box withthe character'\\''s image printed on it,and a computer showing the Blendermodeling process on its screen. In frontof the box, add a round plastic basewith the character figure standing on it .set the scene indoors if possible.\",\n  \"size\": \"2227*3183\"\n}'\n"
+            "value": "curl --location 'https://gptproto.com/api/v3/bytedance/seedream-4-0-250828/text-to-image' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"enable_base64_output\": false,\n  \"enable_sync_mode\": false,\n  \"prompt\": \"Turn this photo into a characterfigure. Behind it, place a box withthe character'\\''s image printed on it,and a computer showing the Blendermodeling process on its screen. In frontof the box, add a round plastic basewith the character figure standing on it .set the scene indoors if possible.\",\n  \"size\": \"2227*3183\"\n}'\n"
           },
           {
             "name": "Query Result",
@@ -6993,7 +6993,7 @@
         "curls": [
           {
             "name": "Text To Image",
-            "value": "curl --location 'https://gptproto.com/api/v3/bytedance/doubao-seedream-4-5-251128/text-to-imgae' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"enable_base64_output\": false,\n  \"enable_sync_mode\": false,\n  \"prompt\": \"Turn this photo into a characterfigure. Behind it, place a box withthe character'\\''s image printed on it,and a computer showing the Blendermodeling process on its screen. In frontof the box, add a round plastic basewith the character figure standing on it .set the scene indoors if possible.\",\n  \"size\": \"2227*3183\"\n}'\n"
+            "value": "curl --location 'https://gptproto.com/api/v3/bytedance/doubao-seedream-4-5-251128/text-to-image' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"enable_base64_output\": false,\n  \"enable_sync_mode\": false,\n  \"prompt\": \"Turn this photo into a characterfigure. Behind it, place a box withthe character'\\''s image printed on it,and a computer showing the Blendermodeling process on its screen. In frontof the box, add a round plastic basewith the character figure standing on it .set the scene indoors if possible.\",\n  \"size\": \"2227*3183\"\n}'\n"
           },
           {
             "name": "Query Result",
@@ -7055,7 +7055,7 @@
         "curls": [
           {
             "name": "Text To Image",
-            "value": "curl --location 'https://gptproto.com/api/v3/bytedance/seedream-4-5-251128/text-to-imgae' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"enable_base64_output\": false,\n  \"enable_sync_mode\": false,\n  \"prompt\": \"Turn this photo into a characterfigure. Behind it, place a box withthe character'\\''s image printed on it,and a computer showing the Blendermodeling process on its screen. In frontof the box, add a round plastic basewith the character figure standing on it .set the scene indoors if possible.\",\n  \"size\": \"2227*3183\"\n}'\n"
+            "value": "curl --location 'https://gptproto.com/api/v3/bytedance/seedream-4-5-251128/text-to-image' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"enable_base64_output\": false,\n  \"enable_sync_mode\": false,\n  \"prompt\": \"Turn this photo into a characterfigure. Behind it, place a box withthe character'\\''s image printed on it,and a computer showing the Blendermodeling process on its screen. In frontof the box, add a round plastic basewith the character figure standing on it .set the scene indoors if possible.\",\n  \"size\": \"2227*3183\"\n}'\n"
           },
           {
             "name": "Query Result",
@@ -7117,7 +7117,7 @@
         "curls": [
           {
             "name": "Text To Image",
-            "value": "curl --location 'https://gptproto.com/api/v3/bytedance/doubao-seedream-5-0-260128/text-to-imgae' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"enable_base64_output\": false,\n  \"enable_sync_mode\": false,\n  \"prompt\": \"Turn this photo into a characterfigure. Behind it, place a box withthe character'\\''s image printed on it,and a computer showing the Blendermodeling process on its screen. In frontof the box, add a round plastic basewith the character figure standing on it .set the scene indoors if possible.\",\n  \"size\": \"2227*3183\"\n}'\n"
+            "value": "curl --location 'https://gptproto.com/api/v3/bytedance/doubao-seedream-5-0-260128/text-to-image' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"enable_base64_output\": false,\n  \"enable_sync_mode\": false,\n  \"prompt\": \"Turn this photo into a characterfigure. Behind it, place a box withthe character'\\''s image printed on it,and a computer showing the Blendermodeling process on its screen. In frontof the box, add a round plastic basewith the character figure standing on it .set the scene indoors if possible.\",\n  \"size\": \"2227*3183\"\n}'\n"
           },
           {
             "name": "Query Result",
@@ -7179,7 +7179,7 @@
         "curls": [
           {
             "name": "Text To Image",
-            "value": "curl --location 'https://gptproto.com/api/v3/bytedance/seedream-5-0-260128/text-to-imgae' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"enable_base64_output\": false,\n  \"enable_sync_mode\": false,\n  \"prompt\": \"Turn this photo into a characterfigure. Behind it, place a box withthe character'\\''s image printed on it,and a computer showing the Blendermodeling process on its screen. In frontof the box, add a round plastic basewith the character figure standing on it .set the scene indoors if possible.\",\n  \"size\": \"2227*3183\"\n}'\n"
+            "value": "curl --location 'https://gptproto.com/api/v3/bytedance/seedream-5-0-260128/text-to-image' \\\n--header 'Authorization: GPTPROTO_API_KEY' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"enable_base64_output\": false,\n  \"enable_sync_mode\": false,\n  \"prompt\": \"Turn this photo into a characterfigure. Behind it, place a box withthe character'\\''s image printed on it,and a computer showing the Blendermodeling process on its screen. In frontof the box, add a round plastic basewith the character figure standing on it .set the scene indoors if possible.\",\n  \"size\": \"2227*3183\"\n}'\n"
           },
           {
             "name": "Query Result",
